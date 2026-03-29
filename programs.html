@@ -47,58 +47,84 @@
 
         .future-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-md);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .future-item {
-            text-align: center;
-            padding: var(--space-md);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            /* Cyber blue border */
-            border-radius: var(--border-radius-md);
-            background: rgba(0, 229, 255, 0.03);
-            /* Cyber blue faint background */
-            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.05);
-            transition: all 0.4s ease;
+        .future-card {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2rem;
             position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
+            text-align: center;
         }
 
-        .future-item::before {
+        .future-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #0cbefa, transparent);
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 242, 96, 0.1), transparent);
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
 
-        .future-item:hover {
-            transform: translateY(-5px);
-            border-color: #0cbefa;
-            box-shadow: 0 10px 30px rgba(12, 190, 250, 0.2);
-            background: rgba(0, 229, 255, 0.08);
+        .future-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 96, 0.2);
         }
 
-        .future-item:hover::before {
+        .future-card:hover::before {
             transform: translateX(100%);
         }
 
-        .future-item h4 {
-            color: #0cbefa !important;
-            /* Cyber blue header */
+        .future-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 242, 96, 0.4);
         }
+
+        .future-card h4 {
+            color: #fff !important;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .future-card p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .future-icon-wrap {
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+        }
+
     </style>
 </head>
 
 <body>
+    <div class="scanline"></div>
+
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -190,27 +216,34 @@
     <section class="section reveal" style="background: #0d121c; border-top: 1px solid var(--color-border);">
         <div class="container">
             <div class="text-center mb-2">
-                <h2>What’s Next for PakSec Nation?</h2>
-                <p>We are constantly expanding our ecosystem to provide more value.</p>
+                <h2 class="glow-text">What’s Next for PakSec Nation?</h2>
+                <p style="color: #fff; opacity: 0.8;">We are constantly expanding our ecosystem to provide more value.</p>
             </div>
 
+
             <div class="future-grid">
-                <div class="future-item reveal-scale delay-100">
-                    <h4 style="color: var(--color-text-main);">Intensive Bootcamps</h4>
-                    <p style="font-size: 0.95rem;">Deep-dive, hands-on training for advanced topics like Web
-                        Exploitation and Defensive Networking.</p>
+                <div class="future-card reveal-left">
+                    <span class="future-badge">Coming Q3 2026</span>
+                    <div class="future-icon-wrap">⚡</div>
+                    <h4>Intensive Bootcamps</h4>
+                    <p>Experience ultra-deep, hands-on training for high-level specialties including Web Exploitation and Advanced Defensive Networking.</p>
                 </div>
-                <div class="future-item reveal-scale delay-200">
-                    <h4 style="color: var(--color-text-main);">National CTFs</h4>
-                    <p style="font-size: 0.95rem;">Test your skills in safe, legal Capture The Flag environments against
-                        other Pakistani unversities.</p>
+                
+                <div class="future-card reveal-scale delay-100">
+                    <span class="future-badge">National Level</span>
+                    <div class="future-icon-wrap">🎯</div>
+                    <h4>National CTFs</h4>
+                    <p>Enter the arena. Test your real-world skills in legal, safe-controlled Capture The Flag environments against the brightest minds in Pakistan.</p>
                 </div>
-                <div class="future-item reveal-scale delay-300">
-                    <h4 style="color: var(--color-text-main);">Certification Prep</h4>
-                    <p style="font-size: 0.95rem;">Guided study groups for global certs like CEH, Security+, and BSCP.
-                    </p>
+                
+                <div class="future-card reveal-right delay-200">
+                    <span class="future-badge">Elite Track</span>
+                    <div class="future-icon-wrap">🛡️</div>
+                    <h4>Certification Prep</h4>
+                    <p>Master the world's most recognized credentials with peer-led study groups targeting CEH, Security+, and the prestigious BSCP.</p>
                 </div>
             </div>
+
         </div>
     </section>
 

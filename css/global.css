@@ -52,12 +52,61 @@ html {
 
 body {
   background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 242, 96, 0.03) 0%, transparent 70%),
+    linear-gradient(rgba(0, 242, 96, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 96, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
   color: var(--color-text-main);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Awesome Utils */
+.glow-text {
+  text-shadow: 0 0 15px rgba(0, 242, 96, 0.5);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, var(--color-primary), transparent, var(--color-primary));
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.glow-border:hover::after {
+  opacity: 0.5;
+}
+
+/* Cyber Scanning Line */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(0, 242, 96, 0.05);
+  box-shadow: 0 0 20px rgba(0, 242, 96, 0.2);
+  z-index: 9999;
+  pointer-events: none;
+  animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+  from { top: -5%; }
+  to { top: 105%; }
+}
+
 
 /* Animations */
 @keyframes pageFadeIn {
