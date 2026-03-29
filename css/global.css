@@ -28,7 +28,8 @@
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
-  --space-xl: 8rem;
+  --space-xl: 10rem;
+
 
   /* Transitions & Effects */
   --transition-fast: 0.2s ease;
@@ -248,10 +249,11 @@ ul {
 
 /* Layout Classes */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--space-sm);
+  padding: 0 var(--space-md);
 }
+
 
 .section {
   padding: var(--space-xl) 0;
@@ -352,7 +354,8 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
+
   z-index: 1000;
   transition: all var(--transition-normal);
   background: rgba(11, 15, 25, 0.8);
@@ -368,7 +371,7 @@ ul {
 
 .nav-brand {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--color-text-main);
   display: flex;
@@ -376,6 +379,13 @@ ul {
   gap: 12px;
   letter-spacing: -0.5px;
 }
+
+.nav-brand img {
+  height: 95px;
+  width: auto;
+  transition: transform var(--transition-normal);
+}
+
 
 .nav-brand span {
   color: var(--color-primary);
@@ -522,7 +532,7 @@ ul {
   }
 
   .nav-brand img {
-    height: 30px !important;
+    height: 50px !important;
   }
 
   /* Mobile menu - hidden off screen by default */
@@ -624,6 +634,6 @@ ul {
   }
 
   .nav-brand {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
-}
+}
