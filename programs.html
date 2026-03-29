@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs | PakSec Nation</title>
+    <meta name="description"
+        content="Discover the pathways to take you from a curious beginner to an elite cybersecurity professional.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .program-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .program-card h3 {
+            color: var(--color-primary);
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: rgba(0, 242, 96, 0.1);
+            color: var(--color-primary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            border: 1px solid rgba(0, 242, 96, 0.3);
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .future-item {
+            text-align: center;
+            padding: var(--space-md);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            /* Cyber blue border */
+            border-radius: var(--border-radius-md);
+            background: rgba(0, 229, 255, 0.03);
+            /* Cyber blue faint background */
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0cbefa, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .future-item:hover {
+            transform: translateY(-5px);
+            border-color: #0cbefa;
+            box-shadow: 0 10px 30px rgba(12, 190, 250, 0.2);
+            background: rgba(0, 229, 255, 0.08);
+        }
+
+        .future-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .future-item h4 {
+            color: #0cbefa !important;
+            /* Cyber blue header */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html" class="active">Programs</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html">Blog</a>
+                <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Learn. Grow. Dominate.</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Discover the pathways we've built to take you from a curious
+                beginner to an elite cybersecurity professional.</p>
+        </div>
+    </header>
+
+    <!-- Main Programs -->
+    <section class="section">
+        <div class="container reveal">
+            <div class="program-grid">
+
+                <!-- Masterclasses -->
+                <div class="glass-card program-card reveal-left">
+                    <div>
+                        <span class="price-tag">100% Free</span>
+                        <h3>Weekly Masterclasses</h3>
+                        <p>Every week, we host high-impact, live online sessions covering the fundamentals of ethical
+                            hacking, network security, and defensive strategies. Led by industry experts, these classes
+                            are strictly designed for beginners to grasp complex concepts easily.</p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="events.html" class="btn btn-secondary" style="width: 100%;">View Schedule</a>
+                    </div>
+                </div>
+
+                <!-- Consultation -->
+                <div class="glass-card program-card reveal-scale delay-100"
+                    style="border-color: rgba(0, 242, 96, 0.3);">
+                    <div>
+                        <span class="price-tag"
+                            style="background: rgba(255, 255, 255, 0.1); color: #fff; border-color: rgba(255,255,255,0.2);">PKR
+                            500 Subsidized</span>
+                        <h3>1-on-1 Beginner Consultation</h3>
+                        <p>Lost? Don't know where to start? Get a personalized session with a PakSec mentor.</p>
+                        <p style="font-size: 0.95rem;">For a nominal fee, we provide a structured, tailored consultation
+                            to evaluate your current skills, understand your goals, and hand you a step-by-step career
+                            roadmap. <em>(This fee ensures commitment while remaining accessible).</em></p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="join.html#consultation" class="btn btn-primary" style="width: 100%;">Book
+                            Consultation</a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="glass-card program-card reveal-right delay-200">
+                    <div>
+                        <span class="price-tag">Community Access</span>
+                        <h3>The Ultimate Learning Network</h3>
+                        <p>Join our nationwide WhatsApp learning community. Ask questions, share resources, discuss the
+                            latest cyber threats, and network with peers and mentors 24/7. You don't have to learn
+                            alone.</p>
+                    </div>
+                    <div class="mt-1">
+                        <a href="join.html" class="btn btn-secondary" style="width: 100%;">Join WhatsApp Group</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Expansion Container -->
+    <section class="section reveal" style="background: #0d121c; border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="text-center mb-2">
+                <h2>What’s Next for PakSec Nation?</h2>
+                <p>We are constantly expanding our ecosystem to provide more value.</p>
+            </div>
+
+            <div class="future-grid">
+                <div class="future-item reveal-scale delay-100">
+                    <h4 style="color: var(--color-text-main);">Intensive Bootcamps</h4>
+                    <p style="font-size: 0.95rem;">Deep-dive, hands-on training for advanced topics like Web
+                        Exploitation and Defensive Networking.</p>
+                </div>
+                <div class="future-item reveal-scale delay-200">
+                    <h4 style="color: var(--color-text-main);">National CTFs</h4>
+                    <p style="font-size: 0.95rem;">Test your skills in safe, legal Capture The Flag environments against
+                        other Pakistani unversities.</p>
+                </div>
+                <div class="future-item reveal-scale delay-300">
+                    <h4 style="color: var(--color-text-main);">Certification Prep</h4>
+                    <p style="font-size: 0.95rem;">Guided study groups for global certs like CEH, Security+, and BSCP.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+

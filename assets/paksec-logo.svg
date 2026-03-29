@@ -1,0 +1,64 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="cyberGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00F260" />
+            <stop offset="100%" stop-color="#0cbefa" />
+        </linearGradient>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    
+    <!-- Outer Cyber Shield/Hexagon -->
+    <path d="M100 15 L180 50 L180 140 L100 185 L20 140 L20 50 Z" 
+          fill="rgba(0, 242, 96, 0.05)" 
+          stroke="url(#cyberGreen)" 
+          stroke-width="6" 
+          stroke-linejoin="round"
+          filter="url(#subtleGlow)"/>
+          
+    <path d="M100 25 L165 55 L165 130 L100 170 L35 130 L35 55 Z" 
+          fill="none" 
+          stroke="rgba(0, 242, 96, 0.2)" 
+          stroke-width="2" 
+          stroke-linejoin="round" />
+          
+    <!-- Inner geometry (Stylized M / Markhor horns / Circuit layout) -->
+    <!-- Outer Horns -->
+    <path d="M50 130 L50 80 C50 50 85 35 100 35 C115 35 150 50 150 80 L150 130" 
+          stroke="#00F260" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          filter="url(#glow)"/>
+          
+    <!-- Inner Horns -->
+    <path d="M75 110 L75 70 C75 55 90 45 100 45 C110 45 125 55 125 70 L125 110" 
+          stroke="#0cbefa" 
+          stroke-width="6" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" />
+          
+    <!-- Core Data Node (Eye/Brain/Core) -->
+    <circle cx="100" cy="115" r="14" fill="#00F260" filter="url(#glow)" />
+    <circle cx="100" cy="115" r="6" fill="#0B0F19" />
+    
+    <!-- Circuit lines radiating down/outwards -->
+    <path d="M100 129 L100 160 M75 110 L40 130 M125 110 L160 130 M60 85 L35 75 M140 85 L165 75" 
+          stroke="#0cbefa" 
+          stroke-width="4" 
+          stroke-linecap="round" />
+          
+    <!-- Digital Data Points -->
+    <circle cx="100" cy="160" r="4" fill="#0cbefa" />
+    <circle cx="40" cy="130" r="4" fill="#0cbefa" />
+    <circle cx="160" cy="130" r="4" fill="#0cbefa" />
+    <circle cx="35" cy="75" r="4" fill="#00F260" />
+    <circle cx="165" cy="75" r="4" fill="#00F260" />
+
+</svg>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Guides | PakSec Nation</title>
+    <meta name="description"
+        content="Beginner guides, roadmaps, and security awareness articles for starting a cybersecurity career in Pakistan.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .category-card {
+            padding: var(--space-md);
+            text-align: center;
+            border-radius: var(--border-radius-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: var(--color-primary);
+            background: rgba(0, 242, 96, 0.05);
+        }
+
+        .category-card h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .article-card:hover {
+            border-color: var(--color-text-muted);
+        }
+
+        .article-img {
+            width: 100%;
+            height: 180px;
+            background: var(--color-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border);
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+        }
+
+        .article-content {
+            padding: var(--space-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-bottom: var(--space-sm);
+        }
+
+        .article-title {
+            color: #fff;
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            line-height: 1.4;
+        }
+
+        .article-content a {
+            margin-top: auto;
+            align-self: flex-start;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html">Programs</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Knowledge Base.</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Beginner guides, career roadmaps, and security awareness
+                articles tailored for Pakistan.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Category Filter (Visual Only for MVP) -->
+            <div class="category-grid">
+                <div class="category-card" style="border-color: var(--color-primary);">
+                    <h4>All Guides</h4>
+                    <p style="margin:0; font-size:0.9rem;">Latest uploads</p>
+                </div>
+                <div class="category-card">
+                    <h4>Fundamentals</h4>
+                    <p style="margin:0; font-size:0.9rem;">Beginner theories</p>
+                </div>
+                <div class="category-card">
+                    <h4>Career</h4>
+                    <p style="margin:0; font-size:0.9rem;">Job roadmaps</p>
+                </div>
+                <div class="category-card">
+                    <h4>Tools</h4>
+                    <p style="margin:0; font-size:0.9rem;">Software breakdowns</p>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="article-grid">
+
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-img">BEGINNER GUIDE</div>
+                    <div class="article-content">
+                        <span class="article-tag">Fundamentals</span>
+                        <h3 class="article-title">What is Ethical Hacking? A Simple Breakdown</h3>
+                        <p style="font-size: 0.95rem;">Demystifying the difference between white hat and black hat
+                            hackers in plain English.</p>
+                        <a href="#">Read Article &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-img" style="background-image: linear-gradient(45deg, #05080c, #1a2233);">CAREER
+                        MAP</div>
+                    <div class="article-content">
+                        <span class="article-tag">Career</span>
+                        <h3 class="article-title">The Ultimate Target: How to Start Cyber Security in Pakistan</h3>
+                        <p style="font-size: 0.95rem;">A step-by-step roadmap specifically designed for computing
+                            students in Pakistani universities.</p>
+                        <a href="#">Read Article &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-img">TOOL BREAKDOWN</div>
+                    <div class="article-content">
+                        <span class="article-tag">Tools</span>
+                        <h3 class="article-title">Nmap for Absolute Beginners</h3>
+                        <p style="font-size: 0.95rem;">Learn how to map a network and find open ports using the industry
+                            standard tool.</p>
+                        <a href="#">Read Article &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-img" style="background: rgba(255,51,102,0.1); color: #FF3366;">AWARENESS ALERT
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag" style="color: #FF3366;">Security Awareness</span>
+                        <h3 class="article-title">Phishing Scams Targetting Pakistanis</h3>
+                        <p style="font-size: 0.95rem;">How to identify malicious links pretending to be local banks,
+                            telecoms, or government services.</p>
+                        <a href="#">Read Article &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+

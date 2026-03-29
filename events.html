@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Events | PakSec Nation</title>
+    <meta name="description"
+        content="Stay updated with our latest online masterclasses, guest speaker sessions, and community gatherings.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .event-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            transition: border-color var(--transition-fast);
+        }
+
+        .event-item:hover {
+            border-color: var(--color-primary);
+        }
+
+        .event-meta {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .event-meta span {
+            background: rgba(0, 242, 96, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .volunteer-banner {
+            background: linear-gradient(45deg, var(--color-bg), #0d121c);
+            border: 1px solid var(--color-border);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .volunteer-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+        }
+
+        @media (max-width: 768px) {
+            .event-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html">Programs</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="blog.html">Blog</a>
+                <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Live Sessions & Events.</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Stay updated with our latest online masterclasses, guest
+                speaker sessions, and community gatherings.</p>
+        </div>
+    </header>
+
+    <!-- Events List -->
+    <section class="section">
+        <div class="container">
+
+            <div class="text-center mb-2 reveal">
+                <h2 style="color: var(--color-primary); font-size: 1.2rem; text-transform: uppercase;">Upcoming Schedule
+                </h2>
+            </div>
+
+            <div class="event-list">
+                <!-- Event 1 -->
+                <div class="event-item reveal-left">
+                    <div>
+                        <div class="event-meta">
+                            <span>Every Saturday</span>
+                            <span>Live Online (Zoom)</span>
+                        </div>
+                        <h3 style="color: #fff; margin-bottom: 0.5rem;">Weekly Cyber Fundamentals Masterclass</h3>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">A deep dive into the basics. We cover
+                            networking fundamentals, basic Linux commands, and an introduction to defensive mindset.
+                            Strictly for absolute beginners.</p>
+                    </div>
+                    <div>
+                        <a href="join.html" class="btn btn-primary" style="white-space: nowrap;">Reserve Free Seat</a>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-item reveal-right delay-100">
+                    <div>
+                        <div class="event-meta" style="color: var(--color-text-main);">
+                            <span style="background: rgba(255,255,255,0.1);">TBA (Monthly)</span>
+                            <span style="background: rgba(255,255,255,0.1);">Google Meet</span>
+                        </div>
+                        <h3 style="color: #fff; margin-bottom: 0.5rem;">Industry Heavyweights Live: Guest Speaker Model
+                        </h3>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">We regularly invite leading cybersecurity
+                            professionals, CISOs, and elite bug bounty hunters from Pakistan and around the world to
+                            share their journeys, insights, and career advice with the Nation.</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" disabled
+                            style="opacity: 0.5; cursor: not-allowed; white-space: nowrap;">Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteer Banner -->
+            <div class="volunteer-banner reveal-scale delay-200">
+                <h2 class="mb-1">Become a PakSec Trainer</h2>
+                <p style="max-width: 700px; margin: 0 auto var(--space-md);">Are you an experienced cybersecurity
+                    professional? Give back to the community by volunteering to host a masterclass or mentor our
+                    students. Help us shape the next generation.</p>
+                <a href="join.html#volunteer" class="btn btn-secondary">Apply to be a Trainer</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | PakSec Nation</title>
+    <meta name="description"
+        content="Discover the story, core values, and ethical code driving Pakistan's official cybersecurity movement.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-container p {
+            font-size: 1.15rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .numbered-list {
+            counter-reset: custom-counter;
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .numbered-list li {
+            position: relative;
+            padding-left: 3rem;
+            background: var(--color-surface);
+            padding: var(--space-sm) var(--space-sm) var(--space-sm) 4rem;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
+            cursor: default;
+        }
+
+        .numbered-list li:hover {
+            transform: translateX(10px);
+            border-color: var(--color-primary);
+            background: rgba(0, 242, 96, 0.05);
+            box-shadow: -5px 5px 20px rgba(0, 242, 96, 0.1);
+        }
+
+        .numbered-list li::before {
+            counter-increment: custom-counter;
+            content: counter(custom-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .numbered-list h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .numbered-list p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .impact-banner {
+            background: linear-gradient(-45deg, #00F260, #004B23, #00F260);
+            background-size: 200% 200%;
+            animation: gradientPulse 5s ease infinite;
+            color: var(--color-bg);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
+            transform-origin: center;
+            transition: transform var(--transition-normal);
+        }
+
+        .impact-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 242, 96, 0.6);
+        }
+
+        @keyframes gradientPulse {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .impact-banner h2,
+        .impact-banner p {
+            color: var(--color-bg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation (Copied from index.html) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="programs.html">Programs</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html">Blog</a>
+                <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Building Pakistan’s Strongest Cyber Defense.</h1>
+            <p style="max-width: 600px; margin: 0 auto;">From beginners to defenders. The premier launchpad for
+                Pakistani Security Professionals.</p>
+        </div>
+    </header>
+
+    <!-- The Story -->
+    <section class="section">
+        <div class="container reveal">
+            <div class="story-container">
+                <h2 class="mb-2 text-center">The Story of PakSec Nation</h2>
+                <div class="glass-card">
+                    <p style="color: #fff;">PakSec Nation was born out of a critical realization: Pakistan possesses
+                        immense tech talent, but lacks a unified, ethical launchpad for cybersecurity enthusiasts.</p>
+                    <p>Founded with a simple vision: to create a platform that removes the barriers to entry for
+                        cybersecurity education in Pakistan. We saw beginners lost in a sea of overwhelming information,
+                        often tempted by the "black hat" path due to a lack of proper mentorship.</p>
+                    <p>PakSec Nation was created to be the lighthouse—a movement that transforms raw curiosity into
+                        elite, professional, and ethical cyber defense skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values & Ethics Container -->
+    <section class="section" style="background: #0d121c; border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-xl);">
+
+                <!-- Values -->
+                <div class="reveal-left">
+                    <h2 class="mb-2">Our Core Values</h2>
+                    <ul class="numbered-list">
+                        <li>
+                            <h4>Integrity First</h4>
+                            <p>Ethics over everything.</p>
+                        </li>
+                        <li>
+                            <h4>Accessible Education</h4>
+                            <p>High-quality knowledge should not be hidden behind massive paywalls.</p>
+                        </li>
+                        <li>
+                            <h4>Continuous Evolution</h4>
+                            <p>In cyber, if you aren't learning, you're falling behind.</p>
+                        </li>
+                        <li>
+                            <h4>Community Support</h4>
+                            <p>We rise by lifting others.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Ethics -->
+                <div class="reveal-right delay-200">
+                    <h2 class="mb-2">The PakSec Ethical Code</h2>
+                    <div class="glass-card"
+                        style="border-left: 4px solid var(--color-error); background: rgba(255, 51, 102, 0.05);">
+                        <p style="color: #fff; font-size: 1.1rem; margin-bottom: var(--space-sm);"><strong>We are
+                                defenders, not destroyers.</strong></p>
+                        <p>Every member of PakSec Nation pledges to use their skills to protect, secure, and build. We
+                            strictly prohibit the use of our educational resources for malicious purposes, unauthorized
+                            access, or any activity that violates the laws of Pakistan and international cyber
+                            regulations.</p>
+                        <a href="conduct.html" class="btn btn-secondary mt-1"
+                            style="font-size: 0.9rem; padding: 0.5rem 1rem;">Read Full Code of Conduct</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Vision Banner -->
+            <div class="impact-banner reveal-scale delay-100">
+                <h2 style="margin-bottom: 0.5rem;">Our National Impact Vision</h2>
+                <p style="font-size: 1.25rem; font-weight: 500; margin: 0 auto; max-width: 900px;">By 2030, PakSec
+                    Nation aims to have trained over <strong>100,000 Pakistani students</strong> in foundational
+                    cybersecurity, placing thousands into high-paying global and local tech roles, and elevating
+                    Pakistan's status as a formidable force in the global cybersecurity arena.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join The Nation | PakSec</title>
+    <meta name="description" content="Your cybersecurity journey starts right here. Join the PakSec Nation movement.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .join-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .join-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-sm);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .icon-large {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html">Programs</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html">Blog</a>
+                <a href="join.html" class="active btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Become a Part of the Movement.</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Your cybersecurity journey starts right here, right now. Choose
+                how you want to get involved.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="join-options">
+
+                <!-- Option 1: WhatsApp -->
+                <div class="glass-card join-card text-center" style="border-top: 4px solid var(--color-primary);">
+                    <div>
+                        <div class="icon-large">💬</div>
+                        <h3 class="mb-1">Join the WhatsApp Community</h3>
+                        <p>Gain immediate access to study materials, discussions, and event announcements. For students
+                            & beginners.</p>
+                    </div>
+                    <div class="mt-2">
+                        <a href="#" class="btn btn-primary" style="width: 100%;">Join WhatsApp Group</a>
+                    </div>
+                </div>
+
+                <!-- Option 2: Newsletter -->
+                <div class="glass-card join-card">
+                    <div style="text-align: center;">
+                        <div class="icon-large">📫</div>
+                        <h3 class="mb-1">Subscribe to Newsletter</h3>
+                        <p>Get the latest cyber news, career tips, and masterclass links delivered straight to your
+                            inbox.</p>
+                    </div>
+                    <form class="mt-2" onsubmit="event.preventDefault(); alert('Newsletter form submitted!');">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Option 3: Volunteer -->
+                <div class="glass-card join-card" id="volunteer" style="border-top: 4px solid var(--color-text-muted);">
+                    <div style="text-align: center;">
+                        <div class="icon-large">🤝</div>
+                        <h3 class="mb-1">Volunteer Application</h3>
+                        <p>Want to help manage the community, design content, or train beginners? We are always looking
+                            for passionate volunteers.</p>
+                    </div>
+                    <div class="mt-2 text-center">
+                        <a href="mailto:volunteer@paksecnation.example.com" class="btn btn-secondary"
+                            style="width: 100%;">Email to Validate Interest</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Consultation Section (Linked from Programs) -->
+            <div id="consultation" class="mt-3 text-center"
+                style="background: rgba(255,255,255,0.02); padding: var(--space-xl) var(--space-md); border-radius: var(--border-radius-lg); border: 1px dashed var(--color-border);">
+                <h2 class="mb-1">Book Your 1-on-1 Beginner Consultation</h2>
+                <p style="max-width: 600px; margin: 0 auto var(--space-md);">Get a personalized session with a PakSec
+                    mentor. Evaluate your skills, understand your goals, and receive a step-by-step career roadmap for a
+                    subsidized fee of PKR 500.</p>
+                <a href="#" class="btn btn-primary">Proceed to Booking (PKR 500)</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+

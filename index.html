@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakSec Nation - Pakistan's Official Cyber Security Movement</title>
+    <meta name="description"
+        content="Join Pakistan’s largest and most powerful cyber security movement for beginners. Master ethical hacking, defensive security, and launch your cyber career.">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* Homepage Specific Styles */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-sm);
+            background: radial-gradient(circle at center, #111a2e 0%, var(--color-bg) 70%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 96, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 96, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            z-index: 1;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(40px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            color: #ffffff;
+            margin-bottom: var(--space-md);
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 0 0 30px rgba(0, 242, 96, 0.2);
+        }
+
+        .hero h1 span.highlight {
+            color: var(--color-primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #a0aec0;
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mission Section */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .mission-card {
+            padding: var(--space-lg);
+            border-left: 4px solid var(--color-primary);
+            background: linear-gradient(90deg, rgba(0, 242, 96, 0.05), transparent);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .feature-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-sm);
+            border-radius: 50%;
+            background: rgba(0, 242, 96, 0.05);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-primary);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover .feature-icon {
+            background: var(--color-primary);
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.5);
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .glass-card:hover .feature-icon svg {
+            stroke: #000;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" style="background: transparent; border-bottom: none;">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                PakSec<span>Nation</span>
+            </a>
+            <button class="mobile-menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html">Programs</a>
+                <a href="events.html">Events</a>
+                <a href="blog.html">Blog</a>
+                <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Securing Pakistan's <span class="highlight">Digital Future.</span></h1>
+            <p>Join Pakistan’s largest and most powerful cyber security movement for beginners. Master ethical hacking,
+                defensive security, and launch your cyber career—the right way.</p>
+            <div class="hero-cta">
+                <a href="join.html" class="btn btn-primary">Join The Movement</a>
+                <a href="programs.html" class="btn btn-secondary">Attend a Free Masterclass</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mission & Vision -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-3 reveal">
+                <h2
+                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    The Movement</h2>
+                <h3>Our Mission & Vision</h3>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-card reveal-left">
+                    <h3 style="color: var(--color-text-main);">The Mission</h3>
+                    <p style="font-size: 1.1rem; color: #fff;">To build Pakistan’s strongest and largest FREE cyber
+                        security learning ecosystem where students and beginners can start their journey properly and
+                        ethically.</p>
+                </div>
+                <div class="mission-card reveal-right delay-200" style="border-left-color: var(--color-secondary);">
+                    <h3 style="color: var(--color-text-main);">The Vision</h3>
+                    <p style="font-size: 1.1rem; color: #fff;">To make Pakistan a global cyber security powerhouse by
+                        training, guiding, and connecting the next generation of ethical hackers and security
+                        professionals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Container -->
+    <section class="section reveal"
+        style="background-color: #0d121c; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container text-center">
+            <h2 class="mb-1">Why Pakistan Needs PakSec Nation</h2>
+            <p style="max-width: 800px; margin: 0 auto; color: #fff; font-size: 1.15rem;">The digital landscape is
+                evolving rapidly, and the demand for elite cybersecurity professionals has never been higher. Yet, for
+                beginners in Pakistan, finding the right path without falling into illegal activities or expensive,
+                low-quality courses is incredibly difficult. PakSec Nation exists to bridge this gap. We provide a
+                clear, ethical, and high-impact roadmap for the youth of Pakistan to channel their potential into
+                defending our national and global digital infrastructure.</p>
+        </div>
+    </section>
+
+    <!-- Core Differentiators -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-2 reveal">
+                <h2>What Makes Us Different?</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="glass-card text-center reveal-scale">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h4>Strictly Ethical</h4>
+                    <p>We enforce a zero-tolerance policy for illegal hacking. We build defenders, not destroyers. Code
+                        with honor.</p>
+                </div>
+
+                <div class="glass-card text-center reveal-scale delay-100">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
+                        </svg>
+                    </div>
+                    <h4>100% Beginner Focused</h4>
+                    <p>No confusing jargon. We start from absolute zero and guide you to the top of your potential.</p>
+                </div>
+
+                <div class="glass-card text-center reveal-scale delay-200">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h4>Community-Driven</h4>
+                    <p>You aren't just taking a class; you are joining a nationwide brotherhood and sisterhood of cyber
+                        professionals.</p>
+                </div>
+
+                <div class="glass-card text-center reveal-scale delay-300">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path
+                                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2l.5-.5a5.4 5.4 0 005.82-.6l4.63-4.63a5.54 5.54 0 00-7.85-7.85l-4.63 4.63a5.4 5.4 0 00-.6 5.82zM12 12l.01.01" />
+                        </svg>
+                    </div>
+                    <h4>Career-Oriented</h4>
+                    <p>We don't just teach tools; we teach you how to get hired, get certified, and build a sustainable
+                        career.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-brand">
+                        <img src="assets/NewLogo02.2.2.png" alt="PakSec Nation Logo"
+                            style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                        PakSec<span>Nation</span>
+                    </a>
+                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs & Courses</a></li>
+                        <li><a href="events.html">Live Events</a></li>
+                        <li><a href="blog.html">Blog & Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal & Community</h4>
+                    <ul>
+                        <li><a href="conduct.html">Code of Conduct</a></li>
+                        <li><a href="join.html">Join WhatsApp Group</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
+                                Volunteer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
+
