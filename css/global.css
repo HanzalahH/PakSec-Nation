@@ -404,19 +404,79 @@ ul {
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* Responsive - Mobile */
 @media (max-width: 768px) {
+  :root {
+    --space-xl: 4rem;
+    --space-lg: 2.5rem;
+    --space-md: 1.5rem;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    letter-spacing: -0.5px;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Navbar mobile */
+  .navbar {
+    padding: 1rem 0;
+  }
+
+  .nav-brand {
+    font-size: 1.25rem;
+    gap: 8px;
+  }
+
+  .nav-brand img {
+    height: 30px !important;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
     width: 80%;
     height: 100vh;
-    background: var(--color-bg);
+    background: #0d1120;
     flex-direction: column;
     justify-content: center;
+    gap: 2rem;
     transition: right var(--transition-normal);
     border-left: 1px solid var(--color-border);
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -426,9 +486,56 @@ ul {
   .mobile-menu-btn {
     display: block;
     z-index: 1001;
+    font-size: 1.75rem;
+    padding: 0.25rem 0.5rem;
   }
 
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  /* Glass card */
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  :root {
+    --space-xl: 3rem;
+    --space-lg: 2rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-brand {
+    font-size: 1.1rem;
   }
 }

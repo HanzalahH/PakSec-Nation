@@ -17,7 +17,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: var(--space-xl) var(--space-sm);
+            padding: 8rem 1.25rem 4rem;
             background: radial-gradient(circle at center, #111a2e 0%, var(--color-bg) 70%);
             overflow: hidden;
         }
@@ -81,6 +81,27 @@
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 7rem 1rem 3rem;
+                min-height: 100svh;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+                max-width: 280px;
+            }
         }
 
         /* Animations */
@@ -172,11 +193,33 @@
 
         @media (max-width: 768px) {
             .features-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .mission-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .mission-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+            }
+
+            .feature-icon svg {
+                width: 26px;
+                height: 26px;
             }
         }
     </style>
@@ -365,4 +408,3 @@
 </body>
 
 </html>
-
