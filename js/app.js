@@ -6,14 +6,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', () => {
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
-            // Toggle icon (optional, using simple text for now)
             if (navLinks.classList.contains('active')) {
                 mobileBtn.innerHTML = '&times;';
             } else {
-                mobileBtn.innerHTML = '&#9776;'; // Hamburger
+                mobileBtn.innerHTML = '&#9776;';
             }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !navLinks.contains(e.target) &&
+                !mobileBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileBtn.innerHTML = '&#9776;';
+            }
+        });
+
+        // Close menu when a nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileBtn.innerHTML = '&#9776;';
+            });
         });
     }
 
@@ -29,23 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth Scrolling for anchor links and Demo Alerts for empty links
+    // Smooth Scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
 
-            if (targetId === '#') {
-                alert("This feature is part of the final build and is not yet connected to a backend service (e.g., Payment Gateway, WhatsApp API, or Database).");
-                return;
-            }
+            // Silently ignore empty placeholder links
+            if (targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                if (navLinks.classList.contains('active')) {
+                if (navLinks && navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
-                    mobileBtn.innerHTML = '&#9776;';
+                    if (mobileBtn) mobileBtn.innerHTML = '&#9776;';
                 }
 
                 targetElement.scrollIntoView({

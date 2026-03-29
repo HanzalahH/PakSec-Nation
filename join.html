@@ -119,12 +119,15 @@
                         <p>Get the latest cyber news, career tips, and masterclass links delivered straight to your
                             inbox.</p>
                     </div>
-                    <form class="mt-2" onsubmit="event.preventDefault(); alert('Newsletter form submitted!');">
+                    <!-- netlify attribute enables Netlify Form handling on deploy -->
+                    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-2">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <p style="display:none;"><input name="bot-field"></p>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email Address" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
                         </div>
                         <button type="submit" class="btn btn-secondary" style="width: 100%;">Subscribe</button>
                     </form>
@@ -146,14 +149,15 @@
 
             </div>
 
-            <!-- Consultation Section (Linked from Programs) -->
             <div id="consultation" class="mt-3 text-center"
                 style="background: rgba(255,255,255,0.02); padding: var(--space-xl) var(--space-md); border-radius: var(--border-radius-lg); border: 1px dashed var(--color-border);">
                 <h2 class="mb-1">Book Your 1-on-1 Beginner Consultation</h2>
                 <p style="max-width: 600px; margin: 0 auto var(--space-md);">Get a personalized session with a PakSec
                     mentor. Evaluate your skills, understand your goals, and receive a step-by-step career roadmap for a
                     subsidized fee of PKR 500.</p>
-                <a href="#" class="btn btn-primary">Proceed to Booking (PKR 500)</a>
+                <!-- Replace YOUR_PAYMENT_LINK with your JazzCash / EasyPaisa payment link -->
+                <a href="https://YOUR_PAYMENT_LINK" target="_blank" rel="noopener" class="btn btn-primary">Proceed to
+                    Booking (PKR 500)</a>
             </div>
 
         </div>
@@ -182,12 +186,12 @@
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Legal & Community</h4>
+                    <h4>Legal &amp; Community</h4>
                     <ul>
                         <li><a href="conduct.html">Code of Conduct</a></li>
                         <li><a href="join.html">Join WhatsApp Group</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>`n <li><a href="volunteer.html">Become a
-                                Volunteer</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="join.html#volunteer">Become a Volunteer</a></li>
                     </ul>
                 </div>
             </div>
@@ -201,4 +205,3 @@
 </body>
 
 </html>
-
