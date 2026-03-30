@@ -120,8 +120,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Apply observer to all elements with any reveal class
+        // Apply observer to all elements with any reveal class
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
         scrollObserver.observe(el);
+    });
+
+    // --- AJAX Form Submission Handler ---
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        // Skip the newsletter form if it still has Netlify attributes (though we removed them)
+        if (form.hasAttribute('data-netlify')) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
+            
+            // UI Feedback: Loading state
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Transmitting...';
+            }
+
+            const action = form.getAttribute('action');
+            const formData = new FormData(form);
+
+            try {
+                // We use 'no-cors' only if we don't care about the response body, 
+                // but since we want to confirm success, we'll try default first.
+                // Note: Google Script requires a redirect, which fetch handles.
+                const response = await fetch(action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Using no-cors to avoid pre-flight issues with Google Apps Script
+                });
+
+                // With no-cors, we can't read the response, but if we're here, it sent.
+                alert('Success! Your message has been sent to the PakSec Nation team.');
+                form.reset();
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Submission failed. Please check your connection or try again later.');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }
+            }
+        });
     });
 });
