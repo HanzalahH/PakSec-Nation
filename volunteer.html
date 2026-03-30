@@ -150,34 +150,36 @@
                 <h2 class="mb-2" style="border-bottom: 1px solid var(--color-border); padding-bottom: 1rem;">Volunteer
                     Application</h2>
 
-                <form id="volunteerForm"
-                    onsubmit="event.preventDefault(); alert('Application submitted successfully! Our talent team will review your profile.');">
+                                <form action="https://api.web3forms.com/submit" method="POST" id="volunteerForm">
+                    <input type="hidden" name="access_key" value="5e9f48ba-93d3-48b4-abb1-59ee3819769c">
+                    <input type="hidden" name="from_name" value="PakSec Nation Volunteer Application">
+                    <input type="hidden" name="subject" value="New Volunteer Application">
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" class="form-control" required placeholder="Ali">
+                            <input type="text" id="firstName" name="first_name" class="form-control" required placeholder="Ali">
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" class="form-control" required placeholder="Khan">
+                            <input type="text" id="lastName" name="last_name" class="form-control" required placeholder="Khan">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" class="form-control" required placeholder="ali.khan@example.com">
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="ali.khan@example.com">
                     </div>
 
                     <div class="form-group">
                         <label for="linkedin">LinkedIn Profile URL</label>
-                        <input type="url" id="linkedin" class="form-control"
+                        <input type="url" id="linkedin" name="linkedin" class="form-control"
                             placeholder="https://linkedin.com/in/yourprofile">
                     </div>
 
                     <div class="form-group">
                         <label for="role">Role You Are Applying For <span class="required">*</span></label>
-                        <select id="role" class="form-control" required>
+                        <select id="role" name="role" class="form-control" required>
                             <option value="" disabled selected>Select a role...</option>
                             <option value="trainer">Cybersecurity Trainer / Mentor (Technical)</option>
                             <option value="community">Community Moderator (Discord/WhatsApp)</option>
@@ -189,7 +191,7 @@
 
                     <div class="form-group">
                         <label for="experience">Current Experience Level <span class="required">*</span></label>
-                        <select id="experience" class="form-control" required>
+                        <select id="experience" name="experience" class="form-control" required>
                             <option value="" disabled selected>Select your current stage...</option>
                             <option value="student">University Student</option>
                             <option value="junior">Junior Professional (1-2 years)</option>
@@ -201,13 +203,13 @@
                     <div class="form-group">
                         <label for="motivation">Why do you want to volunteer for PakSec Nation? <span
                                 class="required">*</span></label>
-                        <textarea id="motivation" class="form-control" required
+                        <textarea id="motivation" name="motivation" class="form-control" required
                             placeholder="Tell us briefly about your passion for community building and cybersecurity..."></textarea>
                     </div>
 
                     <div class="form-group text-center">
                         <div class="checkbox-container">
-                            <input type="checkbox" id="codeOfConduct" required>
+                            <input type="checkbox" id="codeOfConduct" name="agreed_to_conduct" required>
                             <label for="codeOfConduct">I have read and agree to abide strictly by the <a
                                     href="conduct.html" style="text-decoration: underline;">PakSec Ethical Code of
                                     Conduct</a>. I confirm that I do not engage in illegal black-hat activities.</label>
