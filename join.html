@@ -121,11 +121,9 @@
                             inbox.</p>
                     </div>
                     <!-- netlify attribute enables Netlify Form handling on deploy -->
-                    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-2">
-                        <input type="hidden" name="form-name" value="newsletter">
-                        <p style="display:none;"><input name="bot-field"></p>
+                                        <form action="https://script.google.com/macros/s/AKfycbzLt_02L1cA96ocVhCdiye7y7vcDunSxLi5JeIdVW9U2chVGc7w50IIMwrAXHsLdftZ/exec" method="POST" class="mt-2">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            <input type="text" name="fullName" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" placeholder="Email Address" required>
@@ -168,10 +166,7 @@
                                         </p>
                                     </div>
                         
-                                    <form action="https://api.web3forms.com/submit" method="POST" style="max-width: 600px; margin: 3rem auto 0; text-align: left;">
-                                        <input type="hidden" name="access_key" value="5e9f48ba-93d3-48b4-abb1-59ee3819769c">
-                                        <input type="hidden" name="subject" value="New 1-on-1 Consultation Booking">
-                                        <input type="hidden" name="from_name" value="PakSec Nation Consultation">
+                                                                        <form action="https://script.google.com/macros/s/AKfycbzLt_02L1cA96ocVhCdiye7y7vcDunSxLi5JeIdVW9U2chVGc7w50IIMwrAXHsLdftZ/exec" method="POST" style="max-width: 600px; margin: 3rem auto 0; text-align: left;">
                             
                                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
                                             <div class="form-group" style="margin-bottom: 0;">
@@ -191,7 +186,7 @@
                             
                                         <div class="form-group">
                                             <label style="color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tell us about your tech goals</label>
-                                            <textarea name="message" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem; min-height: 100px;" placeholder="What do you hope to achieve in cybersecurity?" required></textarea>
+                                            <textarea name="goals" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem; min-height: 100px;" placeholder="What do you hope to achieve in cybersecurity?" required></textarea>
                                         </div>
                             
                                         <div class="text-center mt-3">
