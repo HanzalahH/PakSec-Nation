@@ -126,15 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- AJAX Form Submission Handler ---
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        // Skip the newsletter form if it still has Netlify attributes (though we removed them)
-        if (form.hasAttribute('data-netlify')) return;
-
+    document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
+            e.preventDefault(); // Prevent default form submission
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
             
@@ -144,32 +138,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerText = 'Transmitting...';
             }
 
-            const action = form.getAttribute('action');
+            const formAction = form.getAttribute('action');
+            if (!formAction) {
+                alert('Form action URL is missing!');
+                if (submitBtn) { // Re-enable button on error
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }
+                return;
+            }
+
             const formData = new FormData(form);
+            // Attempt to get a user-friendly name for the form from its ID or a prominent heading
+            const formName = form.id ? form.id.replace(/([A-Z])/g, ' $1').trim() :
+                             form.closest('.form-container')?.querySelector('h2')?.textContent ||
+                             form.closest('.glass-card')?.querySelector('h3')?.textContent ||
+                             'Form';
 
             try {
-                // We use 'no-cors' only if we don't care about the response body, 
-                // but since we want to confirm success, we'll try default first.
-                // Note: Google Script requires a redirect, which fetch handles.
-                const response = await fetch(action, {
+                // Using 'no-cors' as recommended for Google Apps Script deployments to avoid CORS issues.
+                // Note: With 'no-cors', we cannot read the response body, so we assume success if no network error.
+                const response = await fetch(formAction, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // Using no-cors to avoid pre-flight issues with Google Apps Script
-                });
+                    mode: 'no-cors'
+        });
 
-                // With no-cors, we can't read the response, but if we're here, it sent.
-                alert('Success! Your message has been sent to the PakSec Nation team.');
-                form.reset();
+                // Since we used 'no-cors', we can't reliably check response.ok or read JSON.
+                // We assume success here if no network error occurred.
+                alert(`${formName} submitted successfully! Thank you for contacting PakSec Nation.`);
+                form.reset(); // Clear the form fields on success
 
             } catch (error) {
-                console.error('Submission error:', error);
-                alert('Submission failed. Please check your connection or try again later.');
+                console.error('Network or script error:', error);
+                alert(`There was a problem submitting your ${formName}. Please check your internet connection and try again. If the issue persists, contact support.`);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
                 }
             }
-        });
     });
 });
+});
+
