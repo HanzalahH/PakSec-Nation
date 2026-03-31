@@ -129,97 +129,394 @@
             }
         }
 
-        /* Mission Section */
-        .mission-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-lg);
-            align-items: center;
-        }
-
-        .mission-card {
-            padding: var(--space-lg);
-            border-left: 4px solid var(--color-primary);
-            background: linear-gradient(90deg, rgba(0, 242, 96, 0.05), transparent);
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
-
-        .feature-icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 64px;
-            height: 64px;
-            margin: 0 auto var(--space-sm);
+        /* Mission & Vision Timeline */
+        .mission-bg-orb {
+            position: absolute;
             border-radius: 50%;
-            background: rgba(0, 242, 96, 0.05);
-            border: 1px solid rgba(0, 242, 96, 0.2);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .mission-bg-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 242, 96, 0.04);
+            top: -100px;
+            left: -100px;
+            animation: orbFloat 8s ease-in-out infinite;
+        }
+
+        .mission-bg-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 75, 35, 0.06);
+            bottom: -50px;
+            right: -50px;
+            animation: orbFloat 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
+        }
+
+        .mission-timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--color-primary), rgba(0, 242, 96, 0.1));
+        }
+
+        .mission-block {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-node {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--color-bg);
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 242, 96, 0.2);
             transition: all 0.4s ease;
         }
 
-        .feature-icon svg {
-            width: 32px;
-            height: 32px;
+        .mission-block:hover .mission-node {
+            background: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.5);
+            transform: scale(1.1);
+        }
+
+        .mission-node-inner {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-primary);
+            transition: color 0.4s ease;
+        }
+
+        .mission-block:hover .mission-node-inner {
+            color: #000;
+        }
+
+        .mission-block-content {
+            padding-top: 0.5rem;
+        }
+
+        .mission-block-icon {
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .mission-block:hover .mission-block-icon {
+            opacity: 1;
+        }
+
+        /* Why PakSec Stats */
+        .why-section {
+            position: relative;
+        }
+
+        .why-scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            animation: whyScan 4s linear infinite;
+        }
+
+        @keyframes whyScan {
+            0% { opacity: 0.3; transform: scaleX(0.3); }
+            50% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0.3; transform: scaleX(0.3); }
+        }
+
+        .why-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .why-stat-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 51, 102, 0.03);
+            border: 1px solid rgba(255, 51, 102, 0.15);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FF3366, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .why-stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 51, 102, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.1);
+            background: rgba(255, 51, 102, 0.06);
+        }
+
+        .why-stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .why-stat-icon {
+            margin-bottom: 1rem;
+        }
+
+        .why-stat-card:hover .why-stat-icon svg {
+            animation: iconShake 0.5s ease;
+        }
+
+        @keyframes iconShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .why-stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF3366;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+            line-height: 1;
+            display: inline;
+        }
+
+        .why-stat-unit {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FF3366;
+            display: inline;
+            margin-left: 2px;
+        }
+
+        .why-stat-label {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .why-statement {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+        }
+
+        /* Differentiators Grid */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .diff-card {
+            position: relative;
+            padding: 2rem 1.5rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 242, 96, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 16px;
+        }
+
+        .diff-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 242, 96, 0.12);
+        }
+
+        .diff-card:hover::before {
+            opacity: 1;
+        }
+
+        .diff-card-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(0, 242, 96, 0.08);
+            line-height: 1;
+            transition: color 0.4s ease;
+        }
+
+        .diff-card:hover .diff-card-number {
+            color: rgba(0, 242, 96, 0.15);
+        }
+
+        .diff-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .diff-card-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .diff-card-icon svg {
+            width: 26px;
+            height: 26px;
             stroke: var(--color-primary);
             transition: all 0.4s ease;
         }
 
-        .glass-card {
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .glass-card:hover .feature-icon {
+        .diff-card:hover .diff-card-icon {
             background: var(--color-primary);
-            box-shadow: 0 0 25px rgba(0, 242, 96, 0.5);
-            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: rotate(-5deg) scale(1.05);
         }
 
-        .glass-card:hover .feature-icon svg {
+        .diff-card:hover .diff-card-icon svg {
             stroke: #000;
         }
 
+        .diff-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .diff-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-card-line {
+            margin-top: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .diff-card:hover .diff-card-line {
+            transform: scaleX(1);
+        }
+
         @media (max-width: 1024px) {
-            .features-grid {
+            .diff-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-stats-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .features-grid {
+            .diff-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
             }
 
-            .mission-grid {
+            .why-stats-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
-            .mission-card {
-                padding: 1.5rem;
+            .why-stat-number {
+                font-size: 2.5rem;
+            }
+
+            .timeline-line {
+                left: 20px;
+            }
+
+            .mission-node {
+                width: 42px;
+                height: 42px;
+            }
+
+            .mission-node-inner {
+                font-size: 0.8rem;
+            }
+
+            .mission-block {
+                gap: 1rem;
+                margin-bottom: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .features-grid {
+            .diff-grid {
                 grid-template-columns: 1fr;
             }
 
-            .feature-icon {
-                width: 52px;
-                height: 52px;
+            .diff-card-icon {
+                width: 44px;
+                height: 44px;
             }
 
-            .feature-icon svg {
-                width: 26px;
-                height: 26px;
+            .diff-card-icon svg {
+                width: 22px;
+                height: 22px;
             }
         }
 
@@ -705,7 +1002,9 @@
     </header>
 
     <!-- Mission & Vision -->
-    <section class="section">
+    <section class="section" style="position: relative; overflow: hidden;">
+        <div class="mission-bg-orb mission-bg-orb-1"></div>
+        <div class="mission-bg-orb mission-bg-orb-2"></div>
         <div class="container">
             <div class="text-center mb-3 reveal">
                 <h2
@@ -714,93 +1013,192 @@
                 <h3>Our Mission & Vision</h3>
             </div>
 
-            <div class="mission-grid">
-                <div class="mission-card glow-border reveal-left">
-                    <h3 class="glow-text">The Mission</h3>
-                    <p>Building Pakistan’s strongest and largest ethical cybersecurity ecosystem where every beginner can start their journey properly, free of cost, and with absolute mentorship.</p>
+            <div class="mission-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="mission-block reveal-left">
+                    <div class="mission-node">
+                        <div class="mission-node-inner">01</div>
+                    </div>
+                    <div class="mission-block-content">
+                        <div class="mission-block-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h3 class="glow-text" style="font-size: 1.5rem;">The Mission</h3>
+                        <p style="font-size: 1rem; max-width: 500px;">Building Pakistan's strongest and largest ethical cybersecurity ecosystem where every beginner can start their journey properly, free of cost, and with absolute mentorship.</p>
+                    </div>
                 </div>
-                <div class="mission-card glow-border reveal-right delay-200" style="border-left-color: var(--color-primary); border-left-width: 4px;">
-                    <h3 class="glow-text" style="color: #fff;">The Vision</h3>
-                    <p>Elevating Pakistan into a global cybersecurity powerhouse by architecting a new generation of elite, ethical, and highly-skilled security professionals.</p>
+
+                <div class="mission-block reveal-right delay-200">
+                    <div class="mission-node">
+                        <div class="mission-node-inner">02</div>
+                    </div>
+                    <div class="mission-block-content">
+                        <div class="mission-block-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: #fff;">The Vision</h3>
+                        <p style="font-size: 1rem; max-width: 500px;">Elevating Pakistan into a global cybersecurity powerhouse by architecting a new generation of elite, ethical, and highly-skilled security professionals.</p>
+                    </div>
+                </div>
+
+                <div class="mission-block reveal-scale delay-300">
+                    <div class="mission-node">
+                        <div class="mission-node-inner">03</div>
+                    </div>
+                    <div class="mission-block-content">
+                        <div class="mission-block-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: #fff;">The Goal</h3>
+                        <p style="font-size: 1rem; max-width: 500px;">Train <strong style="color: var(--color-primary);">100,000+ students</strong> by 2030 and place thousands into high-paying cybersecurity roles — locally and globally.</p>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- Why Us Container -->
-    <section class="section reveal"
-        style="background-color: #0d121c; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-        <div class="container text-center">
-            <h2 class="mb-1">Why Pakistan Needs PakSec Nation</h2>
-            <p style="max-width: 800px; margin: 0 auto; color: #fff; font-size: 1.15rem;">The digital landscape is
-                evolving rapidly, and the demand for elite cybersecurity professionals has never been higher. Yet, for
-                beginners in Pakistan, finding the right path without falling into illegal activities or expensive,
-                low-quality courses is incredibly difficult. PakSec Nation exists to bridge this gap. We provide a
-                clear, ethical, and high-impact roadmap for the youth of Pakistan to channel their potential into
-                defending our national and global digital infrastructure.</p>
+    <section class="section why-section reveal"
+        style="background-color: #0d121c; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); position: relative; overflow: hidden;">
+        <div class="why-scan-line"></div>
+        <div class="container">
+            <div class="text-center mb-3 reveal">
+                <h2
+                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    The Problem</h2>
+                <h3>Why Pakistan Needs PakSec Nation</h3>
+            </div>
+
+            <div class="why-stats-grid">
+                <div class="why-stat-card reveal-scale">
+                    <div class="why-stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="why-stat-number" data-target="70">0</div>
+                    <div class="why-stat-unit">%</div>
+                    <p class="why-stat-label">of Pakistani youth lack access to quality cybersecurity education</p>
+                </div>
+                <div class="why-stat-card reveal-scale delay-100">
+                    <div class="why-stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div class="why-stat-number" data-target="3.5">0</div>
+                    <div class="why-stat-unit">M+</div>
+                    <p class="why-stat-label">cybersecurity jobs unfilled globally — Pakistan's opportunity</p>
+                </div>
+                <div class="why-stat-card reveal-scale delay-200">
+                    <div class="why-stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="why-stat-number" data-target="90">0</div>
+                    <div class="why-stat-unit">%</div>
+                    <p class="why-stat-label">of local courses are overpriced or teach outdated material</p>
+                </div>
+            </div>
+
+            <div class="why-statement reveal delay-300">
+                <p style="max-width: 800px; margin: 0 auto; color: #fff; font-size: 1.15rem; line-height: 1.8;">
+                    The digital landscape is evolving rapidly, and the demand for elite cybersecurity professionals has never been higher. Yet for beginners in Pakistan, finding the right path without falling into illegal activities or expensive, low-quality courses is incredibly difficult.
+                </p>
+                <p style="max-width: 800px; margin: 1rem auto 0; color: var(--color-primary); font-size: 1.15rem; font-weight: 600;">
+                    PakSec Nation exists to bridge this gap — a clear, ethical, and high-impact roadmap for the youth of Pakistan to defend our national and global digital infrastructure.
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Core Differentiators -->
-    <section class="section">
+    <section class="section" style="position: relative; overflow: hidden;">
         <div class="container">
-            <div class="text-center mb-2 reveal">
+            <div class="text-center mb-3 reveal">
+                <h2
+                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    Our Edge</h2>
                 <h2>What Makes Us Different?</h2>
+                <p style="max-width: 600px; margin: 0.5rem auto 0;">We're not just another online course. PakSec Nation is a movement built on four unbreakable pillars.</p>
             </div>
 
-            <div class="features-grid">
-                <div class="glass-card text-center reveal-scale">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
+            <div class="diff-grid">
+                <div class="diff-card reveal-scale">
+                    <div class="diff-card-number">01</div>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h4>Strictly Ethical</h4>
                     </div>
-                    <h4>Strictly Ethical</h4>
-                    <p>We enforce a zero-tolerance policy for illegal hacking. We build defenders, not destroyers. Code
-                        with honor.</p>
+                    <p>We enforce a zero-tolerance policy for illegal hacking. We build defenders, not destroyers. Code with honor.</p>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <div class="glass-card text-center reveal-scale delay-100">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <circle cx="12" cy="12" r="4" />
-                            <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
-                        </svg>
+                <div class="diff-card reveal-scale delay-100">
+                    <div class="diff-card-number">02</div>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <circle cx="12" cy="12" r="4" />
+                                <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
+                            </svg>
+                        </div>
+                        <h4>100% Beginner Focused</h4>
                     </div>
-                    <h4>100% Beginner Focused</h4>
                     <p>No confusing jargon. We start from absolute zero and guide you to the top of your potential.</p>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <div class="glass-card text-center reveal-scale delay-200">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
+                <div class="diff-card reveal-scale delay-200">
+                    <div class="diff-card-number">03</div>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h4>Community-Driven</h4>
                     </div>
-                    <h4>Community-Driven</h4>
-                    <p>You aren't just taking a class; you are joining a nationwide brotherhood and sisterhood of cyber
-                        professionals.</p>
+                    <p>You aren't just taking a class; you are joining a nationwide brotherhood and sisterhood of cyber professionals.</p>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <div class="glass-card text-center reveal-scale delay-300">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path
-                                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2l.5-.5a5.4 5.4 0 005.82-.6l4.63-4.63a5.54 5.54 0 00-7.85-7.85l-4.63 4.63a5.4 5.4 0 00-.6 5.82zM12 12l.01.01" />
-                        </svg>
+                <div class="diff-card reveal-scale delay-300">
+                    <div class="diff-card-number">04</div>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2l.5-.5a5.4 5.4 0 005.82-.6l4.63-4.63a5.54 5.54 0 00-7.85-7.85l-4.63 4.63a5.4 5.4 0 00-.6 5.82zM12 12l.01.01" />
+                            </svg>
+                        </div>
+                        <h4>Career-Oriented</h4>
                     </div>
-                    <h4>Career-Oriented</h4>
-                    <p>We don't just teach tools; we teach you how to get hired, get certified, and build a sustainable
-                        career.</p>
+                    <p>We don't just teach tools; we teach you how to get hired, get certified, and build a sustainable career.</p>
+                    <div class="diff-card-line"></div>
                 </div>
             </div>
         </div>

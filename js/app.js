@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 
-    // Glass Card Tilt Effect
-    document.querySelectorAll('.glass-card').forEach(card => {
+    // Glass Card Tilt Effect (supports both .glass-card and .diff-card)
+    document.querySelectorAll('.glass-card, .diff-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -156,6 +156,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.5 });
 
         statNumbers.forEach(stat => counterObserver.observe(stat));
+    }
+
+    // Animated number counters for Why section
+    const whyCounters = document.querySelectorAll('.why-stat-number[data-target]');
+    if (whyCounters.length > 0) {
+        const whyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.getAttribute('data-target'));
+                    const isDecimal = target % 1 !== 0;
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function animate(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Ease out cubic
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = target * eased;
+
+                        el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    }
+
+                    requestAnimationFrame(animate);
+                    whyObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        whyCounters.forEach(counter => whyObserver.observe(counter));
     }
 
     // Parallax effect on hero content
