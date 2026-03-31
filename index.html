@@ -222,6 +222,447 @@
                 height: 26px;
             }
         }
+
+        /* WhatsApp Community Section */
+        .whatsapp-section {
+            position: relative;
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: whatsappPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        }
+
+        .whatsapp-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .whatsapp-icon-pulse {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.08);
+            border: 2px solid rgba(37, 211, 102, 0.2);
+            margin-bottom: 2rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .whatsapp-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-shadow: 0 0 15px rgba(0, 242, 96, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--color-border);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 200px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #1EBE57;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp svg {
+            fill: #fff;
+        }
+
+        /* Consultation Section */
+        .consultation-card {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .consultation-border-glow {
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(0, 242, 96, 0.3), transparent 40%, transparent 60%, rgba(0, 242, 96, 0.3));
+            z-index: 0;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .consultation-inner {
+            position: relative;
+            z-index: 1;
+            background: rgba(11, 15, 25, 0.95);
+            border-radius: 24px;
+            padding: 3rem;
+            overflow: hidden;
+        }
+
+        .consultation-inner::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 242, 96, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .consultation-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: #000;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(0, 242, 96, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 242, 96, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 242, 96, 0.6); }
+        }
+
+        .consultation-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .consultation-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .consultation-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
+        .price-card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .price-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .price-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-currency {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .price-value {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-shadow: 0 0 20px rgba(0, 242, 96, 0.4);
+            line-height: 1;
+        }
+
+        /* Events Preview Section */
+        .events-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--color-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            border-color: var(--color-primary);
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(0, 242, 96, 0.1);
+        }
+
+        .event-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .event-card-date {
+            text-align: center;
+            border: 1px solid rgba(0, 242, 96, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem;
+            background: rgba(0, 242, 96, 0.05);
+        }
+
+        .event-day {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .event-weekday {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .event-card-info h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-card-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .event-tag {
+            display: inline-block;
+            background: rgba(0, 242, 96, 0.1);
+            color: var(--color-primary);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Enhanced Animations */
+        .glass-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* Counter animation for stats */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item {
+            animation: countUp 0.6s ease-out both;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.4s; }
+        .stat-item:nth-child(5) { animation-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .consultation-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .consultation-inner {
+                padding: 2rem 1.5rem;
+            }
+
+            .event-card {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+                padding: 1.2rem;
+            }
+
+            .event-card-action {
+                grid-column: 1 / -1;
+            }
+
+            .whatsapp-section {
+                padding: 3rem 1rem;
+            }
+
+            .whatsapp-stats {
+                gap: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .btn-whatsapp {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .whatsapp-icon-pulse {
+                width: 80px;
+                height: 80px;
+            }
+
+            .whatsapp-icon-pulse svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .event-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-card-date {
+                display: flex;
+                gap: 0.5rem;
+                justify-content: center;
+                align-items: baseline;
+                border: none;
+                background: none;
+                padding: 0;
+            }
+
+            .event-day {
+                font-size: 1.2rem;
+            }
+
+            .event-card-tags {
+                justify-content: center;
+            }
+
+            .stat-divider {
+                width: 40px;
+                height: 1px;
+            }
+        }
     </style>
 </head>
 
@@ -361,6 +802,189 @@
                     <p>We don't just teach tools; we teach you how to get hired, get certified, and build a sustainable
                         career.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join WhatsApp Community -->
+    <section class="section"
+        style="background: linear-gradient(180deg, #0d121c 0%, var(--color-bg) 100%); border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="whatsapp-section">
+                <div class="whatsapp-glow-ring"></div>
+                <div class="whatsapp-content reveal-scale">
+                    <div class="whatsapp-icon-pulse">
+                        <svg viewBox="0 0 24 24" fill="none" width="56" height="56">
+                            <path
+                                d="M17.6 6.32A7.85 7.85 0 0012.05 4c-4.38 0-7.93 3.55-7.93 7.93a7.9 7.9 0 001.07 3.97L4 20l4.14-1.09a7.92 7.92 0 003.78.97h.01c4.38 0 7.94-3.55 7.94-7.93a7.87 7.87 0 00-2.27-5.63z"
+                                stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M9.27 11.68c.16-.46.76-.77 1.32-.65a4.5 4.5 0 002.08.53c.23 0 .46-.01.68-.04.63-.08 1.18.42 1.18 1.06 0 .17-.04.33-.1.48-.17.42-.52.78-.92 1.14-.48.42-1.01.74-1.01 1.52 0 .5.27.96.7 1.22a2.8 2.8 0 001.28.32c.38 0 .76-.05 1.13-.15a1.06 1.06 0 011.02.24"
+                                stroke="#25D366" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                opacity="0.6" />
+                        </svg>
+                    </div>
+                    <h2 class="glow-text" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem;">
+                        Join The Community</h2>
+                    <p style="max-width: 600px; margin: 0 auto 2rem; color: #a0aec0; font-size: 1.1rem;">
+                        Connect with thousands of aspiring cybersecurity professionals. Get 24/7 access to study
+                        materials, discussions, event announcements, and real-time mentorship — all on WhatsApp.
+                    </p>
+                    <div class="whatsapp-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Members</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Active Support</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">Free</span>
+                            <span class="stat-label">Forever</span>
+                        </div>
+                    </div>
+                    <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_INVITE_LINK" target="_blank" rel="noopener"
+                        class="btn btn-whatsapp">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.647-1.514A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.16 0-4.17-.66-5.82-1.785l-.42-.27-2.76.9.87-2.67-.28-.45A9.708 9.708 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75S21.75 6.615 21.75 12s-4.365 9.75-9.75 9.75z" />
+                        </svg>
+                        Join WhatsApp Group
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1-on-1 Consultation -->
+    <section class="section">
+        <div class="container">
+            <div class="consultation-card reveal">
+                <div class="consultation-border-glow"></div>
+                <div class="consultation-inner">
+                    <div class="consultation-badge">Limited Slots Available</div>
+                    <div class="consultation-grid">
+                        <div class="consultation-info reveal-left">
+                            <h2 class="glow-text"
+                                style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem;">Get Your
+                                Personalized Career Roadmap</h2>
+                            <p style="color: #a0aec0; font-size: 1.05rem; margin-bottom: 1.5rem;">
+                                Feeling lost? Not sure where to start? Book a 1-on-1 session with a PakSec mentor.
+                                We'll evaluate your current skills, understand your goals, and hand you a step-by-step
+                                roadmap to launch your cybersecurity career.
+                            </p>
+                            <ul class="consultation-features">
+                                <li>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00F260"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    Personalized skill assessment
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00F260"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    Custom career roadmap
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00F260"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    Certification guidance (CEH, Security+, BSCP)
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#00F260"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    Direct mentor access via WhatsApp
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="consultation-pricing reveal-right delay-200">
+                            <div class="price-card">
+                                <span class="price-label">Subsidized Fee</span>
+                                <div class="price-amount">
+                                    <span class="price-currency">PKR</span>
+                                    <span class="price-value">500</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
+                                    One-time payment via JazzCash/EasyPaisa
+                                </p>
+                                <a href="join.html#consultation" class="btn btn-primary" style="width: 100%;">
+                                    Book Your Session
+                                </a>
+                                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem; margin-bottom: 0;">
+                                    *Team will contact you on WhatsApp with payment details
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="section"
+        style="background: linear-gradient(180deg, var(--color-bg) 0%, #0d121c 100%); border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="text-center mb-3 reveal">
+                <h2
+                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    Live Sessions</h2>
+                <h3>Upcoming Events</h3>
+            </div>
+
+            <div class="events-preview">
+                <div class="event-card reveal-left">
+                    <div class="event-card-date">
+                        <span class="event-day">Every</span>
+                        <span class="event-weekday">Saturday</span>
+                    </div>
+                    <div class="event-card-info">
+                        <h4>Weekly Cyber Fundamentals Masterclass</h4>
+                        <p>Deep dive into networking, Linux basics, and defensive mindset. Free for all beginners.</p>
+                        <div class="event-card-tags">
+                            <span class="event-tag">Free</span>
+                            <span class="event-tag">Live on Zoom</span>
+                        </div>
+                    </div>
+                    <div class="event-card-action">
+                        <a href="join.html" class="btn btn-primary" style="white-space: nowrap;">Reserve Seat</a>
+                    </div>
+                </div>
+
+                <div class="event-card reveal-right delay-100">
+                    <div class="event-card-date" style="border-color: rgba(255,255,255,0.2);">
+                        <span class="event-day">TBA</span>
+                        <span class="event-weekday">Monthly</span>
+                    </div>
+                    <div class="event-card-info">
+                        <h4>Industry Heavyweights Live: Guest Speakers</h4>
+                        <p>Leading cybersecurity professionals, CISOs, and bug bounty hunters share their journeys and
+                            career advice.</p>
+                        <div class="event-card-tags">
+                            <span class="event-tag" style="background: rgba(255,255,255,0.1);">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="event-card-action">
+                        <button class="btn btn-secondary" disabled
+                            style="opacity: 0.5; cursor: not-allowed; white-space: nowrap;">Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-2 reveal">
+                <a href="events.html" class="btn btn-secondary">View All Events</a>
             </div>
         </div>
     </section>
