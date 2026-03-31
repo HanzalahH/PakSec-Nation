@@ -672,6 +672,62 @@ ul {
     padding: 1.5rem;
   }
 
+  /* Mobile performance: disable heavy effects */
+  .scanline {
+    display: none;
+  }
+
+  body::after {
+    display: none;
+  }
+
+  .glow-border::after {
+    display: none;
+  }
+
+  /* Simplify transitions on mobile */
+  .reveal {
+    transition-duration: 0.5s;
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transition-duration: 0.5s;
+  }
+
+  .reveal-scale {
+    transition-duration: 0.5s;
+  }
+
+  .glass-card,
+  .diff-card,
+  .why-stat-card,
+  .event-card,
+  .future-card {
+    transition-duration: 0.25s;
+  }
+
+  /* Disable hover transforms that cause layout shifts on mobile scroll */
+  .glass-card:hover {
+    transform: none;
+  }
+
+  .diff-card:hover {
+    transform: none;
+  }
+
+  .event-card:hover {
+    transform: none;
+  }
+
+  .future-card:hover {
+    transform: none;
+  }
+
+  .why-stat-card:hover {
+    transform: none;
+  }
+
   /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
