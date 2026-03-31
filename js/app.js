@@ -253,46 +253,61 @@ document.addEventListener('DOMContentLoaded', () => {
     // Disabled - hero stays static during scroll
 
     // --- AJAX Form Submission Handler ---
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEFU6wAKYI99POBDM-yDQyiyLcoJFn6E5zAz_q83og2a0ackZs2Dma_a5pnwoLQm4m/exec";
+
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
-            
+
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerText = 'Transmitting...';
+                submitBtn.innerText = 'Submitting...';
             }
 
-            const formAction = form.getAttribute('action');
-            if (!formAction) {
-                alert('Form action URL is missing!');
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
-                }
-                return;
-            }
-
+            // Collect all form fields into a plain object
             const formData = new FormData(form);
-            const formName = form.id ? form.id.replace(/([A-Z])/g, ' $1').trim() :
-                             form.closest('.form-container')?.querySelector('h2')?.textContent ||
-                             form.closest('.glass-card')?.querySelector('h3')?.textContent ||
-                             'Form';
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Determine formType from hidden field or infer from context
+            if (!data.formType) {
+                const formId = form.id || '';
+                if (formId.includes('volunteer')) {
+                    data.formType = 'volunteer';
+                } else if (form.closest('#consultation')) {
+                    data.formType = 'consultation';
+                } else if (form.closest('.contact-form') || form.classList.contains('contact-form')) {
+                    data.formType = 'contact';
+                } else {
+                    data.formType = 'newsletter';
+                }
+            }
 
             try {
-                const response = await fetch(formAction, {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                    }
                 });
 
-                alert(`${formName} submitted successfully! Thank you for contacting PakSec Nation.`);
-                form.reset();
+                const result = await response.json();
+
+                if (result.result === 'success') {
+                    alert('Form submitted successfully! Thank you for contacting PakSec Nation.');
+                    form.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
 
             } catch (error) {
-                console.error('Network or script error:', error);
-                alert(`There was a problem submitting your ${formName}. Please check your internet connection and try again. If the issue persists, contact support.`);
+                console.error('Submission error:', error);
+                alert('There was a problem submitting your form. Please check your internet connection and try again.');
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
