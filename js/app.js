@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
         statNumbers.forEach(stat => counterObserver.observe(stat));
     }
 
-    // Animated number counters for Why section
-    const whyCounters = document.querySelectorAll('.why-stat-number[data-target]');
+    // Animated number counters for Why section (.why-card-number)
+    const whyCounters = document.querySelectorAll('.why-card-number[data-target]');
     if (whyCounters.length > 0) {
         const whyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -199,19 +199,58 @@ document.addEventListener('DOMContentLoaded', () => {
         whyCounters.forEach(counter => whyObserver.observe(counter));
     }
 
-    // Parallax effect on hero - desktop only (causes jank on mobile)
-    if (!isMobile) {
-        const heroContent = document.querySelector('.hero-content');
-        if (heroContent) {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.scrollY;
-                if (scrolled < window.innerHeight) {
-                    heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                    heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+    // Animate Why card progress bars
+    const whyBars = document.querySelectorAll('.why-card-bar-fill[data-width]');
+    if (whyBars.length > 0) {
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.setProperty('--bar-width', bar.getAttribute('data-width') + '%');
+                    bar.classList.add('animate');
+                    barObserver.unobserve(bar);
                 }
-            }, { passive: true });
-        }
+            });
+        }, { threshold: isMobile ? 0.1 : 0.3 });
+
+        whyBars.forEach(bar => barObserver.observe(bar));
     }
+
+    // Animate Mission target number (100,000+)
+    const missionTarget = document.querySelector('.mission-target-value[data-target]');
+    if (missionTarget) {
+        const missionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    const duration = isMobile ? 1500 : 2500;
+                    const startTime = performance.now();
+
+                    function animate(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.round(target * eased);
+
+                        el.textContent = current.toLocaleString();
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    }
+
+                    requestAnimationFrame(animate);
+                    missionObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        missionObserver.observe(missionTarget);
+    }
+
+    // Parallax effect on hero - desktop only (causes jank on mobile)
+    // Disabled - hero stays static during scroll
 
     // --- AJAX Form Submission Handler ---
     document.querySelectorAll('form').forEach(form => {

@@ -129,215 +129,356 @@
             }
         }
 
-        /* Mission & Vision Timeline */
-        .mission-bg-orb {
+        /* Mission Hero Section */
+        .mission-hero-bg {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 400px at 20% 30%, rgba(0, 242, 96, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 500px 300px at 80% 70%, rgba(0, 75, 35, 0.05) 0%, transparent 70%);
             pointer-events: none;
-            z-index: 0;
         }
 
-        .mission-bg-orb-1 {
-            width: 400px;
-            height: 400px;
-            background: rgba(0, 242, 96, 0.04);
-            top: -100px;
-            left: -100px;
-            animation: orbFloat 8s ease-in-out infinite;
-        }
-
-        .mission-bg-orb-2 {
-            width: 300px;
-            height: 300px;
-            background: rgba(0, 75, 35, 0.06);
-            bottom: -50px;
-            right: -50px;
-            animation: orbFloat 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -20px); }
-        }
-
-        .mission-timeline {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 28px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--color-primary), rgba(0, 242, 96, 0.1));
-        }
-
-        .mission-block {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-            margin-bottom: 2.5rem;
+        .mission-hero {
             position: relative;
             z-index: 1;
         }
 
-        .mission-node {
-            flex-shrink: 0;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--color-bg);
-            border: 2px solid var(--color-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0, 242, 96, 0.2);
-            transition: all 0.4s ease;
+        .mission-hero-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .mission-block:hover .mission-node {
-            background: var(--color-primary);
-            box-shadow: 0 0 30px rgba(0, 242, 96, 0.5);
-            transform: scale(1.1);
-        }
-
-        .mission-node-inner {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            font-size: 1rem;
+        .mission-hero-tag {
+            display: inline-block;
+            border: 1px solid rgba(0, 242, 96, 0.3);
             color: var(--color-primary);
-            transition: color 0.4s ease;
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 242, 96, 0.05);
         }
 
-        .mission-block:hover .mission-node-inner {
-            color: #000;
+        .mission-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .mission-block-content {
-            padding-top: 0.5rem;
-        }
-
-        .mission-block-icon {
-            margin-bottom: 0.5rem;
-            opacity: 0.7;
-        }
-
-        .mission-block:hover .mission-block-icon {
-            opacity: 1;
-        }
-
-        /* Why PakSec Stats */
-        .why-section {
+        .mission-hero-card {
             position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 242, 96, 0.15);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .why-scan-line {
+        .mission-hero-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 25px 50px rgba(0, 242, 96, 0.1), 0 0 40px rgba(0, 242, 96, 0.05);
+        }
+
+        .mission-hero-card-accent {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-            animation: whyScan 4s linear infinite;
+            animation: accentSlide 3s ease-in-out infinite;
         }
 
-        @keyframes whyScan {
-            0% { opacity: 0.3; transform: scaleX(0.3); }
-            50% { opacity: 1; transform: scaleX(1); }
-            100% { opacity: 0.3; transform: scaleX(0.3); }
+        .mission-hero-card-accent-2 {
+            animation-delay: 1.5s;
         }
 
-        .why-stats-grid {
+        @keyframes accentSlide {
+            0%, 100% { transform: scaleX(0.3); opacity: 0.3; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        .mission-hero-card-inner {
+            padding: 2.5rem;
+        }
+
+        .mission-hero-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .mission-hero-card:hover .mission-hero-icon {
+            background: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .mission-hero-card:hover .mission-hero-icon svg {
+            stroke: #000;
+        }
+
+        .mission-hero-divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-border), transparent);
+            margin: 1.5rem 0;
+        }
+
+        .mission-hero-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Big Target Number */
+        .mission-hero-target {
+            text-align: center;
+        }
+
+        .mission-target-ring {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5rem 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            background: rgba(0, 242, 96, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-target-ring::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 242, 96, 0.1), transparent, rgba(0, 242, 96, 0.05), transparent);
+            animation: ringRotate 8s linear infinite;
+        }
+
+        @keyframes ringRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mission-target-number {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .mission-target-value {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--color-primary);
+            text-shadow: 0 0 40px rgba(0, 242, 96, 0.3);
+            line-height: 1;
+        }
+
+        .mission-target-plus {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-left: 4px;
+        }
+
+        .mission-target-label {
+            position: relative;
+            z-index: 1;
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Why PakSec - New Card Layout */
+        .why-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 51, 102, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 51, 102, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .why-cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
-        .why-stat-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            background: rgba(255, 51, 102, 0.03);
-            border: 1px solid rgba(255, 51, 102, 0.15);
+        .why-card {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
             border-radius: 16px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
-        .why-stat-card::before {
+        .why-card::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #FF3366, transparent);
+            height: 60%;
+            background: linear-gradient(to top, rgba(255, 51, 102, 0.03), transparent);
+            pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
-        .why-stat-card:hover {
+        .why-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(255, 51, 102, 0.4);
-            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.1);
-            background: rgba(255, 51, 102, 0.06);
+            border-color: rgba(255, 51, 102, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .why-stat-card:hover::before {
+        .why-card:hover::after {
             opacity: 1;
         }
 
-        .why-stat-icon {
-            margin-bottom: 1rem;
+        .why-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
         }
 
-        .why-stat-card:hover .why-stat-icon svg {
-            animation: iconShake 0.5s ease;
+        .why-card-icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
         }
 
-        @keyframes iconShake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+        .why-card-icon-red {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid rgba(255, 51, 102, 0.2);
         }
 
-        .why-stat-number {
+        .why-card-icon-amber {
+            background: rgba(255, 184, 0, 0.1);
+            border: 1px solid rgba(255, 184, 0, 0.2);
+        }
+
+        .why-card:hover .why-card-icon-wrap {
+            transform: scale(1.1);
+        }
+
+        .why-card-stat {
+            text-align: right;
+        }
+
+        .why-card-number {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: #FF3366;
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+            text-shadow: 0 0 15px rgba(255, 51, 102, 0.3);
             line-height: 1;
-            display: inline;
         }
 
-        .why-stat-unit {
+        .why-card-unit {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #FF3366;
-            display: inline;
-            margin-left: 2px;
         }
 
-        .why-stat-label {
+        .why-card-title {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card-desc {
             color: var(--color-text-muted);
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-            margin-bottom: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .why-statement {
+        .why-card-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card-bar-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #FF3366, rgba(255, 51, 102, 0.5));
+            border-radius: 3px;
+            transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .why-card-bar-amber {
+            background: linear-gradient(90deg, #FFB800, rgba(255, 184, 0, 0.5));
+        }
+
+        .why-card-bar-fill.animate {
+            width: var(--bar-width);
+        }
+
+        /* Why Solution */
+        .why-solution {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .why-solution-inner {
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            background: rgba(0, 242, 96, 0.03);
+            border: 1px solid rgba(0, 242, 96, 0.15);
+            position: relative;
+        }
+
+        .why-solution-arrow {
+            margin-bottom: 1rem;
+            animation: arrowBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
 
         /* Differentiators Grid */
@@ -464,10 +605,6 @@
             .diff-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .why-stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
         }
 
         @media (max-width: 768px) {
@@ -476,31 +613,30 @@
                 gap: 1rem;
             }
 
-            .why-stats-grid {
+            .mission-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .mission-hero-card-inner {
+                padding: 2rem 1.5rem;
+            }
+
+            .mission-target-value {
+                font-size: 3rem;
+            }
+
+            .why-cards-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
-            .why-stat-number {
-                font-size: 2.5rem;
+            .why-card-number {
+                font-size: 2.2rem;
             }
 
-            .timeline-line {
-                left: 20px;
-            }
-
-            .mission-node {
-                width: 42px;
-                height: 42px;
-            }
-
-            .mission-node-inner {
-                font-size: 0.8rem;
-            }
-
-            .mission-block {
-                gap: 1rem;
-                margin-bottom: 2rem;
+            .why-card-top {
+                margin-bottom: 1rem;
             }
         }
 
@@ -517,6 +653,15 @@
             .diff-card-icon svg {
                 width: 22px;
                 height: 22px;
+            }
+
+            .mission-hero-tag {
+                font-size: 0.7rem;
+                padding: 5px 14px;
+            }
+
+            .mission-target-ring {
+                padding: 2rem;
             }
         }
 
@@ -1002,66 +1147,66 @@
     </header>
 
     <!-- Mission & Vision -->
-    <section class="section" style="position: relative; overflow: hidden;">
-        <div class="mission-bg-orb mission-bg-orb-1"></div>
-        <div class="mission-bg-orb mission-bg-orb-2"></div>
+    <section class="section" style="position: relative; overflow: hidden; padding-top: 6rem; padding-bottom: 6rem;">
+        <!-- Animated gradient background -->
+        <div class="mission-hero-bg"></div>
+
         <div class="container">
-            <div class="text-center mb-3 reveal">
-                <h2
-                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
-                    The Movement</h2>
-                <h3>Our Mission & Vision</h3>
-            </div>
+            <div class="mission-hero">
+                <div class="mission-hero-header reveal">
+                    <div class="mission-hero-tag">The Movement</div>
+                    <h2 style="font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: 0.5rem;">
+                        We're not building a course.<br>We're building a <span style="color: var(--color-primary); text-shadow: 0 0 30px rgba(0, 242, 96, 0.3);">nation.</span>
+                    </h2>
+                </div>
 
-            <div class="mission-timeline">
-                <div class="timeline-line"></div>
-
-                <div class="mission-block reveal-left">
-                    <div class="mission-node">
-                        <div class="mission-node-inner">01</div>
-                    </div>
-                    <div class="mission-block-content">
-                        <div class="mission-block-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
+                <div class="mission-hero-grid">
+                    <div class="mission-hero-card reveal-left">
+                        <div class="mission-hero-card-accent"></div>
+                        <div class="mission-hero-card-inner">
+                            <div class="mission-hero-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <h3 class="glow-text" style="font-size: 1.6rem; margin-bottom: 0.8rem;">The Mission</h3>
+                            <p style="font-size: 1rem; color: #a0aec0; line-height: 1.7;">Building Pakistan's strongest and largest ethical cybersecurity ecosystem where every beginner can start their journey properly, free of cost, and with absolute mentorship.</p>
+                            <div class="mission-hero-divider"></div>
+                            <div class="mission-hero-tagline">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Free for all beginners
+                            </div>
                         </div>
-                        <h3 class="glow-text" style="font-size: 1.5rem;">The Mission</h3>
-                        <p style="font-size: 1rem; max-width: 500px;">Building Pakistan's strongest and largest ethical cybersecurity ecosystem where every beginner can start their journey properly, free of cost, and with absolute mentorship.</p>
+                    </div>
+
+                    <div class="mission-hero-card mission-hero-card-light reveal-right delay-200">
+                        <div class="mission-hero-card-accent mission-hero-card-accent-2"></div>
+                        <div class="mission-hero-card-inner">
+                            <div class="mission-hero-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 1.6rem; margin-bottom: 0.8rem; color: #fff;">The Vision</h3>
+                            <p style="font-size: 1rem; color: #a0aec0; line-height: 1.7;">Elevating Pakistan into a global cybersecurity powerhouse by architecting a new generation of elite, ethical, and highly-skilled security professionals.</p>
+                            <div class="mission-hero-divider"></div>
+                            <div class="mission-hero-tagline">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Global cybersecurity leadership
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mission-block reveal-right delay-200">
-                    <div class="mission-node">
-                        <div class="mission-node-inner">02</div>
-                    </div>
-                    <div class="mission-block-content">
-                        <div class="mission-block-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 6v6l4 2" />
-                            </svg>
+                <!-- Big number callout -->
+                <div class="mission-hero-target reveal-scale delay-300">
+                    <div class="mission-target-ring">
+                        <div class="mission-target-number">
+                            <span class="mission-target-value" data-target="100000">0</span>
+                            <span class="mission-target-plus">+</span>
                         </div>
-                        <h3 style="font-size: 1.5rem; color: #fff;">The Vision</h3>
-                        <p style="font-size: 1rem; max-width: 500px;">Elevating Pakistan into a global cybersecurity powerhouse by architecting a new generation of elite, ethical, and highly-skilled security professionals.</p>
-                    </div>
-                </div>
-
-                <div class="mission-block reveal-scale delay-300">
-                    <div class="mission-node">
-                        <div class="mission-node-inner">03</div>
-                    </div>
-                    <div class="mission-block-content">
-                        <div class="mission-block-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.5rem; color: #fff;">The Goal</h3>
-                        <p style="font-size: 1rem; max-width: 500px;">Train <strong style="color: var(--color-primary);">100,000+ students</strong> by 2030 and place thousands into high-paying cybersecurity roles — locally and globally.</p>
+                        <div class="mission-target-label">students trained by 2030</div>
                     </div>
                 </div>
             </div>
@@ -1069,61 +1214,86 @@
     </section>
 
     <!-- Why Us Container -->
-    <section class="section why-section reveal"
+    <section class="section why-section"
         style="background-color: #0d121c; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); position: relative; overflow: hidden;">
-        <div class="why-scan-line"></div>
+        <div class="why-grid-bg"></div>
         <div class="container">
             <div class="text-center mb-3 reveal">
-                <h2
-                    style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
-                    The Problem</h2>
-                <h3>Why Pakistan Needs PakSec Nation</h3>
+                <div class="mission-hero-tag" style="border-color: rgba(255, 51, 102, 0.3); color: #FF3366;">The Crisis</div>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-top: 1rem;">Why Pakistan <span style="color: #FF3366;">Needs</span> PakSec Nation</h2>
             </div>
 
-            <div class="why-stats-grid">
-                <div class="why-stat-card reveal-scale">
-                    <div class="why-stat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
-                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
-                        </svg>
+            <div class="why-cards-grid">
+                <div class="why-card reveal-left">
+                    <div class="why-card-top">
+                        <div class="why-card-icon-wrap why-card-icon-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-stat">
+                            <span class="why-card-number" data-target="70">0</span><span class="why-card-unit">%</span>
+                        </div>
                     </div>
-                    <div class="why-stat-number" data-target="70">0</div>
-                    <div class="why-stat-unit">%</div>
-                    <p class="why-stat-label">of Pakistani youth lack access to quality cybersecurity education</p>
+                    <h4 class="why-card-title">No Access</h4>
+                    <p class="why-card-desc">of Pakistani youth lack access to quality cybersecurity education</p>
+                    <div class="why-card-bar">
+                        <div class="why-card-bar-fill" data-width="70"></div>
+                    </div>
                 </div>
-                <div class="why-stat-card reveal-scale delay-100">
-                    <div class="why-stat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
+
+                <div class="why-card reveal-scale delay-100">
+                    <div class="why-card-top">
+                        <div class="why-card-icon-wrap why-card-icon-amber">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-stat">
+                            <span class="why-card-number" data-target="3.5">0</span><span class="why-card-unit">M+</span>
+                        </div>
                     </div>
-                    <div class="why-stat-number" data-target="3.5">0</div>
-                    <div class="why-stat-unit">M+</div>
-                    <p class="why-stat-label">cybersecurity jobs unfilled globally — Pakistan's opportunity</p>
+                    <h4 class="why-card-title">Massive Opportunity</h4>
+                    <p class="why-card-desc">cybersecurity jobs unfilled globally — Pakistan's chance to step up</p>
+                    <div class="why-card-bar">
+                        <div class="why-card-bar-fill why-card-bar-amber" data-width="85"></div>
+                    </div>
                 </div>
-                <div class="why-stat-card reveal-scale delay-200">
-                    <div class="why-stat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
-                        </svg>
+
+                <div class="why-card reveal-right delay-200">
+                    <div class="why-card-top">
+                        <div class="why-card-icon-wrap why-card-icon-red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#FF3366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </div>
+                        <div class="why-card-stat">
+                            <span class="why-card-number" data-target="90">0</span><span class="why-card-unit">%</span>
+                        </div>
                     </div>
-                    <div class="why-stat-number" data-target="90">0</div>
-                    <div class="why-stat-unit">%</div>
-                    <p class="why-stat-label">of local courses are overpriced or teach outdated material</p>
+                    <h4 class="why-card-title">Low Quality Courses</h4>
+                    <p class="why-card-desc">of local courses are overpriced or teach outdated material</p>
+                    <div class="why-card-bar">
+                        <div class="why-card-bar-fill" data-width="90"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="why-statement reveal delay-300">
-                <p style="max-width: 800px; margin: 0 auto; color: #fff; font-size: 1.15rem; line-height: 1.8;">
-                    The digital landscape is evolving rapidly, and the demand for elite cybersecurity professionals has never been higher. Yet for beginners in Pakistan, finding the right path without falling into illegal activities or expensive, low-quality courses is incredibly difficult.
-                </p>
-                <p style="max-width: 800px; margin: 1rem auto 0; color: var(--color-primary); font-size: 1.15rem; font-weight: 600;">
-                    PakSec Nation exists to bridge this gap — a clear, ethical, and high-impact roadmap for the youth of Pakistan to defend our national and global digital infrastructure.
-                </p>
+            <div class="why-solution reveal-scale delay-300">
+                <div class="why-solution-inner">
+                    <div class="why-solution-arrow">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#00F260" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <polyline points="19 12 12 19 5 12"/>
+                        </svg>
+                    </div>
+                    <h3 class="glow-text" style="font-size: 1.4rem; margin-bottom: 0.5rem;">PakSec Nation is the answer.</h3>
+                    <p style="color: #a0aec0; max-width: 600px; margin: 0 auto; font-size: 1rem;">A clear, ethical, and high-impact roadmap for the youth of Pakistan to defend our national and global digital infrastructure.</p>
+                </div>
             </div>
         </div>
     </section>
