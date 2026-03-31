@@ -545,6 +545,91 @@ ul {
   font-size: 0.9rem;
 }
 
+/* Toast Notifications */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 10000;
+  pointer-events: auto;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  max-width: 90vw;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.toast-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-exit {
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+}
+
+.toast-success {
+  background: rgba(0, 242, 96, 0.12);
+  border: 1px solid rgba(0, 242, 96, 0.4);
+  color: var(--color-primary);
+}
+
+.toast-error {
+  background: rgba(255, 51, 102, 0.12);
+  border: 1px solid rgba(255, 51, 102, 0.4);
+  color: #FF3366;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-success .toast-icon {
+  background: rgba(0, 242, 96, 0.15);
+}
+
+.toast-error .toast-icon {
+  background: rgba(255, 51, 102, 0.15);
+}
+
+.toast-message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0 4px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
   .container {
@@ -740,6 +825,22 @@ ul {
 
   .footer {
     padding: 3rem 0 2rem;
+  }
+
+  .toast-notification {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    transform: translateX(0) translateY(100px);
+    max-width: none;
+  }
+
+  .toast-show {
+    transform: translateX(0) translateY(0);
+  }
+
+  .toast-exit {
+    transform: translateX(0) translateY(20px);
   }
 }
 

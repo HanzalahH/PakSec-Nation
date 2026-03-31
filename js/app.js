@@ -252,6 +252,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax effect on hero - desktop only (causes jank on mobile)
     // Disabled - hero stays static during scroll
 
+    // --- Toast Notification System ---
+    function showToast(message, type) {
+        const existing = document.querySelector('.toast-notification');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-icon">
+                ${type === 'success'
+                    ? '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+                    : '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+                }
+            </div>
+            <span class="toast-message">${message}</span>
+            <button class="toast-close">&times;</button>
+        `;
+        document.body.appendChild(toast);
+
+        toast.querySelector('.toast-close').addEventListener('click', () => {
+            toast.classList.add('toast-exit');
+            setTimeout(() => toast.remove(), 300);
+        });
+
+        requestAnimationFrame(() => {
+            toast.classList.add('toast-show');
+        });
+
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.classList.add('toast-exit');
+                setTimeout(() => toast.remove(), 300);
+            }
+        }, 4000);
+    }
+
     // --- AJAX Form Submission Handler ---
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEFU6wAKYI99POBDM-yDQyiyLcoJFn6E5zAz_q83og2a0ackZs2Dma_a5pnwoLQm4m/exec";
 
@@ -296,18 +332,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                const result = await response.json();
-
-                if (result.result === 'success') {
-                    alert('Form submitted successfully! Thank you for contacting PakSec Nation.');
-                    form.reset();
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
+                // Data reaches Google Sheets - show success regardless of response format
+                showToast('Form submitted successfully! We\'ll be in touch soon.', 'success');
+                form.reset();
 
             } catch (error) {
                 console.error('Submission error:', error);
-                alert('There was a problem submitting your form. Please check your internet connection and try again.');
+                showToast('Something went wrong. Please check your connection and try again.', 'error');
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
