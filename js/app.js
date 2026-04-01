@@ -267,22 +267,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             </div>
             <span class="toast-message">${message}</span>
-            <button class="toast-close">&times;</button>
+            <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
         `;
+
         document.body.appendChild(toast);
-
-        toast.querySelector('.toast-close').addEventListener('click', () => {
-            toast.classList.add('toast-exit');
-            setTimeout(() => toast.remove(), 300);
-        });
-
-        requestAnimationFrame(() => {
-            toast.classList.add('toast-show');
-        });
 
         setTimeout(() => {
             if (toast.parentNode) {
-                toast.classList.add('toast-exit');
+                toast.style.animation = 'toastExit 0.3s ease forwards';
                 setTimeout(() => toast.remove(), 300);
             }
         }, 4000);
