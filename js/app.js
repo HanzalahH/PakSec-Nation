@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.classList.add('toast-exit');
                 setTimeout(() => toast.remove(), 400);
             }
-        }, 4000);
+        }, 8000);
     }
 
     // --- AJAX Form Submission Handler ---

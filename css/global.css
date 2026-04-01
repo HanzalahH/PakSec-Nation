@@ -548,9 +548,9 @@ ul {
 /* Toast Notifications */
 .toast-notification {
   position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
+  top: 5rem;
+  right: 2rem;
+  transform: translateX(120%);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -571,12 +571,12 @@ ul {
 
 .toast-show {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(0);
 }
 
 .toast-exit {
   opacity: 0;
-  transform: translateX(-50%) translateY(20px);
+  transform: translateX(120%);
 }
 
 .toast-success {
