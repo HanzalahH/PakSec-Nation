@@ -272,10 +272,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(toast);
 
+        // Trigger entrance animation on next frame
+        requestAnimationFrame(() => {
+            toast.classList.add('toast-show');
+        });
+
         setTimeout(() => {
             if (toast.parentNode) {
-                toast.style.animation = 'toastExit 0.3s ease forwards';
-                setTimeout(() => toast.remove(), 300);
+                toast.classList.remove('toast-show');
+                toast.classList.add('toast-exit');
+                setTimeout(() => toast.remove(), 400);
             }
         }, 4000);
     }
