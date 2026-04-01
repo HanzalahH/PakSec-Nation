@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- AJAX Form Submission Handler ---
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEFU6wAKYI99POBDM-yDQyiyLcoJFn6E5zAz_q83og2a0ackZs2Dma_a5pnwoLQm4m/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec";
 
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', async (e) => {
