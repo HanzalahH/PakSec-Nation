@@ -287,10 +287,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- AJAX Form Submission Handler ---
+    // Google Apps Script returns a 302 redirect on POST which breaks fetch() due to CORS.
+    // XMLHttpRequest handles the redirect transparently, so we use that instead.
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec";
 
+    const successMessages = {
+        volunteer: 'Application received! We\'ll review and reach out via email.',
+        newsletter: 'You\'re in! Check your inbox for our weekly cyber intel.',
+        consultation: 'Your consultation slot has been saved! Our team will contact you on WhatsApp with payment details.',
+        contact: 'Message sent! We\'ll get back to you within 24-48 hours.'
+    };
+
     document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
@@ -321,34 +330,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const successMessages = {
-                volunteer: 'Application received! We\'ll review and reach out via email.',
-                newsletter: 'You\'re in! Check your inbox for our weekly cyber intel.',
-                consultation: 'Your consultation slot has been saved! Our team will contact you on WhatsApp with payment details.',
-                contact: 'Message sent! We\'ll get back to you within 24-48 hours.'
+            // Use XMLHttpRequest — it follows the 302 redirect from Google Apps Script
+            // without CORS errors, unlike fetch()
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', GOOGLE_SCRIPT_URL, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
+
+            xhr.onload = function () {
+                // After 2 seconds of "Submitting...", show success
+                setTimeout(() => {
+                    showToast(successMessages[data.formType] || 'Submitted successfully!', 'success');
+                    form.reset();
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = originalBtnText;
+                    }
+                }, 2000);
             };
 
-            try {
-                const response = await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
-                    }
-                });
-
-                showToast(successMessages[data.formType] || 'Submitted successfully!', 'success');
-                form.reset();
-
-            } catch (error) {
-                console.error('Submission error:', error);
+            xhr.onerror = function () {
                 showToast('Something went wrong. Please check your connection and try again.', 'error');
-            } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
                 }
-            }
+            };
+
+            xhr.send(JSON.stringify(data));
         });
     });
 });
