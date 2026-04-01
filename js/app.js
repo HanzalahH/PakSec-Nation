@@ -259,6 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const toast = document.createElement('div');
         toast.className = `toast-notification toast-${type}`;
+
+        // Position toast at vertical center of the user's current viewport
+        const viewportCenter = Math.round(window.innerHeight / 2);
+        toast.style.top = viewportCenter + 'px';
+
         toast.innerHTML = `
             <div class="toast-icon">
                 ${type === 'success'

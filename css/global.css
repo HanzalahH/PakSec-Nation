@@ -548,7 +548,6 @@ ul {
 /* Toast Notifications */
 .toast-notification {
   position: fixed;
-  top: 5rem;
   right: 2rem;
   transform: translateX(120%);
   display: flex;
