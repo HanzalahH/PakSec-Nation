@@ -629,6 +629,72 @@ ul {
   opacity: 1;
 }
 
+/* Inline Form Status Messages */
+.form-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.form-status.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  max-height: 200px;
+  margin-top: 1.2rem;
+  padding: 1rem 1.25rem;
+}
+
+.form-status-success {
+  background: rgba(0, 242, 96, 0.1);
+  border: 1px solid rgba(0, 242, 96, 0.3);
+  color: var(--color-primary);
+}
+
+.form-status-error {
+  background: rgba(255, 51, 102, 0.1);
+  border: 1px solid rgba(255, 51, 102, 0.3);
+  color: #FF3366;
+}
+
+.form-status-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-status-success .form-status-icon {
+  background: rgba(0, 242, 96, 0.15);
+}
+
+.form-status-error .form-status-icon {
+  background: rgba(255, 51, 102, 0.15);
+}
+
+.form-status-text {
+  flex: 1;
+}
+
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
   .container {

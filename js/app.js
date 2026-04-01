@@ -252,41 +252,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax effect on hero - desktop only (causes jank on mobile)
     // Disabled - hero stays static during scroll
 
-    // --- Toast Notification System ---
-    function showToast(message, type) {
-        const existing = document.querySelector('.toast-notification');
+    // --- Inline Form Status Messages ---
+    function showFormStatus(form, message, type) {
+        // Remove any existing status in this form
+        const existing = form.querySelector('.form-status');
         if (existing) existing.remove();
 
-        const toast = document.createElement('div');
-        toast.className = `toast-notification toast-${type}`;
+        const status = document.createElement('div');
+        status.className = `form-status form-status-${type}`;
+        status.setAttribute('role', 'alert');
+        status.setAttribute('aria-live', 'polite');
 
-        // Position toast at vertical center of the user's current viewport
-        const viewportCenter = Math.round(window.innerHeight / 2);
-        toast.style.top = viewportCenter + 'px';
+        const iconSvg = type === 'success'
+            ? '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+            : '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
 
-        toast.innerHTML = `
-            <div class="toast-icon">
-                ${type === 'success'
-                    ? '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
-                    : '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
-                }
-            </div>
-            <span class="toast-message">${message}</span>
-            <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+        status.innerHTML = `
+            <div class="form-status-icon">${iconSvg}</div>
+            <span class="form-status-text">${message}</span>
         `;
 
-        document.body.appendChild(toast);
+        // Insert at the end of the form
+        form.appendChild(status);
 
-        // Trigger entrance animation on next frame
+        // Trigger animation on next frame
         requestAnimationFrame(() => {
-            toast.classList.add('toast-show');
+            status.classList.add('visible');
+            // Smooth scroll to the message so it's visible
+            status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
+        // Auto-hide after 8 seconds
         setTimeout(() => {
-            if (toast.parentNode) {
-                toast.classList.remove('toast-show');
-                toast.classList.add('toast-exit');
-                setTimeout(() => toast.remove(), 400);
+            if (status.parentNode) {
+                status.classList.remove('visible');
+                setTimeout(() => status.remove(), 500);
             }
         }, 8000);
     }
@@ -308,6 +308,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
+
+            // Remove any existing status message
+            const oldStatus = form.querySelector('.form-status');
+            if (oldStatus) oldStatus.remove();
 
             if (submitBtn) {
                 submitBtn.disabled = true;
@@ -342,9 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
             xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
 
             xhr.onload = function () {
-                // After 2 seconds of "Submitting...", show success
                 setTimeout(() => {
-                    showToast(successMessages[data.formType] || 'Submitted successfully!', 'success');
+                    showFormStatus(form, successMessages[data.formType] || 'Submitted successfully!', 'success');
                     form.reset();
                     if (submitBtn) {
                         submitBtn.disabled = false;
@@ -354,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             xhr.onerror = function () {
-                showToast('Something went wrong. Please check your connection and try again.', 'error');
+                showFormStatus(form, 'Something went wrong. Please check your connection and try again.', 'error');
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
