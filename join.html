@@ -140,7 +140,7 @@
             }
         }
 
-        /* Pathway Cards Section */
+        /* Pathway Cards - Diff Card Style */
         .pathways-section {
             padding: 5rem 0;
             position: relative;
@@ -153,140 +153,133 @@
             margin-top: 3rem;
         }
 
-        .pathway-card {
+        .diff-card {
             position: relative;
-            padding: 2.5rem 2rem;
-            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem 1.5rem;
+            background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: 20px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
         }
 
-        .pathway-card::before {
+        .diff-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 242, 96, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 16px;
         }
 
-        .pathway-card:hover {
+        .diff-card:hover {
             transform: translateY(-10px);
             border-color: var(--color-primary);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 242, 96, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 242, 96, 0.12);
         }
 
-        .pathway-card:hover::before {
-            transform: scaleX(1);
+        .diff-card:hover::before { opacity: 1; }
+
+        .diff-card-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(0, 242, 96, 0.08);
+            line-height: 1;
+            transition: color 0.4s ease;
         }
 
-        .pathway-card.featured {
-            border-color: rgba(0, 242, 96, 0.3);
-            background: rgba(0, 242, 96, 0.03);
-        }
+        .diff-card:hover .diff-card-number { color: rgba(0, 242, 96, 0.15); }
 
-        .pathway-card.featured::before {
-            transform: scaleX(1);
-            background: var(--color-primary);
-        }
-
-        .pathway-icon-ring {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+        .diff-card-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            background: rgba(0, 242, 96, 0.08);
-            border: 1px solid rgba(0, 242, 96, 0.2);
-            transition: all 0.4s ease;
-        }
-
-        .pathway-card:hover .pathway-icon-ring {
-            background: var(--color-primary);
-            box-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
-            transform: scale(1.08);
-        }
-
-        .pathway-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 3px 10px;
-            border-radius: 4px;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        .pathway-tag-free {
-            background: rgba(0, 242, 96, 0.1);
-            color: var(--color-primary);
+        .diff-card-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(0, 242, 96, 0.08);
             border: 1px solid rgba(0, 242, 96, 0.2);
-        }
-
-        .pathway-tag-paid {
-            background: rgba(255, 184, 0, 0.1);
-            color: #FFB800;
-            border: 1px solid rgba(255, 184, 0, 0.2);
-        }
-
-        .pathway-tag-community {
-            background: rgba(37, 211, 102, 0.1);
-            color: #25D366;
-            border: 1px solid rgba(37, 211, 102, 0.2);
-        }
-
-        .pathway-card h3 {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .pathway-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .pathway-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pathway-features li {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 6px 0;
-            color: #a0aec0;
-            font-size: 0.9rem;
+            justify-content: center;
+            transition: all 0.4s ease;
         }
 
-        .pathway-features li svg {
-            flex-shrink: 0;
+        .diff-card-icon svg {
+            width: 26px;
+            height: 26px;
             stroke: var(--color-primary);
+            transition: all 0.4s ease;
         }
 
-        .pathway-divider {
-            height: 1px;
-            background: linear-gradient(90deg, var(--color-border), transparent);
-            margin-bottom: 1.5rem;
+        .diff-card:hover .diff-card-icon {
+            background: var(--color-primary);
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: rotate(-5deg) scale(1.05);
         }
 
-        .pathway-card .btn {
+        .diff-card:hover .diff-card-icon svg { stroke: #000; }
+
+        .diff-card h4 { color: #fff; font-size: 1.1rem; margin-bottom: 0; }
+
+        .diff-card p { font-size: 0.95rem; margin-bottom: 0; position: relative; z-index: 1; }
+
+        .diff-card-line {
+            margin-top: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .diff-card:hover .diff-card-line { transform: scaleX(1); }
+
+        .diff-card-body {
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-card-body p {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .diff-card .form-group {
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-card .form-control {
+            width: 100%;
+            padding: 0.85rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .diff-card .btn {
             width: 100%;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 1024px) {
@@ -622,7 +615,6 @@
                 <a href="about.html">About</a>
                 <a href="programs.html">Programs</a>
                 <a href="events.html">Events</a>
-                <a href="blog.html">Blog</a>
                 <a href="join.html" class="active btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
                     Now</a>
             </div>
@@ -640,7 +632,7 @@
             <h1 style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 1rem;">
                 Your Cybersecurity Journey<br>Starts <span>Right Here.</span>
             </h1>
-            <p class="hero-sub">Choose your path. Whether you want to learn, connect, consult, or contribute — there's a place for you in the Nation.</p>
+            <p class="hero-sub">Choose your path. Whether you want to learn, connect, consult, or contribute -- there's a place for you in the Nation.</p>
             <div class="join-hero-stats">
                 <div class="join-hero-stat">
                     <div class="join-hero-stat-value">1000+</div>
@@ -667,104 +659,77 @@
             </div>
 
             <div class="pathways-grid">
-                <!-- WhatsApp -->
-                <div class="pathway-card reveal-left">
-                    <div class="pathway-icon-ring">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-                            <path d="M17.6 6.32A7.85 7.85 0 0012.05 4c-4.38 0-7.93 3.55-7.93 7.93a7.9 7.9 0 001.07 3.97L4 20l4.14-1.09a7.92 7.92 0 003.78.97h.01c4.38 0 7.94-3.55 7.94-7.93a7.87 7.87 0 00-2.27-5.63z" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <!-- WhatsApp Community -->
+                <div class="diff-card reveal-left">
+                    <span class="diff-card-number">01</span>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                            </svg>
+                        </div>
+                        <h4>WhatsApp Community</h4>
                     </div>
-                    <span class="pathway-tag pathway-tag-community">Community</span>
-                    <h3>Join The WhatsApp Group</h3>
-                    <p>Instant access to study materials, peer discussions, event alerts, and 24/7 mentorship — all in your pocket.</p>
-                    <ul class="pathway-features">
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Free forever, no catch
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            1000+ active members
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Weekly event announcements
-                        </li>
-                    </ul>
-                    <div class="pathway-divider"></div>
-                    <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_INVITE_LINK" target="_blank" rel="noopener" class="btn btn-primary">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-                        Join WhatsApp Group
-                    </a>
+                    <div class="diff-card-body">
+                        <p>Instant access to study materials, peer discussions, event alerts, and 24/7 mentorship -- all in your pocket. Free forever, no catch.</p>
+                        <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_INVITE_LINK" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1.2rem;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                            Join WhatsApp Group
+                        </a>
+                    </div>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <!-- Newsletter -->
-                <div class="pathway-card featured reveal-scale delay-100">
-                    <div class="pathway-icon-ring">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
+                <!-- Newsletter Subscription -->
+                <div class="diff-card reveal-scale delay-100">
+                    <span class="diff-card-number">02</span>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <h4>Newsletter Subscription</h4>
                     </div>
-                    <span class="pathway-tag pathway-tag-free">Free</span>
-                    <h3>Subscribe to Newsletter</h3>
-                    <p>Cyber news, career roadmaps, masterclass links, and curated resources — delivered to your inbox weekly.</p>
-                    <ul class="pathway-features">
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Weekly curated cyber intel
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Career tips & job alerts
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Early event access
-                        </li>
-                    </ul>
-                    <div class="pathway-divider"></div>
-                    <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST">
-                        <input type="hidden" name="formType" value="newsletter">
-                        <div class="form-group" style="margin-bottom: 0.8rem;">
-                            <input type="text" name="fullName" class="form-control" placeholder="Your Name" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body); transition: border-color 0.2s;">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 1rem;">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body); transition: border-color 0.2s;">
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe Now</button>
-                    </form>
+                    <div class="diff-card-body">
+                        <p>Cyber news, career roadmaps, masterclass links, and curated resources -- delivered to your inbox weekly.</p>
+                        <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST">
+                            <input type="hidden" name="formType" value="newsletter">
+                            <div class="form-group">
+                                <input type="text" name="fullName" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Subscribe Now</button>
+                        </form>
+                    </div>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <!-- Volunteer -->
-                <div class="pathway-card reveal-right">
-                    <div class="pathway-icon-ring">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 010 7.75"/>
-                        </svg>
+                <!-- Join Core Team / Volunteer -->
+                <div class="diff-card reveal-right">
+                    <span class="diff-card-number">03</span>
+                    <div class="diff-card-header">
+                        <div class="diff-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 010 7.75"/>
+                            </svg>
+                        </div>
+                        <h4>Join Core Team</h4>
                     </div>
-                    <span class="pathway-tag pathway-tag-paid">Contribute</span>
-                    <h3>Join The Core Team</h3>
-                    <p>An experienced professional? Give back by training beginners, moderating communities, or creating content.</p>
-                    <ul class="pathway-features">
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            5 volunteer roles available
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Shape the next generation
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            Build your leadership profile
-                        </li>
-                    </ul>
-                    <div class="pathway-divider"></div>
-                    <a href="volunteer.html" class="btn btn-secondary">Apply To Volunteer</a>
+                    <div class="diff-card-body">
+                        <p>An experienced professional? Give back by training beginners, moderating communities, or creating content for the next generation.</p>
+                        <a href="volunteer.html" class="btn btn-primary" style="margin-top: 1.2rem;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                            Apply To Volunteer
+                        </a>
+                    </div>
+                    <div class="diff-card-line"></div>
                 </div>
             </div>
         </div>
@@ -893,7 +858,6 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="programs.html">Programs & Courses</a></li>
                         <li><a href="events.html">Live Events</a></li>
-                        <li><a href="blog.html">Blog & Guides</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">

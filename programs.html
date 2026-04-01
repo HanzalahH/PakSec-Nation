@@ -9,129 +9,519 @@
         content="Discover the pathways to take you from a curious beginner to an elite cybersecurity professional.">
     <link rel="stylesheet" href="css/global.css">
     <style>
-        .page-header {
-            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
-            text-align: center;
-            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .program-card {
+        /* Hero */
+        .programs-hero {
+            position: relative;
+            min-height: 70vh;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: calc(var(--space-xl) + 40px) var(--space-sm) var(--space-lg);
+            background: radial-gradient(circle at center, #111a2e 0%, var(--color-bg) 70%);
+            overflow: hidden;
         }
 
-        .program-card h3 {
+        .programs-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 96, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 96, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center center;
+            z-index: 1;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
+
+        .programs-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .programs-hero h1 {
+            color: #ffffff;
+            margin-bottom: var(--space-md);
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 0 0 30px rgba(0, 242, 96, 0.2);
+        }
+
+        .programs-hero h1 span.highlight {
             color: var(--color-primary);
         }
 
-        .program-grid {
+        .programs-hero p {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            max-width: 650px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Diff Card - Program Cards */
+        .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--space-lg);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .diff-card {
+            position: relative;
+            padding: 2rem 1.5rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 242, 96, 0.05) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 16px;
+        }
+
+        .diff-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 242, 96, 0.12);
+        }
+
+        .diff-card:hover::before {
+            opacity: 1;
+        }
+
+        .diff-card-number {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(0, 242, 96, 0.08);
+            line-height: 1;
+            transition: color 0.4s ease;
+        }
+
+        .diff-card:hover .diff-card-number {
+            color: rgba(0, 242, 96, 0.15);
+        }
+
+        .diff-card-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            margin-bottom: 1.2rem;
+        }
+
+        .diff-card-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--color-primary);
+            transition: all 0.4s ease;
+        }
+
+        .diff-card:hover .diff-card-icon {
+            background: var(--color-primary);
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .diff-card:hover .diff-card-icon svg {
+            stroke: #000;
+        }
+
+        .diff-card h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .diff-card .card-desc {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diff-card-line {
+            margin-top: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .diff-card:hover .diff-card-line {
+            transform: scaleX(1);
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .feature-list li svg {
+            flex-shrink: 0;
+            margin-top: 3px;
         }
 
         .price-tag {
             display: inline-block;
             background: rgba(0, 242, 96, 0.1);
             color: var(--color-primary);
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            border: 1px solid rgba(0, 242, 96, 0.3);
-        }
-
-        .future-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .future-card {
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(0, 242, 96, 0.2);
-            border-radius: 20px;
-            padding: 3rem 2rem;
+            padding: 3px 12px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 242, 96, 0.25);
             position: relative;
             z-index: 1;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            text-align: center;
         }
 
-        .future-card::before {
+        .price-tag.paid {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-cta {
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-cta .btn {
+            width: 100%;
+        }
+
+        /* Learning Journey */
+        .journey-section {
+            background: #0d121c;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 96, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 96, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .journey-steps {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+            margin-top: 3rem;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .journey-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            flex: 0 0 auto;
+            width: 130px;
+        }
+
+        .journey-step:not(:last-child)::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(0, 242, 96, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
+            top: 28px;
+            left: calc(50% + 28px);
+            width: calc(100% - 56px);
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 242, 96, 0.3), rgba(0, 242, 96, 0.1));
         }
 
-        .future-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--color-primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 96, 0.2);
+        .step-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(0, 242, 96, 0.08);
+            border: 2px solid rgba(0, 242, 96, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .future-card:hover::before {
-            transform: translateX(100%);
+        .journey-step:hover .step-number {
+            background: var(--color-primary);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: scale(1.1);
         }
 
-        .future-badge {
+        .step-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .step-desc {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 0.3rem;
+            line-height: 1.3;
+        }
+
+        /* Coming Soon */
+        .coming-soon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .coming-badge {
             display: inline-block;
             background: var(--color-primary);
             color: #000;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             box-shadow: 0 0 15px rgba(0, 242, 96, 0.4);
+            position: relative;
+            z-index: 1;
         }
 
-        .future-card h4 {
-            color: #fff !important;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+        .coming-tag-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .future-card p {
-            color: var(--color-text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .future-icon-wrap {
-            margin-bottom: 1.5rem;
+        .coming-tag-list li {
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.15);
             color: var(--color-primary);
-            font-size: 2.5rem;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
         }
 
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(0, 242, 96, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: #a0aec0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .programs-grid,
+            .coming-soon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .journey-steps {
+                gap: 0.5rem;
+            }
+
+            .journey-step {
+                width: 110px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .programs-hero {
+                min-height: 50vh;
+                padding: calc(var(--space-xl) + 20px) var(--space-sm) var(--space-lg);
+            }
+
+            .programs-hero p {
+                font-size: 1rem;
+            }
+
+            .programs-grid,
+            .coming-soon-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .diff-card:hover {
+                transform: none;
+            }
+
+            .journey-steps {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                justify-content: center;
+            }
+
+            .journey-step {
+                width: 100px;
+            }
+
+            .journey-step:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1rem;
+            }
+
+            .step-label {
+                font-size: 0.78rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .journey-step {
+                width: 90px;
+            }
+
+            .diff-card-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .diff-card-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="scanline"></div>
 
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="nav-brand">
                 <img src="assets/DSADas.png" alt="PakSec Nation Logo">
-
                 PakSec<span>Nation</span>
             </a>
             <button class="mobile-menu-btn">&#9776;</button>
@@ -140,110 +530,358 @@
                 <a href="about.html">About</a>
                 <a href="programs.html" class="active">Programs</a>
                 <a href="events.html">Events</a>
-                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
                 <a href="join.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Join
                     Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Learn. Grow. Dominate.</h1>
-            <p style="max-width: 600px; margin: 0 auto;">Discover the pathways we've built to take you from a curious
-                beginner to an elite cybersecurity professional.</p>
+    <!-- Hero Section -->
+    <header class="programs-hero">
+        <div class="programs-hero-content">
+            <h1>Learn. Grow. <span class="highlight">Dominate.</span></h1>
+            <p>Discover the pathways we've built to take you from a curious beginner to an elite cybersecurity
+                professional.</p>
         </div>
     </header>
 
-    <!-- Main Programs -->
-    <section class="section">
-        <div class="container reveal">
-            <div class="program-grid">
+    <!-- What We Offer -->
+    <section class="section" style="position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="text-center mb-3 reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    What We Offer</h2>
+                <h2>Three Pathways. One Mission.</h2>
+                <p style="max-width: 600px; margin: 0.5rem auto 0;">Choose your starting point. Every pathway is designed
+                    to accelerate your cybersecurity journey.</p>
+            </div>
 
-                <!-- Masterclasses -->
-                <div class="glass-card program-card reveal-left">
-                    <div>
-                        <span class="price-tag">100% Free</span>
-                        <h3>Weekly Masterclasses</h3>
-                        <p>Every week, we host high-impact, live online sessions covering the fundamentals of ethical
-                            hacking, network security, and defensive strategies. Led by industry experts, these classes
-                            are strictly designed for beginners to grasp complex concepts easily.</p>
+            <div class="programs-grid">
+
+                <!-- Weekly Masterclasses -->
+                <div class="diff-card reveal-left">
+                    <div class="diff-card-number">01</div>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
                     </div>
-                    <div class="mt-1">
-                        <a href="events.html" class="btn btn-secondary" style="width: 100%;">View Schedule</a>
+                    <span class="price-tag">100% Free</span>
+                    <h3>Weekly Masterclasses</h3>
+                    <p class="card-desc">High-impact, live online sessions every week covering ethical hacking fundamentals,
+                        network security, and defensive strategies.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Live Zoom sessions every Saturday
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Networking, Linux & defense fundamentals
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Led by industry experts
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Designed for absolute beginners
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Recorded sessions for review
+                        </li>
+                    </ul>
+                    <div class="card-cta">
+                        <a href="events.html" class="btn btn-secondary">View Schedule</a>
                     </div>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <!-- Consultation -->
-                <div class="glass-card program-card reveal-scale delay-100"
-                    style="border-color: rgba(0, 242, 96, 0.3);">
-                    <div>
-                        <span class="price-tag"
-                            style="background: rgba(255, 255, 255, 0.1); color: #fff; border-color: rgba(255,255,255,0.2);">PKR
-                            500 Subsidized</span>
-                        <h3>1-on-1 Beginner Consultation</h3>
-                        <p>Lost? Don't know where to start? Get a personalized session with a PakSec mentor.</p>
-                        <p style="font-size: 0.95rem;">For a nominal fee, we provide a structured, tailored consultation
-                            to evaluate your current skills, understand your goals, and hand you a step-by-step career
-                            roadmap. <em>(This fee ensures commitment while remaining accessible).</em></p>
+                <!-- 1-on-1 Consultation -->
+                <div class="diff-card reveal-scale delay-100">
+                    <div class="diff-card-number">02</div>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
                     </div>
-                    <div class="mt-1">
-                        <a href="join.html#consultation" class="btn btn-primary" style="width: 100%;">Book
-                            Consultation</a>
+                    <span class="price-tag paid">PKR 500</span>
+                    <h3>1-on-1 Consultation</h3>
+                    <p class="card-desc">Get a personalized session with a PakSec mentor. We evaluate your skills, understand
+                        your goals, and hand you a step-by-step career roadmap.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Personalized skill assessment
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Custom career roadmap
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Certification guidance (CEH, Security+, BSCP)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Direct mentor WhatsApp access
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            One-time subsidized fee
+                        </li>
+                    </ul>
+                    <div class="card-cta">
+                        <a href="join.html#consultation" class="btn btn-primary">Book Consultation</a>
                     </div>
+                    <div class="diff-card-line"></div>
                 </div>
 
-                <!-- WhatsApp -->
-                <div class="glass-card program-card reveal-right delay-200">
-                    <div>
-                        <span class="price-tag">Community Access</span>
-                        <h3>The Ultimate Learning Network</h3>
-                        <p>Join our nationwide WhatsApp learning community. Ask questions, share resources, discuss the
-                            latest cyber threats, and network with peers and mentors 24/7. You don't have to learn
-                            alone.</p>
+                <!-- WhatsApp Community -->
+                <div class="diff-card reveal-right delay-200">
+                    <div class="diff-card-number">03</div>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
                     </div>
-                    <div class="mt-1">
-                        <a href="join.html" class="btn btn-secondary" style="width: 100%;">Join WhatsApp Group</a>
+                    <span class="price-tag">100% Free</span>
+                    <h3>WhatsApp Community</h3>
+                    <p class="card-desc">Join our nationwide WhatsApp learning community. Ask questions, share resources,
+                        and network with peers and mentors 24/7.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            24/7 nationwide group
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Study materials & resources
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Peer discussions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Event announcements
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00F260"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Career guidance
+                        </li>
+                    </ul>
+                    <div class="card-cta">
+                        <a href="join.html" class="btn btn-secondary">Join Community</a>
                     </div>
+                    <div class="diff-card-line"></div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Future Expansion Container -->
-    <section class="section reveal" style="background: #0d121c; border-top: 1px solid var(--color-border);">
+    <!-- Learning Journey -->
+    <section class="section journey-section">
+        <div class="journey-grid-bg"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="text-center mb-3 reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    The Roadmap</h2>
+                <h2>Your Learning Journey</h2>
+                <p style="max-width: 600px; margin: 0.5rem auto 0;">A clear, structured path from your first class to a
+                    full-blown cybersecurity career.</p>
+            </div>
+
+            <div class="journey-steps reveal-scale delay-100">
+                <div class="journey-step">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Beginner</span>
+                    <span class="step-desc">Start from zero</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Masterclasses</span>
+                    <span class="step-desc">Learn the fundamentals</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Community</span>
+                    <span class="step-desc">Connect & grow</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">4</div>
+                    <span class="step-label">Consultation</span>
+                    <span class="step-desc">Get your roadmap</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">5</div>
+                    <span class="step-label">Self-Study</span>
+                    <span class="step-desc">Build real skills</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">6</div>
+                    <span class="step-label">Certification</span>
+                    <span class="step-desc">Get credentialed</span>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">7</div>
+                    <span class="step-label">Career</span>
+                    <span class="step-desc">Land your role</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="section" style="position: relative; overflow: hidden;">
         <div class="container">
-            <div class="text-center mb-2">
-                <h2 class="glow-text">What’s Next for PakSec Nation?</h2>
-                <p style="color: #fff; opacity: 0.8;">We are constantly expanding our ecosystem to provide more value.</p>
+            <div class="text-center mb-3 reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    What's Next</h2>
+                <h2>Coming Soon</h2>
+                <p style="max-width: 600px; margin: 0.5rem auto 0;">We're constantly expanding our ecosystem to provide
+                    even more value.</p>
             </div>
 
+            <div class="coming-soon-grid">
 
-            <div class="future-grid">
-                <div class="future-card reveal-left">
-                    <span class="future-badge">Coming Q3 2026</span>
-                    <div class="future-icon-wrap">⚡</div>
-                    <h4>Intensive Bootcamps</h4>
-                    <p>Experience ultra-deep, hands-on training for high-level specialties including Web Exploitation and Advanced Defensive Networking.</p>
+                <!-- Intensive Bootcamps -->
+                <div class="diff-card reveal-left">
+                    <span class="coming-badge">Q3 2026</span>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </div>
+                    <h3>Intensive Bootcamps</h3>
+                    <p class="card-desc">Ultra-deep, hands-on training for high-level security specialties. Multi-week
+                        immersive programs.</p>
+                    <ul class="coming-tag-list">
+                        <li>Web Exploitation</li>
+                        <li>Defensive Networking</li>
+                        <li>Cloud Security</li>
+                        <li>Forensics</li>
+                    </ul>
+                    <div class="diff-card-line"></div>
                 </div>
-                
-                <div class="future-card reveal-scale delay-100">
-                    <span class="future-badge">National Level</span>
-                    <div class="future-icon-wrap">🎯</div>
-                    <h4>National CTFs</h4>
-                    <p>Enter the arena. Test your real-world skills in legal, safe-controlled Capture The Flag environments against the brightest minds in Pakistan.</p>
+
+                <!-- National CTFs -->
+                <div class="diff-card reveal-scale delay-100">
+                    <span class="coming-badge">National Level</span>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                            <line x1="4" y1="22" x2="4" y2="15" />
+                        </svg>
+                    </div>
+                    <h3>National CTFs</h3>
+                    <p class="card-desc">Enter the arena. Test your real-world skills in legal, safe-controlled Capture The
+                        Flag competitions against Pakistan's brightest minds.</p>
+                    <ul class="coming-tag-list">
+                        <li>Capture the Flag</li>
+                        <li>Team Events</li>
+                        <li>Prizes</li>
+                        <li>National Ranking</li>
+                    </ul>
+                    <div class="diff-card-line"></div>
                 </div>
-                
-                <div class="future-card reveal-right delay-200">
-                    <span class="future-badge">Elite Track</span>
-                    <div class="future-icon-wrap">🛡️</div>
-                    <h4>Certification Prep</h4>
-                    <p>Master the world's most recognized credentials with peer-led study groups targeting CEH, Security+, and the prestigious BSCP.</p>
+
+                <!-- Certification Prep -->
+                <div class="diff-card reveal-right delay-200">
+                    <span class="coming-badge">Elite Track</span>
+                    <div class="diff-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Certification Prep</h3>
+                    <p class="card-desc">Master the world's most recognized credentials with peer-led study groups and
+                        structured preparation.</p>
+                    <ul class="coming-tag-list">
+                        <li>CEH</li>
+                        <li>Security+</li>
+                        <li>BSCP</li>
+                        <li>Study Groups</li>
+                    </ul>
+                    <div class="diff-card-line"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" style="border-top: 1px solid var(--color-border);">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content reveal-scale">
+                <h2 class="glow-text">Ready to Start?</h2>
+                <p>Your cybersecurity journey begins with a single step. Join thousands of Pakistanis already learning,
+                    growing, and building careers in security.</p>
+                <div class="cta-buttons">
+                    <a href="join.html" class="btn btn-primary">Join Now</a>
+                    <a href="events.html" class="btn btn-secondary">Attend a Masterclass</a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -254,10 +892,9 @@
                 <div class="footer-brand">
                     <a href="index.html" class="nav-brand">
                         <img src="assets/DSADas.png" alt="PakSec Nation Logo">
-
                         PakSec<span>Nation</span>
                     </a>
-                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
+                    <p>Pakistan's Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
                     </p>
                 </div>
                 <div class="footer-links">
@@ -266,7 +903,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="programs.html">Programs & Courses</a></li>
                         <li><a href="events.html">Live Events</a></li>
-                        <li><a href="blog.html">Blog & Guides</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -274,14 +911,12 @@
                     <ul>
                         <li><a href="conduct.html">Code of Conduct</a></li>
                         <li><a href="join.html">Join WhatsApp Group</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="join.html#volunteer">Become a Volunteer</a></li>
-
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan's Digital Frontier. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -290,4 +925,3 @@
 </body>
 
 </html>
-
