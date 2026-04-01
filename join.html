@@ -8,64 +8,609 @@
     <meta name="description" content="Your cybersecurity journey starts right here. Join the PakSec Nation movement.">
     <link rel="stylesheet" href="css/global.css">
     <style>
-        .page-header {
-            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+        /* Hero */
+        .join-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
-            border-bottom: 1px solid var(--color-border);
+            padding: 8rem 1.25rem 4rem;
+            overflow: hidden;
         }
 
-        .join-options {
+        .join-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 800px 600px at 30% 40%, rgba(0, 242, 96, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 600px 400px at 70% 60%, rgba(0, 75, 35, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .join-hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 96, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 96, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .join-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .join-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(0, 242, 96, 0.3);
+            color: var(--color-primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 242, 96, 0.05);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .join-hero-badge svg {
+            flex-shrink: 0;
+        }
+
+        .join-hero h1 {
+            animation: fadeInDown 1s ease-out 0.1s both;
+        }
+
+        .join-hero h1 span {
+            color: var(--color-primary);
+            text-shadow: 0 0 30px rgba(0, 242, 96, 0.3);
+        }
+
+        .join-hero p.hero-sub {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .join-hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .join-hero-stat {
+            text-align: center;
+        }
+
+        .join-hero-stat-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-shadow: 0 0 15px rgba(0, 242, 96, 0.4);
+            line-height: 1;
+        }
+
+        .join-hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .join-hero {
+                min-height: 60vh;
+                padding: 7rem 1rem 3rem;
+            }
+
+            .join-hero-stats {
+                gap: 1.5rem;
+            }
+
+            .join-hero-stat-value {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Pathway Cards Section */
+        .pathways-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .pathways-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .join-card {
+        .pathway-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        .form-group {
-            margin-bottom: var(--space-sm);
+        .pathway-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-text-muted);
+        .pathway-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 242, 96, 0.08);
+        }
+
+        .pathway-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pathway-card.featured {
+            border-color: rgba(0, 242, 96, 0.3);
+            background: rgba(0, 242, 96, 0.03);
+        }
+
+        .pathway-card.featured::before {
+            transform: scaleX(1);
+            background: var(--color-primary);
+        }
+
+        .pathway-icon-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .pathway-card:hover .pathway-icon-ring {
+            background: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
+            transform: scale(1.08);
+        }
+
+        .pathway-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .pathway-tag-free {
+            background: rgba(0, 242, 96, 0.1);
+            color: var(--color-primary);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+        }
+
+        .pathway-tag-paid {
+            background: rgba(255, 184, 0, 0.1);
+            color: #FFB800;
+            border: 1px solid rgba(255, 184, 0, 0.2);
+        }
+
+        .pathway-tag-community {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+        }
+
+        .pathway-card h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .pathway-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .pathway-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pathway-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            color: #a0aec0;
             font-size: 0.9rem;
         }
 
-        .form-control {
+        .pathway-features li svg {
+            flex-shrink: 0;
+            stroke: var(--color-primary);
+        }
+
+        .pathway-divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-border), transparent);
+            margin-bottom: 1.5rem;
+        }
+
+        .pathway-card .btn {
             width: 100%;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-sm);
-            color: var(--color-text-main);
-            font-family: var(--font-body);
-            transition: border-color var(--transition-fast);
+            text-align: center;
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-primary);
+        @media (max-width: 1024px) {
+            .pathways-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
 
-        .icon-large {
-            font-size: 3rem;
+        /* Consultation Section */
+        .consultation-section {
+            padding: 5rem 0;
+            background: #0d121c;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .consultation-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 242, 96, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .consultation-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .consultation-info {
+            padding-top: 1rem;
+        }
+
+        .consultation-info .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--color-primary);
+            color: #000;
+            padding: 5px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(0, 242, 96, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 242, 96, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 242, 96, 0.6); }
+        }
+
+        .consultation-info h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .consultation-info h2 span {
             color: var(--color-primary);
-            margin-bottom: var(--space-sm);
+            text-shadow: 0 0 20px rgba(0, 242, 96, 0.3);
+        }
+
+        .consultation-info > p {
+            color: #a0aec0;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .consultation-perks {
+            list-style: none;
+        }
+
+        .consultation-perks li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            color: #a0aec0;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .consultation-perks li:last-child {
+            border-bottom: none;
+        }
+
+        .perk-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .perk-icon svg {
+            stroke: var(--color-primary);
+        }
+
+        /* Price Card */
+        .price-card-wrapper {
+            position: relative;
+        }
+
+        .price-card {
+            background: rgba(11, 15, 25, 0.95);
+            border: 1px solid rgba(0, 242, 96, 0.25);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .price-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 40px rgba(0, 242, 96, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(0, 242, 96, 0.2), transparent 40%, transparent 60%, rgba(0, 242, 96, 0.2));
+            z-index: 0;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .price-card-inner {
+            position: relative;
+            z-index: 1;
+            background: rgba(11, 15, 25, 0.98);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .price-amount {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-currency {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .price-value {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
+            line-height: 1;
+        }
+
+        .price-note {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .price-card .btn {
+            width: 100%;
+            padding: 1.1rem;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            border-radius: 14px;
+        }
+
+        .price-disclaimer {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .consultation-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .price-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .price-value {
+                font-size: 3rem;
+            }
+        }
+
+        /* How It Works Steps */
+        .steps-section {
+            padding: 5rem 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), rgba(0, 242, 96, 0.3), var(--color-primary));
+            z-index: 0;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 242, 96, 0.08);
+            border: 2px solid rgba(0, 242, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: all 0.4s ease;
+        }
+
+        .step-card:hover .step-number {
+            background: var(--color-primary);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: scale(1.1);
+        }
+
+        .step-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="scanline"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" style="background: transparent; border-bottom: none;">
         <div class="container">
             <a href="index.html" class="nav-brand">
                 <img src="assets/DSADas.png" alt="PakSec Nation Logo">
@@ -84,123 +629,250 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
-            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Become a Part of the Movement.</h1>
-            <p style="max-width: 600px; margin: 0 auto;">Your cybersecurity journey starts right here, right now. Choose
-                how you want to get involved.</p>
+    <!-- Hero -->
+    <header class="join-hero">
+        <div class="join-hero-grid-bg"></div>
+        <div class="join-hero-content">
+            <div class="join-hero-badge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#00F260" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Open To All Beginners
+            </div>
+            <h1 style="font-size: clamp(2.2rem, 5vw, 3.8rem); margin-bottom: 1rem;">
+                Your Cybersecurity Journey<br>Starts <span>Right Here.</span>
+            </h1>
+            <p class="hero-sub">Choose your path. Whether you want to learn, connect, consult, or contribute — there's a place for you in the Nation.</p>
+            <div class="join-hero-stats">
+                <div class="join-hero-stat">
+                    <div class="join-hero-stat-value">1000+</div>
+                    <div class="join-hero-stat-label">Members</div>
+                </div>
+                <div class="join-hero-stat">
+                    <div class="join-hero-stat-value">Free</div>
+                    <div class="join-hero-stat-label">To Join</div>
+                </div>
+                <div class="join-hero-stat">
+                    <div class="join-hero-stat-value">24/7</div>
+                    <div class="join-hero-stat-label">Support</div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="section">
+    <!-- Pathways -->
+    <section class="pathways-section">
         <div class="container">
-            <div class="join-options">
-
-                <!-- Option 1: WhatsApp -->
-                <div class="glass-card join-card text-center" style="border-top: 4px solid var(--color-primary);">
-                    <div>
-                        <div class="icon-large">💬</div>
-                        <h3 class="mb-1">Join the WhatsApp Community</h3>
-                        <p>Gain immediate access to study materials, discussions, and event announcements. For students
-                            & beginners.</p>
-                    </div>
-                    <div class="mt-2">
-                        <!-- Replace YOUR_WHATSAPP_INVITE_LINK with your actual group link from WhatsApp -->
-                        <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_INVITE_LINK" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">Join WhatsApp Group</a>
-                    </div>
-                </div>
-
-                <!-- Option 2: Newsletter -->
-                <div class="glass-card join-card">
-                    <div style="text-align: center;">
-                        <div class="icon-large">📫</div>
-                        <h3 class="mb-1">Subscribe to Newsletter</h3>
-                        <p>Get the latest cyber news, career tips, and masterclass links delivered straight to your
-                            inbox.</p>
-                    </div>
-                    <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST" class="mt-2">
-                        <input type="hidden" name="formType" value="newsletter">
-                    <div class="form-group">
-                            <input type="text" name="fullName" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Subscribe</button>
-                    </form>
-                    </div>
-
-                <!-- Option 3: Volunteer -->
-                <div class="glass-card join-card" id="volunteer" style="border-top: 4px solid var(--color-text-muted);">
-                    <div style="text-align: center;">
-                        <div class="icon-large">🤝</div>
-                        <h3 class="mb-1">Volunteer Application</h3>
-                        <p>Want to help manage the community, design content, or train beginners? We are always looking
-                            for passionate volunteers.</p>
-                    </div>
-                    <div class="mt-2 text-center">
-                        <a href="volunteer.html" class="btn btn-secondary"
-                            style="width: 100%;">Fill Application Form</a>
-                        </div>
-                    </div>
-
-                    </div>
-
-            <div id="consultation" class="reveal-scale" style="margin-top: var(--space-xl);">
-                <div style="max-width: 800px; margin: 0 auto; background: rgba(11, 15, 25, 0.8); border: 1px solid rgba(0, 242, 96, 0.2); border-radius: 24px; padding: 4rem 2rem; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);">
-
-                    <!-- Decorative Background Element -->
-                    <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(0, 242, 96, 0.1) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
-
-                    <div style="position: relative; z-index: 1;">
-                        <div class="text-center mb-2">
-                            <span style="display: inline-block; background: var(--color-primary); color: #000; padding: 4px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; box-shadow: 0 0 20px rgba(0, 242, 96, 0.4);">
-                                Limited Slots Available
-                            </span>
-                            <h2 class="glow-text" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem;">Book Your 1-on-1 Consultation</h2>
-                            <p style="color: var(--color-text-main); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                                Evaluate your skills and get a custom step-by-step career roadmap for a subsidized fee of
-                                <span style="color: var(--color-primary); font-weight: 700; border-bottom: 2px solid var(--color-primary);">PKR 500</span>.
-                    </p>
-                </div>
-
-                        <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST" style="max-width: 600px; margin: 3rem auto 0; text-align: left;">
-                            <input type="hidden" name="formType" value="consultation">
-
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label style="color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Full Name</label>
-                                    <input type="text" name="name" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem;" placeholder="Ali Khan" required>
-                                </div>
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label style="color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Email Address</label>
-                                    <input type="email" name="email" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem;" placeholder="ali@example.com" required>
-                                </div>
-                </div>
-                            <div class="form-group">
-                                <label style="color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">WhatsApp Number (for coordination)</label>
-                                <input type="tel" name="whatsapp" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem;" placeholder="03XXXXXXXXX" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label style="color: var(--color-primary); font-family: var(--font-heading); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tell us about your tech goals</label>
-                                <textarea name="goals" class="form-control" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.1); padding: 1rem; min-height: 100px;" placeholder="What do you hope to achieve in cybersecurity?" required></textarea>
-                            </div>
-
-                            <div class="text-center mt-3">
-                                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.2rem; font-size: 1.2rem; letter-spacing: 1px; border-radius: 12px;">
-                                    Secure My Consultation Slot
-                                </button>
-                                <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1.5rem; font-style: italic;">
-                                    *After submission, our team will contact you on WhatsApp with JazzCash/EasyPaisa instructions.
-                                </p>
-                </div>
-                        </form>
+            <div class="text-center reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Choose Your Path</h2>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem);">How Do You Want To <span style="color: var(--color-primary); text-shadow: 0 0 20px rgba(0, 242, 96, 0.3);">Get Involved?</span></h2>
             </div>
+
+            <div class="pathways-grid">
+                <!-- WhatsApp -->
+                <div class="pathway-card reveal-left">
+                    <div class="pathway-icon-ring">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
+                            <path d="M17.6 6.32A7.85 7.85 0 0012.05 4c-4.38 0-7.93 3.55-7.93 7.93a7.9 7.9 0 001.07 3.97L4 20l4.14-1.09a7.92 7.92 0 003.78.97h.01c4.38 0 7.94-3.55 7.94-7.93a7.87 7.87 0 00-2.27-5.63z" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="pathway-tag pathway-tag-community">Community</span>
+                    <h3>Join The WhatsApp Group</h3>
+                    <p>Instant access to study materials, peer discussions, event alerts, and 24/7 mentorship — all in your pocket.</p>
+                    <ul class="pathway-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Free forever, no catch
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            1000+ active members
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Weekly event announcements
+                        </li>
+                    </ul>
+                    <div class="pathway-divider"></div>
+                    <a href="https://chat.whatsapp.com/YOUR_WHATSAPP_INVITE_LINK" target="_blank" rel="noopener" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                        Join WhatsApp Group
+                    </a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="pathway-card featured reveal-scale delay-100">
+                    <div class="pathway-icon-ring">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <span class="pathway-tag pathway-tag-free">Free</span>
+                    <h3>Subscribe to Newsletter</h3>
+                    <p>Cyber news, career roadmaps, masterclass links, and curated resources — delivered to your inbox weekly.</p>
+                    <ul class="pathway-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Weekly curated cyber intel
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Career tips & job alerts
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Early event access
+                        </li>
+                    </ul>
+                    <div class="pathway-divider"></div>
+                    <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST">
+                        <input type="hidden" name="formType" value="newsletter">
+                        <div class="form-group" style="margin-bottom: 0.8rem;">
+                            <input type="text" name="fullName" class="form-control" placeholder="Your Name" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body); transition: border-color 0.2s;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <input type="email" name="email" class="form-control" placeholder="Email Address" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body); transition: border-color 0.2s;">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe Now</button>
+                    </form>
+                </div>
+
+                <!-- Volunteer -->
+                <div class="pathway-card reveal-right">
+                    <div class="pathway-icon-ring">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#00F260" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 010 7.75"/>
+                        </svg>
+                    </div>
+                    <span class="pathway-tag pathway-tag-paid">Contribute</span>
+                    <h3>Join The Core Team</h3>
+                    <p>An experienced professional? Give back by training beginners, moderating communities, or creating content.</p>
+                    <ul class="pathway-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            5 volunteer roles available
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Shape the next generation
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Build your leadership profile
+                        </li>
+                    </ul>
+                    <div class="pathway-divider"></div>
+                    <a href="volunteer.html" class="btn btn-secondary">Apply To Volunteer</a>
+                </div>
             </div>
         </div>
+    </section>
 
+    <!-- How It Works -->
+    <section class="steps-section" style="background: #0d121c; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">The Process</h2>
+                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem);">From Beginner To <span style="color: var(--color-primary);">Defender</span></h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card reveal-scale">
+                    <div class="step-number">01</div>
+                    <h4>Join The Community</h4>
+                    <p>Enter the WhatsApp group. You're in. Zero barriers.</p>
+                </div>
+                <div class="step-card reveal-scale delay-100">
+                    <div class="step-number">02</div>
+                    <h4>Attend Masterclasses</h4>
+                    <p>Live every Saturday. Learn networking, Linux, and defense fundamentals.</p>
+                </div>
+                <div class="step-card reveal-scale delay-200">
+                    <div class="step-number">03</div>
+                    <h4>Get Your Roadmap</h4>
+                    <p>Book a 1-on-1 consultation. Get a personalized career plan.</p>
+                </div>
+                <div class="step-card reveal-scale delay-300">
+                    <div class="step-number">04</div>
+                    <h4>Launch Your Career</h4>
+                    <p>Get certified. Get hired. Become a Pakistani cyber defender.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation -->
+    <section class="consultation-section" id="consultation">
+        <div class="container">
+            <div class="consultation-wrapper">
+                <div class="consultation-info reveal-left">
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Limited Slots Available
+                    </div>
+                    <h2>Get Your Personalized <span>Career Roadmap</span></h2>
+                    <p>Not sure where to start? Book a 1-on-1 session with a PakSec mentor. We'll evaluate your skills, understand your goals, and hand you a step-by-step plan.</p>
+                    <ul class="consultation-perks">
+                        <li>
+                            <div class="perk-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                            </div>
+                            Personalized skill assessment
+                        </li>
+                        <li>
+                            <div class="perk-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            </div>
+                            Custom career roadmap
+                        </li>
+                        <li>
+                            <div class="perk-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            Certification guidance (CEH, Security+, BSCP)
+                        </li>
+                        <li>
+                            <div class="perk-icon">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                            </div>
+                            Direct mentor access via WhatsApp
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="price-card-wrapper reveal-right delay-200">
+                    <div class="price-card">
+                        <div class="price-card-inner">
+                            <div class="price-label">Subsidized Fee</div>
+                            <div class="price-amount">
+                                <span class="price-currency">PKR</span>
+                                <span class="price-value">500</span>
+                            </div>
+                            <p class="price-note">One-time payment via JazzCash / EasyPaisa</p>
+
+                            <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST">
+                                <input type="hidden" name="formType" value="consultation">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem;">
+                                    <input type="text" name="name" class="form-control" placeholder="Full Name" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body);">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body);">
+                                </div>
+                                <div style="margin-bottom: 0.8rem;">
+                                    <input type="tel" name="whatsapp" class="form-control" placeholder="WhatsApp Number (03XXXXXXXXX)" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body);">
+                                </div>
+                                <div style="margin-bottom: 1.2rem;">
+                                    <textarea name="goals" class="form-control" placeholder="What do you hope to achieve in cybersecurity?" required style="width: 100%; padding: 0.85rem; background: rgba(255,255,255,0.04); border: 1px solid var(--color-border); border-radius: 10px; color: var(--color-text-main); font-family: var(--font-body); min-height: 80px; resize: vertical;"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.1rem; font-size: 1.05rem; border-radius: 14px;">
+                                    Secure My Consultation Slot
+                                </button>
+                            </form>
+                            <p class="price-disclaimer">*Team will contact you on WhatsApp with payment details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -211,11 +883,9 @@
                 <div class="footer-brand">
                     <a href="index.html" class="nav-brand">
                         <img src="assets/DSADas.png" alt="PakSec Nation Logo">
-
                         PakSec<span>Nation</span>
                     </a>
-                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
-                    </p>
+                    <p>Pakistan's Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Explore</h4>
@@ -237,7 +907,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan's Digital Frontier. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -246,4 +916,3 @@
 </body>
 
 </html>
-

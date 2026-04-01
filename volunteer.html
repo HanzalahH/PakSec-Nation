@@ -8,46 +8,259 @@
     <meta name="description" content="Apply to become a volunteer, trainer, or community manager at PakSec Nation.">
     <link rel="stylesheet" href="css/global.css">
     <style>
-        .page-header {
-            padding: calc(var(--space-xl) + 60px) var(--space-sm) var(--space-lg);
+        /* Hero */
+        .vol-hero {
+            position: relative;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(0, 242, 96, 0.05) 0%, var(--color-bg) 100%);
-            border-bottom: 1px solid var(--color-border);
+            padding: 8rem 1.25rem 4rem;
+            overflow: hidden;
         }
 
-        .form-container {
-            max-width: 700px;
+        .vol-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 700px 500px at 50% 40%, rgba(0, 242, 96, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 400px 300px at 80% 70%, rgba(0, 75, 35, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vol-hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 242, 96, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 96, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vol-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .vol-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(0, 242, 96, 0.3);
+            color: var(--color-primary);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 242, 96, 0.05);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .vol-hero-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .vol-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out 0.15s both;
+        }
+
+        .vol-hero h1 span {
+            color: var(--color-primary);
+            text-shadow: 0 0 30px rgba(0, 242, 96, 0.3);
+        }
+
+        .vol-hero p {
+            font-size: 1.15rem;
+            color: #a0aec0;
+            max-width: 600px;
             margin: 0 auto;
-            background: rgba(11, 15, 25, 0.5);
-            padding: var(--space-lg);
-            border-radius: var(--border-radius-lg);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .vol-hero {
+                min-height: 55vh;
+                padding: 7rem 1rem 3rem;
+            }
+        }
+
+        /* Roles Section */
+        .roles-section {
+            padding: 5rem 0;
+            background: #0d121c;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .role-card {
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--color-border);
-            box-shadow: 0 10px 40px rgba(0, 242, 96, 0.05);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default;
+        }
+
+        .role-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 242, 96, 0.08);
+        }
+
+        .role-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(0, 242, 96, 0.08);
+            border: 1px solid rgba(0, 242, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .role-card:hover .role-card-icon {
+            background: var(--color-primary);
+            box-shadow: 0 0 25px rgba(0, 242, 96, 0.4);
+            transform: scale(1.1);
+        }
+
+        .role-card h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 5rem 0;
+        }
+
+        .form-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 0.8rem;
+        }
+
+        .form-header h2 span {
+            color: var(--color-primary);
+            text-shadow: 0 0 20px rgba(0, 242, 96, 0.3);
+        }
+
+        .form-header p {
+            color: #a0aec0;
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 242, 96, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-card::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 242, 96, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-card-inner {
+            position: relative;
+            z-index: 1;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-md);
-        }
-
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
+            gap: 1.2rem;
         }
 
         .form-group {
-            margin-bottom: var(--space-md);
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-group label span.required {
@@ -56,21 +269,25 @@
 
         .form-control {
             width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.02);
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-sm);
+            border-radius: 10px;
             color: var(--color-text-main);
             font-family: var(--font-body);
             font-size: 1rem;
-            transition: all var(--transition-fast);
+            transition: all 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.25);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--color-primary);
-            background: rgba(0, 242, 96, 0.05);
-            box-shadow: 0 0 10px rgba(0, 242, 96, 0.1);
+            background: rgba(0, 242, 96, 0.04);
+            box-shadow: 0 0 0 3px rgba(0, 242, 96, 0.1);
         }
 
         select.form-control {
@@ -84,40 +301,90 @@
 
         textarea.form-control {
             resize: vertical;
-            min-height: 120px;
+            min-height: 110px;
         }
 
         .checkbox-container {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            margin-top: var(--space-sm);
+            gap: 12px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 51, 102, 0.04);
+            border: 1px solid rgba(255, 51, 102, 0.15);
+            border-radius: 12px;
+            margin-bottom: 2rem;
         }
 
         .checkbox-container input {
-            margin-top: 5px;
+            margin-top: 3px;
             accent-color: var(--color-primary);
             width: 18px;
             height: 18px;
             cursor: pointer;
+            flex-shrink: 0;
         }
 
         .checkbox-container label {
-            color: var(--color-text-main);
-            font-size: 0.95rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
             cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .checkbox-container label a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .form-submit {
+            text-align: center;
+        }
+
+        .form-submit .btn {
+            padding: 1.1rem 3.5rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .roles-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="scanline"></div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" style="background: transparent; border-bottom: none;">
         <div class="container">
             <a href="index.html" class="nav-brand">
-                <img src="assets/DSADas.png" alt="PakSec Nation Logo"
-                    style="height: 55px; width: auto; max-width: 100%; object-fit: contain;">
+                <img src="assets/DSADas.png" alt="PakSec Nation Logo">
                 PakSec<span>Nation</span>
             </a>
             <button class="mobile-menu-btn">&#9776;</button>
@@ -133,95 +400,135 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container reveal">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
-            <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">Join The Core Team.</h1>
-            <p style="max-width: 600px; margin: 0 auto;">We are looking for dedicated individuals to help us manage
-                communities, design content, and train the next generation of defenders.</p>
+    <!-- Hero -->
+    <header class="vol-hero">
+        <div class="vol-hero-grid"></div>
+        <div class="vol-hero-content">
+            <div class="vol-hero-badge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#00F260" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Applications Open
+            </div>
+            <div class="vol-hero-icon">🛡️</div>
+            <h1>Build Pakistan's <span>Digital Shield.</span></h1>
+            <p>We're looking for dedicated individuals to help us manage communities, design content, and train the next generation of defenders. Your expertise can shape thousands of careers.</p>
         </div>
     </header>
 
-    <section class="section">
+    <!-- Roles -->
+    <section class="roles-section">
         <div class="container">
-
-            <div class="form-container reveal-scale">
-                <h2 class="mb-2" style="border-bottom: 1px solid var(--color-border); padding-bottom: 1rem;">Volunteer
-                    Application</h2>
-
-                                                <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST" id="volunteerForm">
-                    <input type="hidden" name="formType" value="volunteer">
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" name="firstName" class="form-control" required placeholder="Ali">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" name="lastName" class="form-control" required placeholder="Khan">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" class="form-control" required placeholder="ali.khan@example.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="linkedin">LinkedIn Profile URL</label>
-                        <input type="url" id="linkedin" name="linkedin" class="form-control"
-                            placeholder="https://linkedin.com/in/yourprofile">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role">Role You Are Applying For <span class="required">*</span></label>
-                        <select id="role" name="role" class="form-control" required>
-                            <option value="" disabled selected>Select a role...</option>
-                            <option value="trainer">Cybersecurity Trainer / Mentor (Technical)</option>
-                            <option value="community">Community Moderator (Discord/WhatsApp)</option>
-                            <option value="content">Content Writer / Technical Blogger</option>
-                            <option value="design">Graphic Designer / Video Editor</option>
-                            <option value="campus">Campus Ambassador / Event Organizer</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experience">Current Experience Level <span class="required">*</span></label>
-                        <select id="experience" name="experience" class="form-control" required>
-                            <option value="" disabled selected>Select your current stage...</option>
-                            <option value="student">University Student</option>
-                            <option value="junior">Junior Professional (1-2 years)</option>
-                            <option value="mid">Mid-Level Professional (3-5 years)</option>
-                            <option value="senior">Senior Expert (5+ years)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="motivation">Why do you want to volunteer for PakSec Nation? <span
-                                class="required">*</span></label>
-                        <textarea id="motivation" name="motivation" class="form-control" required
-                            placeholder="Tell us briefly about your passion for community building and cybersecurity..."></textarea>
-                    </div>
-
-                    <div class="form-group text-center">
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="codeOfConduct" name="codeOfConduct" required>
-                            <label for="codeOfConduct">I have read and agree to abide strictly by the <a
-                                    href="conduct.html" style="text-decoration: underline;">PakSec Ethical Code of
-                                    Conduct</a>. I confirm that I do not engage in illegal black-hat activities.</label>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 text-center">
-                        <button type="submit" class="btn btn-primary"
-                            style="font-size: 1.2rem; padding: 1rem 3rem;">Submit Application</button>
-                    </div>
-
-                </form>
+            <div class="text-center reveal">
+                <h2 style="color: var(--color-primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Open Positions</h2>
+                <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem);">Choose Your <span style="color: var(--color-primary);">Role</span></h2>
             </div>
 
+            <div class="roles-grid">
+                <div class="role-card reveal-scale">
+                    <div class="role-card-icon">🎯</div>
+                    <h4>Trainer / Mentor</h4>
+                    <p>Lead masterclasses and mentor beginners in ethical hacking and defensive security.</p>
+                </div>
+                <div class="role-card reveal-scale delay-100">
+                    <div class="role-card-icon">💬</div>
+                    <h4>Community Moderator</h4>
+                    <p>Manage WhatsApp and Discord groups. Keep discussions professional and on-topic.</p>
+                </div>
+                <div class="role-card reveal-scale delay-200">
+                    <div class="role-card-icon">✍️</div>
+                    <h4>Content Writer</h4>
+                    <p>Write technical blogs, beginner guides, and tool breakdowns for the PakSec blog.</p>
+                </div>
+                <div class="role-card reveal-scale delay-300">
+                    <div class="role-card-icon">🎨</div>
+                    <h4>Designer / Editor</h4>
+                    <p>Create social media graphics, edit masterclass recordings, and design course materials.</p>
+                </div>
+                <div class="role-card reveal-scale delay-300">
+                    <div class="role-card-icon">🏫</div>
+                    <h4>Campus Ambassador</h4>
+                    <p>Organize events at your university and represent PakSec Nation on campus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header reveal">
+                    <h2>Ready To <span>Contribute?</span></h2>
+                    <p>Fill out the form below. We review every application within 48 hours.</p>
+                </div>
+
+                <div class="form-card reveal-scale">
+                    <div class="form-card-inner">
+                        <form action="https://script.google.com/macros/s/AKfycbzPBdgek4qdgWCAtEM0yFV9cBwjVjkazVR7Mw0euCyhHWqUcjwPBW228nZWadwjThZj/exec" method="POST" id="volunteerForm">
+                            <input type="hidden" name="formType" value="volunteer">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name <span class="required">*</span></label>
+                                    <input type="text" id="firstName" name="firstName" class="form-control" required placeholder="Ali">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name <span class="required">*</span></label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" required placeholder="Khan">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-control" required placeholder="ali.khan@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedin">LinkedIn Profile URL</label>
+                                    <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="role">Role <span class="required">*</span></label>
+                                    <select id="role" name="role" class="form-control" required>
+                                        <option value="" disabled selected>Select a role...</option>
+                                        <option value="trainer">Cybersecurity Trainer / Mentor (Technical)</option>
+                                        <option value="community">Community Moderator (WhatsApp/Discord)</option>
+                                        <option value="content">Content Writer / Technical Blogger</option>
+                                        <option value="design">Graphic Designer / Video Editor</option>
+                                        <option value="campus">Campus Ambassador / Event Organizer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="experience">Experience Level <span class="required">*</span></label>
+                                    <select id="experience" name="experience" class="form-control" required>
+                                        <option value="" disabled selected>Select your stage...</option>
+                                        <option value="student">University Student</option>
+                                        <option value="junior">Junior Professional (1-2 years)</option>
+                                        <option value="mid">Mid-Level Professional (3-5 years)</option>
+                                        <option value="senior">Senior Expert (5+ years)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="motivation">Why do you want to volunteer? <span class="required">*</span></label>
+                                <textarea id="motivation" name="motivation" class="form-control" required placeholder="Tell us about your passion for community building and cybersecurity..."></textarea>
+                            </div>
+
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="codeOfConduct" name="codeOfConduct" required>
+                                <label for="codeOfConduct">I have read and agree to abide strictly by the <a href="conduct.html">PakSec Ethical Code of Conduct</a>. I confirm that I do not engage in illegal black-hat activities.</label>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -234,8 +541,7 @@
                         <img src="assets/DSADas.png" alt="PakSec Nation Logo">
                         PakSec<span>Nation</span>
                     </a>
-                    <p>Pakistan’s Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.
-                    </p>
+                    <p>Pakistan's Official Cyber Security Movement for Beginners. Master the skills. Protect the nation.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Explore</h4>
@@ -257,7 +563,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PakSec Nation. Defending Pakistan’s Digital Frontier. All rights reserved.</p>
+                <p>&copy; 2026 PakSec Nation. Defending Pakistan's Digital Frontier. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -266,4 +572,3 @@
 </body>
 
 </html>
-

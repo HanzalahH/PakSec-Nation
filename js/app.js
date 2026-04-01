@@ -321,6 +321,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            const successMessages = {
+                volunteer: 'Application received! We\'ll review and reach out via email.',
+                newsletter: 'You\'re in! Check your inbox for our weekly cyber intel.',
+                consultation: 'Your consultation slot has been saved! Our team will contact you on WhatsApp with payment details.',
+                contact: 'Message sent! We\'ll get back to you within 24-48 hours.'
+            };
+
             try {
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
@@ -330,8 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Data reaches Google Sheets - show success regardless of response format
-                showToast('Form submitted successfully! We\'ll be in touch soon.', 'success');
+                showToast(successMessages[data.formType] || 'Submitted successfully!', 'success');
                 form.reset();
 
             } catch (error) {
