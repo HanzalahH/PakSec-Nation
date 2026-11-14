@@ -732,9 +732,6 @@ function exportPostPDF(btn){
   });
   chain.then(function(){
     curSlide = keep; renderGraphic();
-    doc.addPage("a4", "portrait");
-    var wr = new Writer(doc);
-    writePostText(wr, p);
     finishPDF(doc, baseName(p) + ".pdf", curSlides.length);
     toast("Post PDF downloaded — Day " + p.day); done();
   }).catch(function(){ curSlide = keep; renderGraphic(); toast("PDF export failed — please retry"); done(); });
