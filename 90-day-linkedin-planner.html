@@ -194,8 +194,8 @@
   .g-pill.amber{ color:#FFB81A; border-color:rgba(255,184,26,.4); background:rgba(255,184,26,.1); }
   .g-mid{ margin:auto 0; padding:20px 0; }
   .g-num{ font-family:"IBM Plex Mono", monospace; color:#00F260; font-size:12.5px; font-weight:600; letter-spacing:.18em; margin-bottom:12px; }
-  .g-head{ font-weight:700; letter-spacing:-.02em; line-height:1.1; color:#F5F8FB; }
-  .g-head .g{ color:#00F260; }
+  .g-head{ font-weight:700; letter-spacing:-.02em; line-height:1.06; color:#F5F8FB; text-transform:uppercase; }
+  .g-head .g{ color:#00F260; text-shadow:0 0 22px rgba(0,242,96,.4); }
   .g-sub{ color:#9DACC2; font-family:"Inter", system-ui, sans-serif; font-size:14.5px; line-height:1.6; margin-top:13px; font-weight:500; }
   .g-list{ list-style:none; margin:14px 0 0; padding:0; }
   .g-list li{ display:flex; gap:9px; align-items:flex-start; font-family:"Inter", system-ui, sans-serif; font-size:14px; font-weight:600; padding:5px 0; line-height:1.5; color:#F5F8FB; }
@@ -511,14 +511,56 @@ function buildSlides(p){
   }
   return slides;
 }
+function splitHead(head){
+  /* Set the headline the way the PakSec format page's graphic does: a white
+     line, then the punch line in glowing green. Split at the strongest break
+     in the text — a label dash, an em dash, a sentence end, a colon, a
+     bracketed aside, then a comma — and fall back to giving the last chunk of
+     words to the green line. Short headlines get a green punch line too:
+     2–3 words put the first word in white and the rest in green, and a
+     single word is the glowing green punch line on its own. */
+  var h = String(head || "").trim();
+  function wc(s){ return s.split(/\s+/).filter(Boolean).length; }
+  var shortWords = h.split(/\s+/).filter(Boolean);
+  if (shortWords.length === 1) return { white: "", green: h };
+  if (shortWords.length === 2 || shortWords.length === 3)
+    return { white: shortWords[0], green: shortWords.slice(1).join(" ") };
+  if (wc(h) < 4) return { white: h, green: "" };
+  var m = /^([A-Za-z][\w-]*)\s+—\s+([\s\S]+)$/.exec(h);
+  if (m && wc(m[2]) >= 3) return { white: m[1] + " —", green: m[2] };
+  var i = h.indexOf(" — ");
+  if (i > 0 && wc(h.slice(0, i)) >= 2 && wc(h.slice(i + 3)) >= 2)
+    return { white: h.slice(0, i), green: h.slice(i + 3) };
+  m = /^([\s\S]{2,}?[.!?])\s+([\s\S]+)$/.exec(h);
+  if (m && wc(m[1]) >= 2 && wc(m[2]) >= 1 && m[2].length >= 8)
+    return { white: m[1], green: m[2] };
+  i = h.indexOf(": ");
+  if (i > 0 && wc(h.slice(i + 2)) >= 2)
+    return { white: h.slice(0, i + 1), green: h.slice(i + 2) };
+  i = h.indexOf(" (");
+  if (i > 0 && wc(h.slice(0, i)) >= 3 && wc(h.slice(i + 2)) >= 2)
+    return { white: h.slice(0, i), green: h.slice(i + 1) };
+  i = h.lastIndexOf(", ");
+  if (i > 0 && wc(h.slice(0, i)) >= 2 && (wc(h.slice(i + 2)) >= 2 || (wc(h.slice(0, i)) >= 3 && h.slice(i + 2).replace(/[.!?]+$/, "").length >= 4)))
+    return { white: h.slice(0, i + 1), green: h.slice(i + 2) };
+  var words = h.split(/\s+/).filter(Boolean);
+  if (words.length >= 4){
+    var n = Math.max(2, Math.round(words.length * 0.4));
+    if (n > words.length - 2) n = words.length - 2;
+    return { white: words.slice(0, words.length - n).join(" "), green: words.slice(words.length - n).join(" ") };
+  }
+  return { white: h, green: "" };
+}
 function graphicHTML(p, sl, idx, total){
   var aspect = p.format === "Carousel" ? "portrait" : "sq";
   var pillCls = p.pillar === "PATH" ? " amber" : "";
   var len = sl.head.length;
-  var size = len <= 34 ? 41 : len <= 62 ? 33 : len <= 98 ? 26 : 21;
+  var size = len <= 34 ? 38 : len <= 62 ? 30 : len <= 98 ? 24 : 19;
   var kicker = sl.kind === "cover" ? "DAY " + p.day + " · CAROUSEL" : sl.kind === "cta" ? "PAKSEC NATION" : "DAY " + p.day + " · " + p.dow.toUpperCase() + " " + p.date.toUpperCase();
+  var parts = splitHead(sl.head);
+  var headHTML = parts.green ? (parts.white ? esc(parts.white) + '<br /><span class="g">' + esc(parts.green) + '</span>' : '<span class="g">' + esc(parts.green) + '</span>') : esc(parts.white);
   var mid = '<div class="g-num">' + esc(kicker) + '</div>'
-    + '<div class="g-head" style="font-size:' + size + 'px">' + esc(sl.head) + '</div>';
+    + '<div class="g-head" style="font-size:' + size + 'px">' + headHTML + '</div>';
   if (sl.sub) mid += '<div class="g-sub">' + esc(sl.sub) + '</div>';
   if (sl.bullets && sl.bullets.length && sl.kind !== "poll"){
     mid += '<ul class="g-list">' + sl.bullets.map(function(b){ return '<li>' + CHECK + '<span>' + esc(b) + '</span></li>'; }).join("") + '</ul>';
@@ -673,6 +715,57 @@ function drawSharpLogo(canvas, el, logo){
     ctx.restore();
   } catch(e){}
 }
+function drawHeadlineGlow(canvas, el){
+  /* The green punch line of the headline glows via CSS text-shadow on screen.
+     html2canvas can drop text shadows, so redraw the glow straight onto the
+     captured canvas with the matching canvas shadow (0 0 22px, Matrix Green).
+     Only the halo is drawn, never the glyphs themselves: the text is painted
+     far below the canvas with its shadow offset back into place, so the
+     crisp html2canvas lettering stays untouched and the blur lands exactly
+     behind it. Line breaks and positions are read from the live DOM, one
+     character range at a time, so the halo follows the real wrapped lines.
+     Silent no-op if anything is unavailable. */
+  try {
+    var span = el.querySelector(".g-head .g");
+    if (!span || !span.textContent) return;
+    var node = span.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var head = el.querySelector(".g-head");
+    var er = el.getBoundingClientRect();
+    if (!er.width) return;
+    var k = canvas.width / er.width;
+    var fs = parseFloat(window.getComputedStyle(head).fontSize) || 30;
+    var text = node.textContent, range = document.createRange(), lines = [], byTop = {};
+    for (var i = 0; i < text.length; i++){
+      range.setStart(node, i); range.setEnd(node, i + 1);
+      var rects = range.getClientRects();
+      if (!rects.length) continue;
+      var r = rects[0], key = Math.round(r.top / 4), L = byTop[key];
+      if (!L){ L = { top: r.top, left: r.left, text: "" }; byTop[key] = L; lines.push(L); }
+      if (r.left < L.left) L.left = r.left;
+      L.text += text[i];
+    }
+    if (!lines.length) return;
+    var ctx = canvas.getContext("2d");
+    ctx.save();
+    ctx.font = "700 " + (fs * k) + "px 'Space Grotesk', sans-serif";
+    try { ctx.letterSpacing = (-0.02 * fs * k) + "px"; } catch(e){}
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#00F260";
+    ctx.shadowColor = "rgba(0,242,96,.5)";
+    ctx.shadowBlur = 22 * k;
+    var OFF = 12000;
+    ctx.shadowOffsetY = -OFF;
+    lines.forEach(function(L){
+      var x = (L.left - er.left) * k;
+      var base = (L.top - er.top) * k + fs * k * 0.82 + OFF;
+      var t = L.text.toUpperCase();
+      ctx.fillText(t, x, base); /* two passes — a canvas shadow is fainter than the CSS one */
+      ctx.fillText(t, x, base);
+    });
+    ctx.restore();
+  } catch(e){}
+}
 function captureCurrent(){
   var el = $("#g-export");
   if (!el) return Promise.reject(new Error("no graphic"));
@@ -681,6 +774,7 @@ function captureCurrent(){
   return loadFullLogo().then(function(logo){
     return html2canvas(el, { scale: scale, backgroundColor: "#080D16", logging: false, useCORS: true }).then(function(canvas){
       if (logo) drawSharpLogo(canvas, el, logo);
+      drawHeadlineGlow(canvas, el);
       return canvas;
     });
   });
