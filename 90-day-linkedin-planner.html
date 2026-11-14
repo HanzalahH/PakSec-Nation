@@ -569,10 +569,10 @@ function openStudio(day){
     + (curSlides.length > 1 ? '<button class="btn ghost" id="dl-zip">All ' + curSlides.length + ' slides — ZIP</button>' : "")
     + '<button class="btn dark" id="dl-pdf">Post — PDF</button></div>'
     + '<p style="color:var(--muted);font-size:13px;line-height:1.6;margin:12px 0 0">'
-    + (p.format === "Carousel" ? "Carousel slides export at 1080 × 1350 — LinkedIn's portrait document size. The PDF contains every slide plus the full caption and first comment."
-      : p.format === "Poll" ? "Polls post as native LinkedIn polls — the graphic is a matching announcement card if you want one. The PDF contains the card, the poll question and options, the caption and the first comment."
-      : p.format === "Text" ? "Text posts need no image on LinkedIn — this title card is optional, for sharing the lesson elsewhere. The PDF contains the card plus the full caption and first comment."
-      : "Exports at 1080 × 1080. The PDF contains the graphic plus the full caption and first comment.")
+    + (p.format === "Carousel" ? "Carousel slides export at 1080 × 1350 — LinkedIn's portrait document size. The PDF contains only the slides — no caption, no first comment."
+      : p.format === "Poll" ? "Polls post as native LinkedIn polls — the graphic is a matching announcement card if you want one. The PDF contains only the card — no caption, no first comment."
+      : p.format === "Text" ? "Text posts need no image on LinkedIn — this title card is optional, for sharing the lesson elsewhere. The PDF contains only the card — no caption, no first comment."
+      : "Exports at 1080 × 1080. The PDF contains only the graphic — no caption, no first comment.")
     + '</p>'
     + '</div></div>';
   $("#studio-sheet").innerHTML = html;
@@ -616,12 +616,74 @@ document.addEventListener("keydown", function(e){ if (e.key === "Escape" && $("#
 
 /* ================= exports: images ================= */
 function baseName(p){ return "paksec-day-" + pad(p.day); }
+var logoFullRes = null;
+function loadFullLogo(){
+  /* Preload the logo once at its full 1024x1024 source resolution and wait for
+     it to decode, so exports can draw it from the complete source bitmap. */
+  if (logoFullRes) return logoFullRes;
+  logoFullRes = new Promise(function(res){
+    var im = new Image();
+    var done = false;
+    function finish(ok){ if (!done){ done = true; res(ok ? im : null); } }
+    im.crossOrigin = "anonymous";
+    im.onload = function(){
+      if (im.decode){ im.decode().then(function(){ finish(true); }, function(){ finish(true); }); }
+      else finish(true);
+    };
+    im.onerror = function(){ finish(false); };
+    im.src = LOGO_URL;
+    if (im.complete && im.naturalWidth) finish(true);
+  });
+  return logoFullRes;
+}
+function drawSharpLogo(canvas, el, logo){
+  /* html2canvas draws the on-screen <img>, which the browser keeps decoded at
+     its small 56px display size, so the logo comes out upscaled and blurry
+     while the text stays sharp. Redraw the logo straight from the
+     full-resolution source into the exact spot html2canvas left for it,
+     cropped the same way object-fit: cover crops it, corners clipped to the
+     mark's 10px radius. Silent no-op if anything is unavailable. */
+  try {
+    var img = el.querySelector(".g-brand .mark img");
+    if (!img || !logo.naturalWidth) return;
+    var er = el.getBoundingClientRect(), ir = img.getBoundingClientRect();
+    if (!er.width || !ir.width) return;
+    var k = canvas.width / er.width;
+    var dx = (ir.left - er.left) * k, dy = (ir.top - er.top) * k;
+    var dw = ir.width * k, dh = ir.height * k;
+    var sw = logo.naturalWidth, sh = logo.naturalHeight;
+    var s = Math.max(dw / sw, dh / sh);
+    var cw = dw / s, ch = dh / s, sx = (sw - cw) / 2, sy = (sh - ch) / 2;
+    var r = Math.min(10 * k, dw / 2, dh / 2), x2 = dx + dw, y2 = dy + dh;
+    var ctx = canvas.getContext("2d");
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(dx + r, dy);
+    ctx.lineTo(x2 - r, dy); ctx.quadraticCurveTo(x2, dy, x2, dy + r);
+    ctx.lineTo(x2, y2 - r); ctx.quadraticCurveTo(x2, y2, x2 - r, y2);
+    ctx.lineTo(dx + r, y2); ctx.quadraticCurveTo(dx, y2, dx, y2 - r);
+    ctx.lineTo(dx, dy + r); ctx.quadraticCurveTo(dx, dy, dx + r, dy);
+    ctx.closePath();
+    ctx.clip();
+    ctx.fillStyle = "#05070D";
+    ctx.fillRect(dx, dy, dw, dh);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(logo, sx, sy, cw, ch, dx, dy, dw, dh);
+    ctx.restore();
+  } catch(e){}
+}
 function captureCurrent(){
   var el = $("#g-export");
   if (!el) return Promise.reject(new Error("no graphic"));
   if (typeof html2canvas === "undefined") return Promise.reject(new Error("library unavailable"));
-  var scale = 1080 / el.offsetWidth;
-  return html2canvas(el, { scale: scale, backgroundColor: "#080D16", logging: false, useCORS: true });
+  var scale = 1080 / el.offsetWidth; /* slide is always rendered at the full 1080px export width */
+  return loadFullLogo().then(function(logo){
+    return html2canvas(el, { scale: scale, backgroundColor: "#080D16", logging: false, useCORS: true }).then(function(canvas){
+      if (logo) drawSharpLogo(canvas, el, logo);
+      return canvas;
+    });
+  });
 }
 function canvasBlob(canvas){ return new Promise(function(res){ canvas.toBlob(res, "image/png"); }); }
 function nextFrame(){ return new Promise(function(res){ requestAnimationFrame(function(){ setTimeout(res, 60); }); }); }
