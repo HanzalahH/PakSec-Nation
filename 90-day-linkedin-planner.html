@@ -179,7 +179,7 @@
 
   /* ---------- generated graphic (literal colours: export-safe) ---------- */
   #g-stage{ display:flex; justify-content:center; }
-  .graphic{ background:#080D16; border:1px solid rgba(0,242,96,.35); border-radius:10px; position:relative; overflow:hidden; width:100%; max-width:520px;
+  .graphic{ background:#080D16; border:none; border-radius:0; position:relative; overflow:hidden; width:100%; max-width:520px;
     background-image:linear-gradient(rgba(120,160,220,.06) 1px, transparent 1px),linear-gradient(90deg, rgba(120,160,220,.06) 1px, transparent 1px); background-size:34px 34px;
     display:flex; flex-direction:column; padding:7.5%; color:#F5F8FB; font-family:"Space Grotesk", system-ui, sans-serif; }
   .graphic.sq{ aspect-ratio:1/1; }
@@ -686,10 +686,11 @@ function writePostText(wr, p){
   wr.lines(p.firstComment, 10.5, "normal", [30, 38, 50], 2);
   wr.rule();
 }
-function finishPDF(doc, filename){
+function finishPDF(doc, filename, skipPages){
   var n = doc.getNumberOfPages();
-  for (var i = 1; i <= n; i++){
-    doc.setPage(i); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(130, 140, 155);
+  for (var i = (skipPages || 0) + 1; i <= n; i++){ /* leading full-bleed slide pages get nothing stamped on them */
+    doc.setPage(i);
+    doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(130, 140, 155);
     doc.text("PakSec Nation - 90-Day LinkedIn Planner - page " + i + " of " + n, 297.64, 820, { align: "center" });
   }
   doc.save(filename);
@@ -713,26 +714,28 @@ function makeTextPDF(list, subtitle, filename, btn){
 function exportPostPDF(btn){
   if (!window.jspdf){ toast("PDF export needs its library — check your connection and retry"); return; }
   var done = busy(btn, "Building PDF…"); var p = cur, keep = curSlide;
-  var doc = new window.jspdf.jsPDF({ unit: "pt", format: "a4" });
-  var pageW = 595.28, margin = 48, imgW = pageW - margin * 2;
-  var chain = Promise.resolve(), first = true;
+  var doc = null;
+  var chain = Promise.resolve();
   curSlides.forEach(function(sl, i){
     chain = chain.then(function(){
       curSlide = i; renderGraphic();
       return nextFrame().then(captureCurrent).then(function(canvas){
-        var imgH = imgW * canvas.height / canvas.width;
-        if (!first) doc.addPage();
-        first = false;
-        doc.addImage(canvas.toDataURL("image/png"), "PNG", margin, margin, imgW, imgH);
+        /* Full-bleed: each PDF page is sized exactly to its slide and the slide
+           image is drawn at 0,0 across the whole page — no margin, no white border. */
+        var pw = canvas.width / 2, ph = canvas.height / 2;
+        var orient = pw > ph ? "landscape" : "portrait";
+        if (!doc) doc = new window.jspdf.jsPDF({ unit: "pt", format: [pw, ph], orientation: orient });
+        else doc.addPage([pw, ph], orient);
+        doc.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, pw, ph);
       });
     });
   });
   chain.then(function(){
     curSlide = keep; renderGraphic();
-    doc.addPage();
+    doc.addPage("a4", "portrait");
     var wr = new Writer(doc);
     writePostText(wr, p);
-    finishPDF(doc, baseName(p) + ".pdf");
+    finishPDF(doc, baseName(p) + ".pdf", curSlides.length);
     toast("Post PDF downloaded — Day " + p.day); done();
   }).catch(function(){ curSlide = keep; renderGraphic(); toast("PDF export failed — please retry"); done(); });
 }
