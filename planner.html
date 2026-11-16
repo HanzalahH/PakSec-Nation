@@ -1,0 +1,1895 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="PakSec Nation 150-day LinkedIn planner: 150 free cybersecurity lessons, 2 posts a day, 16 Nov 2026 to 29 Jan 2027." />
+<title>150-Day LinkedIn Planner &mdash; PakSec Nation</title>
+<link rel="stylesheet" href="css/global.css" />
+<style>
+
+/* Planner page — extends the site design system (css/global.css) */
+.planner-hero{ padding: 9.5rem 0 2.5rem; }
+.planner-hero h1 span{ color: var(--color-primary); }
+.planner-hero .sub{ max-width: 720px; }
+.meta-chips{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.5rem; }
+.meta-chips span{ font-family: var(--font-heading); font-size:.85rem; font-weight:600;
+  border:1px solid var(--color-border); background: var(--color-surface);
+  padding:.5rem .9rem; border-radius: 999px; color: var(--color-text-main); }
+.meta-chips span b{ color: var(--color-primary); }
+.filters{ display:flex; flex-wrap:wrap; gap:.6rem; margin: 2rem 0 1rem; position: sticky; top: 84px; z-index: 50;
+  background: rgba(11,15,25,.92); backdrop-filter: blur(10px); padding: .8rem 0; }
+.filters button{ font-family: var(--font-heading); font-size:.9rem; font-weight:700; letter-spacing:.04em;
+  text-transform: uppercase; color: var(--color-text-main); background: var(--color-surface);
+  border:1px solid var(--color-border); border-radius: 999px; padding:.55rem 1.1rem; cursor:pointer; }
+.filters button:hover{ border-color: var(--color-primary); color: var(--color-primary); }
+.filters button.active{ background: var(--color-primary); color:#000; border-color: var(--color-primary); }
+.filters .count{ margin-left:auto; align-self:center; color: var(--color-text-muted); font-size:.95rem; }
+.week{ margin-top: 3rem; }
+.week > h2{ font-size: clamp(1.5rem, 3vw, 2rem); border-bottom: 1px solid var(--color-border); padding-bottom:.6rem; }
+.week > h2 span{ color: var(--color-primary); }
+.day{ margin-top: 1.6rem; }
+.day > h3{ font-size:1.05rem; letter-spacing:.02em; color: var(--color-text-main); margin-bottom:.8rem; }
+.day > h3 span{ color: var(--color-text-muted); font-weight:500; }
+.post{ display:flex; gap:1rem; align-items:flex-start; background: var(--color-surface);
+  border:1px solid var(--color-border); border-radius: var(--border-radius-md);
+  padding:1rem 1.2rem; margin-bottom:.7rem; transition: border-color .2s ease, background .2s ease; }
+.post:hover{ border-color: var(--color-primary); background: var(--color-surface-hover); }
+.post .time{ flex:none; width:118px; font-family: var(--font-heading); font-weight:700; font-size:.95rem; color: var(--color-primary); padding-top:.15rem; }
+.post .dayno{ flex:none; width:64px; font-family: var(--font-heading); font-weight:700; font-size:.85rem; letter-spacing:.06em;
+  color: var(--color-text-muted); border:1px solid var(--color-border); border-radius:6px; text-align:center; padding:.3rem 0; }
+.post .body{ flex:1; min-width:0; }
+.post .headline{ font-family: var(--font-heading); font-weight:700; font-size:1.15rem; line-height:1.3; text-transform:uppercase; letter-spacing:-.01em; }
+.post .headline .g{ color: var(--color-primary); }
+.post .topic{ color: var(--color-text-muted); font-size:.98rem; margin-top:.3rem; line-height:1.5; }
+.post .tags{ display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.6rem; }
+.badge{ font-family: var(--font-heading); font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  border-radius:999px; padding:.28rem .7rem; border:1px solid; }
+.pill-learn{ color:#00F260; border-color:rgba(0,242,96,.45); background:rgba(0,242,96,.10); }
+.pill-build{ color:#FFB81A; border-color:rgba(255,184,26,.45); background:rgba(255,184,26,.10); }
+.pill-community{ color:#00F260; border-color:rgba(0,242,96,.45); background:rgba(0,242,96,.10); }
+.pill-myth{ color:#FF5C87; border-color:rgba(255,46,99,.45); background:rgba(255,46,99,.10); }
+.fmt{ color: var(--color-text-muted); border-color: var(--color-border); background: transparent; }
+.post.hidden{ display:none; }
+.week.hidden{ display:none; }
+.day.hidden{ display:none; }
+.planner-foot{ margin-top: 3.5rem; }
+@media (max-width: 640px){
+  .post{ flex-wrap:wrap; }
+  .post .time{ width:auto; }
+  .filters{ top: 76px; }
+}
+
+</style>
+</head>
+<body class="page-enter">
+<div class="scanline"></div>
+<header class="navbar"><div class="container">
+<a class="nav-brand" href="index.html"><img src="assets/NewLogo02.png" alt="PakSec Nation logo" />PakSec <span>Nation</span></a>
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="programs.html">Programs</a>
+<a href="events.html">Events</a>
+<a href="blog.html">Blog</a>
+<a href="join.html">Join</a>
+<a href="volunteer.html">Volunteer</a>
+<a href="contact.html">Contact</a>
+<a href="planner.html" class="active">Planner</a>
+</nav></div></header>
+<main class="container">
+<section class="planner-hero">
+<h1>150-Day<br />LinkedIn <span>Planner</span></h1>
+<p class="sub">150 free cybersecurity lessons, posted twice a day on LinkedIn &mdash; every post, every date and every time, in one place. Follow <a href="https://www.linkedin.com/company/paksec-nation">PakSec Nation on LinkedIn</a> to get each lesson the moment it goes live.</p>
+<div class="meta-chips">
+<span><b>150</b> posts</span><span><b>75</b> days</span><span><b>2</b> posts a day</span>
+<span><b>12:00 PM</b> &amp; <b>3:00 PM</b> PKT</span>
+<span>16 Nov 2026 &ndash; 29 Jan 2027</span>
+<span><b>141</b> carousels &middot; <b>9</b> single images</span>
+</div>
+</section>
+<div class="filters" role="group" aria-label="Filter by pillar">
+<button class="active" data-filter="ALL">All 150</button>
+<button data-filter="LEARN">Learn</button>
+<button data-filter="BUILD">Build</button>
+<button data-filter="COMMUNITY">Community</button>
+<button data-filter="MYTH-BUSTING">Myth-Busting</button>
+<span class="count" id="count"></span>
+</div>
+<section class="week" id="week-1">
+<h2>Week 1 <span>&mdash; 16–22 Nov 2026</span></h2>
+<div class="day">
+<h3>Mon 16 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 01</div>
+<div class="body">
+<div class="headline">STORED XSS HIDES <span class="g">WHERE YOU LEAST EXPECT IT</span></div>
+<div class="topic">How to find stored XSS in a real web app, step by step</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 02</div>
+<div class="body">
+<div class="headline">REFLECTED XSS HIDES <span class="g">IN PLAIN SIGHT</span></div>
+<div class="topic">Reflected XSS: where it hides and how testers actually find it</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 17 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 03</div>
+<div class="body">
+<div class="headline">DOM XSS NEVER TOUCHES <span class="g">THE SERVER</span></div>
+<div class="topic">DOM XSS: the one most beginners miss, and how to test for it</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 04</div>
+<div class="body">
+<div class="headline">ONE QUOTE CAN <span class="g">BREAK THE DATABASE</span></div>
+<div class="topic">SQL injection: from a single quote to dumping the database</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 18 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 05</div>
+<div class="body">
+<div class="headline">NO ERRORS? NO PROBLEM. <span class="g">ASK TRUE OR FALSE</span></div>
+<div class="topic">Blind SQL injection: reading data one true/false question at a time</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 06</div>
+<div class="body">
+<div class="headline">THE SERVER BECOMES <span class="g">THE ATTACKER</span></div>
+<div class="topic">SSRF: how a server can be tricked into attacking itself</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 19 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 07</div>
+<div class="body">
+<div class="headline">ONE CLICK CAN ACT <span class="g">AS YOU</span></div>
+<div class="topic">CSRF: how a malicious page performs actions as you</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 08</div>
+<div class="body">
+<div class="headline">CHANGE ONE NUMBER, <span class="g">SEE SOMEONE ELSE</span></div>
+<div class="topic">IDOR: changing one number to see someone else&#x27;s data</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 20 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 09</div>
+<div class="body">
+<div class="headline">THE BUTTON HIDES IT. <span class="g">THE SERVER ALLOWS IT</span></div>
+<div class="topic">Broken access control: the most common real-world bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 10</div>
+<div class="body">
+<div class="headline">A PROFILE PICTURE <span class="g">BECOMES A SHELL</span></div>
+<div class="topic">File upload vulnerabilities: how a profile picture becomes a shell</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 21 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 11</div>
+<div class="body">
+<div class="headline">AN XML FILE CAN <span class="g">READ THE SERVER</span></div>
+<div class="topic">XXE: how an XML file can read the server&#x27;s secrets</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 12</div>
+<div class="body">
+<div class="headline">A TEMPLATE THAT <span class="g">RUNS YOUR CODE</span></div>
+<div class="topic">SSTI: when a template becomes a code execution bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 22 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 13</div>
+<div class="body">
+<div class="headline">DATA THAT TURNS <span class="g">BACK INTO CODE</span></div>
+<div class="topic">Deserialization: the bug that turns data back into code</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 14</div>
+<div class="body">
+<div class="headline">TWO DOTS CAN <span class="g">WALK THE SERVER</span></div>
+<div class="topic">Path traversal: how ../ lets you read files you should never see</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-2">
+<h2>Week 2 <span>&mdash; 23–29 Nov 2026</span></h2>
+<div class="day">
+<h3>Mon 23 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 15</div>
+<div class="body">
+<div class="headline">THE APP WORKS PERFECTLY. <span class="g">THAT IS THE BUG</span></div>
+<div class="topic">Business logic flaws: when the app works exactly as coded, and that is the bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 16</div>
+<div class="body">
+<div class="headline">TESTING AN iOS APP, <span class="g">STEP BY STEP</span></div>
+<div class="topic">How to find vulnerabilities in an iOS application, step by step</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 24 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 17</div>
+<div class="body">
+<div class="headline">YOUR APP REMEMBERS <span class="g">MORE THAN YOU THINK</span></div>
+<div class="topic">iOS: testing for insecure data storage (Keychain, plist, UserDefaults)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 18</div>
+<div class="body">
+<div class="headline">JAILBREAK DETECTION IS <span class="g">A SPEED BUMP, NOT A WALL</span></div>
+<div class="topic">iOS: bypassing jailbreak detection the right way</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 25 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 19</div>
+<div class="body">
+<div class="headline">SEE EVERYTHING <span class="g">THE APP SENDS</span></div>
+<div class="topic">iOS: intercepting app traffic with a proxy</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 20</div>
+<div class="body">
+<div class="headline">YOUR FACE OPENS <span class="g">THE APP — SAFELY?</span></div>
+<div class="topic">iOS: testing biometric authentication (Face ID / Touch ID) for flaws</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 26 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 21</div>
+<div class="body">
+<div class="headline">ANDROID APPS LEAVE <span class="g">SECRETS LYING AROUND</span></div>
+<div class="topic">Android: finding insecure data storage (SharedPreferences, SQLite, external storage)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 22</div>
+<div class="body">
+<div class="headline">A LINK CAN OPEN <span class="g">ANY SCREEN</span></div>
+<div class="topic">Android: testing deep links and exported components</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 27 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 23</div>
+<div class="body">
+<div class="headline">ROOT DETECTION IS <span class="g">A SPEED BUMP, NOT A WALL</span></div>
+<div class="topic">Android: bypassing root detection</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 24</div>
+<div class="body">
+<div class="headline">PINNED DOES NOT MEAN <span class="g">UNREADABLE</span></div>
+<div class="topic">Android: intercepting traffic and bypassing certificate pinning</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 28 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 25</div>
+<div class="body">
+<div class="headline">THE APP IS JUST <span class="g">A FRONT DOOR</span></div>
+<div class="topic">Mobile: how to test an app&#x27;s API from the device</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 26</div>
+<div class="body">
+<div class="headline">THE APK GIVES UP <span class="g">ITS SECRETS</span></div>
+<div class="topic">Mobile: reverse engineering an APK to find hidden secrets</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 29 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 27</div>
+<div class="body">
+<div class="headline">PLAIN TEXT ON <span class="g">PUBLIC WI-FI</span></div>
+<div class="topic">Mobile: testing for insecure communication (HTTP, weak TLS)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 28</div>
+<div class="body">
+<div class="headline">A NOTIFICATION CAN <span class="g">LEAK YOUR DATA</span></div>
+<div class="topic">Mobile: how to test push notification security</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-3">
+<h2>Week 3 <span>&mdash; 30 Nov – 06 Dec 2026</span></h2>
+<div class="day">
+<h3>Mon 30 Nov 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 29</div>
+<div class="body">
+<div class="headline">ONE CHECKLIST COVERS <span class="g">EVERY MOBILE APP</span></div>
+<div class="topic">Mobile: the OWASP MASVS checklist, explained in plain words</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 30</div>
+<div class="body">
+<div class="headline">FINDINGS MEAN NOTHING <span class="g">WITHOUT THE REPORT</span></div>
+<div class="topic">Mobile: writing a professional mobile pentest report</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 01 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 31</div>
+<div class="body">
+<div class="headline">YOUR API HAS A FRONT DOOR <span class="g">TEST IT LIKE A TESTER</span></div>
+<div class="topic">API security: how to test a REST API from scratch</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 32</div>
+<div class="body">
+<div class="headline">CHANGE ONE NUMBER, <span class="g">SEE SOMEONE ELSE&#x27;S DATA</span></div>
+<div class="topic">Broken Object Level Authorization (BOLA): the number one API bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 02 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 33</div>
+<div class="body">
+<div class="headline">A TOKEN IS A KEY. <span class="g">TEST IF IT LOCKS</span></div>
+<div class="topic">Broken authentication in APIs: weak tokens and how to test them</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 34</div>
+<div class="body">
+<div class="headline">THE APP HIDES IT. <span class="g">THE API GIVES IT AWAY</span></div>
+<div class="topic">Excessive data exposure: when an API gives away too much</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 03 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 35</div>
+<div class="body">
+<div class="headline">NO LIMITS MEANS <span class="g">NO PROTECTION</span></div>
+<div class="topic">Rate limiting: how to test if an API can be abused</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 36</div>
+<div class="body">
+<div class="headline">ONE EXTRA FIELD <span class="g">CAN MAKE YOU ADMIN</span></div>
+<div class="topic">API: mass assignment — how extra fields become a bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 04 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 37</div>
+<div class="body">
+<div class="headline">GRAPHQL HIDES BUGS <span class="g">REST NEVER HAD</span></div>
+<div class="topic">GraphQL security: the bugs unique to GraphQL</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 38</div>
+<div class="body">
+<div class="headline">A TOKEN YOU CAN FORGE <span class="g">IS NOT A LOCK</span></div>
+<div class="topic">JWT: how a token can be forged, and how to test it</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 05 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 39</div>
+<div class="body">
+<div class="headline">AN API PARAMETER <span class="g">IS STILL AN INPUT</span></div>
+<div class="topic">API: testing for injection in API parameters</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 40</div>
+<div class="body">
+<div class="headline">A CHECKLIST TURNS <span class="g">GUESSING INTO TESTING</span></div>
+<div class="topic">API: how to build a complete API test checklist</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 06 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 41</div>
+<div class="body">
+<div class="headline">A WEBHOOK IS A DOOR <span class="g">LEFT OPEN FOR EVENTS</span></div>
+<div class="topic">Webhooks: how to test if they can be abused</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 42</div>
+<div class="body">
+<div class="headline">OLD API VERSIONS <span class="g">STILL ANSWER — UNSAFELY</span></div>
+<div class="topic">API versioning: why old API versions are a goldmine for testers</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-4">
+<h2>Week 4 <span>&mdash; 7–13 Dec 2026</span></h2>
+<div class="day">
+<h3>Mon 07 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 43</div>
+<div class="body">
+<div class="headline">CORS DECIDES WHO <span class="g">MAY CALL YOUR API</span></div>
+<div class="topic">API: testing CORS misconfigurations</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 44</div>
+<div class="body">
+<div class="headline">POSTMAN BUILDS IT. <span class="g">BURP BREAKS IT.</span></div>
+<div class="topic">API: how to use Postman and Burp together for API testing</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 08 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 45</div>
+<div class="body">
+<div class="headline">A BUG NO ONE UNDERSTANDS <span class="g">IS A BUG NOT FIXED</span></div>
+<div class="topic">API: writing a professional API pentest report</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 46</div>
+<div class="body">
+<div class="headline">A PENTEST IS NOT <span class="g">RANDOM HACKING</span></div>
+<div class="topic">How to perform a penetration test: the full methodology, start to finish</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 09 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 47</div>
+<div class="body">
+<div class="headline">NO PERMISSION, <span class="g">NO PENTEST</span></div>
+<div class="topic">The technical conditions of a professional pentest (scope, rules of engagement, authorization)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 48</div>
+<div class="body">
+<div class="headline">THE PAPERWORK IS <span class="g">PART OF THE TEST</span></div>
+<div class="topic">The professional conditions of a pentest (contracts, confidentiality, reporting, liability)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 10 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 49</div>
+<div class="body">
+<div class="headline">KNOW THE TARGET <span class="g">BEFORE YOU TOUCH IT</span></div>
+<div class="topic">Reconnaissance: how a tester maps a target before touching it</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 50</div>
+<div class="body">
+<div class="headline">A SCANNER FINDS NOISE. <span class="g">A TESTER FINDS BUGS</span></div>
+<div class="topic">Vulnerability scanning vs manual testing: what each one actually finds</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 11 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 51</div>
+<div class="body">
+<div class="headline">PROVE THE BUG. <span class="g">BREAK NOTHING</span></div>
+<div class="topic">Exploitation: how to prove a bug without breaking anything</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 52</div>
+<div class="body">
+<div class="headline">LOW ACCESS IS <span class="g">NEVER THE END</span></div>
+<div class="topic">Privilege escalation: how testers go from low access to admin</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 12 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 53</div>
+<div class="body">
+<div class="headline">GETTING IN IS <span class="g">ONLY HALF THE TEST</span></div>
+<div class="topic">Post-exploitation: what a tester does after getting in</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 54</div>
+<div class="body">
+<div class="headline">A REPORT NO ONE READS <span class="g">FIXES NOTHING</span></div>
+<div class="topic">Reporting: how to write a pentest report a client actually reads</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 13 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 55</div>
+<div class="body">
+<div class="headline">A FIX YOU NEVER CHECK <span class="g">IS NOT A FIX</span></div>
+<div class="topic">Retesting: how to verify a fix actually works</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 56</div>
+<div class="body">
+<div class="headline">IF IT IS NOT IN SCOPE, <span class="g">DO NOT TOUCH IT</span></div>
+<div class="topic">Scoping a pentest: how to define what is and is not tested</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-5">
+<h2>Week 5 <span>&mdash; 14–20 Dec 2026</span></h2>
+<div class="day">
+<h3>Mon 14 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 57</div>
+<div class="body">
+<div class="headline">THE RULES KEEP YOU <span class="g">LEGAL AND SAFE</span></div>
+<div class="topic">Rules of engagement: the document that keeps a tester legal and safe</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 58</div>
+<div class="body">
+<div class="headline">PRICE IT FAIRLY. <span class="g">SMALL COMPANIES CAN AFFORD IT</span></div>
+<div class="topic">How to price a penetration test (for small companies)</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 15 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 59</div>
+<div class="body">
+<div class="headline">GREAT TESTER, <span class="g">REAL BUSINESS</span></div>
+<div class="topic">How to run a pentest as a freelancer: the business side</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 60</div>
+<div class="body">
+<div class="headline">TOOLS DO NOT MAKE <span class="g">THE TESTER</span></div>
+<div class="topic">The pentester&#x27;s toolkit: Burp Suite, Nmap, and the tools that matter</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 16 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 61</div>
+<div class="body">
+<div class="headline">START FROM ZERO <span class="g">THE HONEST WAY</span></div>
+<div class="topic">Bug bounty: how to start from zero, honestly</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 62</div>
+<div class="body">
+<div class="headline">YOUR FIRST PROGRAM <span class="g">PICK IT WELL</span></div>
+<div class="topic">How to pick your first bug bounty program</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 17 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 63</div>
+<div class="body">
+<div class="headline">RECON FINDS WHAT <span class="g">OTHERS MISS</span></div>
+<div class="topic">Recon for bug bounty: finding targets others miss</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 64</div>
+<div class="body">
+<div class="headline">SCOPE IS THE <span class="g">RULE THAT PROTECTS YOU</span></div>
+<div class="topic">How to read a program&#x27;s scope and stay in it</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 18 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 65</div>
+<div class="body">
+<div class="headline">A REPORT THAT <span class="g">GETS PAID</span></div>
+<div class="topic">Writing a bug bounty report that gets accepted and paid</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 66</div>
+<div class="body">
+<div class="headline">HUNT LIKE A <span class="g">FULL-TIME PRO</span></div>
+<div class="topic">Bug bounty: the methodology of a full-time hunter</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 19 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 67</div>
+<div class="body">
+<div class="headline">FIND XSS THE <span class="g">PRACTICAL WAY</span></div>
+<div class="topic">How to find XSS for bug bounty (the practical approach)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 68</div>
+<div class="body">
+<div class="headline">ONE NUMBER CHANGED <span class="g">SOMEONE ELSE&#x27;S DATA</span></div>
+<div class="topic">How to find IDOR for bug bounty</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 20 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 69</div>
+<div class="body">
+<div class="headline">SMALL BUGS CHAINED <span class="g">BECOME CRITICAL</span></div>
+<div class="topic">Bug bounty: how to chain small bugs into a critical finding</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 70</div>
+<div class="body">
+<div class="headline">DUPLICATE REPORT? <span class="g">DON&#x27;T PANIC</span></div>
+<div class="topic">Duplicate reports: how to avoid them and what to do when it happens</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-6">
+<h2>Week 6 <span>&mdash; 21–27 Dec 2026</span></h2>
+<div class="day">
+<h3>Mon 21 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 71</div>
+<div class="body">
+<div class="headline">IGNORED BY A <span class="g">PROGRAM? DO THIS</span></div>
+<div class="topic">Bug bounty: how to handle a program that ignores your report</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 72</div>
+<div class="body">
+<div class="headline">THE TOOLS HUNTERS <span class="g">ACTUALLY USE DAILY</span></div>
+<div class="topic">The tools a bug bounty hunter actually uses daily</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 22 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 73</div>
+<div class="body">
+<div class="headline">WHAT CAN A BEGINNER <span class="g">REALISTICALLY EARN?</span></div>
+<div class="topic">Bug bounty: how much can a beginner realistically earn</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 74</div>
+<div class="body">
+<div class="headline">NO BOUNTY PROGRAM? <span class="g">REPORT IT RIGHT</span></div>
+<div class="topic">Responsible disclosure: how to report a bug to a company with no program</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 23 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 75</div>
+<div class="body">
+<div class="headline">A REPUTATION THAT <span class="g">OPENS PRIVATE DOORS</span></div>
+<div class="topic">Bug bounty: building a reputation that gets you private invites</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 76</div>
+<div class="body">
+<div class="headline">LOGIN LOOKS SIMPLE <span class="g">IT IS NOT</span></div>
+<div class="topic">How authentication actually works (and where it breaks)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 24 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 77</div>
+<div class="body">
+<div class="headline">WEAK PASSWORDS ARE <span class="g">STILL EVERYWHERE</span></div>
+<div class="topic">Password security: what makes a password weak, and how testers check</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 78</div>
+<div class="body">
+<div class="headline">MFA HELPS A LOT <span class="g">IT IS NOT MAGIC</span></div>
+<div class="topic">Multi-factor authentication: how it can be bypassed</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 25 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 79</div>
+<div class="body">
+<div class="headline">YOUR SESSION TOKEN <span class="g">IS THE KEY</span></div>
+<div class="topic">Session management: how a session token can be stolen or forged</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 80</div>
+<div class="body">
+<div class="headline">LOGIN WITH GOOGLE <span class="g">CAN GO WRONG</span></div>
+<div class="topic">OAuth: how login-with-Google can go wrong</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 26 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 81</div>
+<div class="body">
+<div class="headline">PASSWORD RESET IS <span class="g">THE MOST ATTACKED FLOW</span></div>
+<div class="topic">Password reset: the most attacked flow in any app</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 82</div>
+<div class="body">
+<div class="headline">ACCOUNT TAKEOVER IS <span class="g">A CHAIN, NOT LUCK</span></div>
+<div class="topic">Account takeover: the full chain, from recon to reset</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 27 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 83</div>
+<div class="body">
+<div class="headline">GUESSING PASSWORDS AT <span class="g">SCALE IS REAL</span></div>
+<div class="topic">Brute force and credential stuffing: how testers check for them</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 84</div>
+<div class="body">
+<div class="headline">EVERY ROLE NEEDS <span class="g">ITS OWN TEST</span></div>
+<div class="topic">Role-based access control: how to test every role properly</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-7">
+<h2>Week 7 <span>&mdash; 28 Dec – 03 Jan 2027</span></h2>
+<div class="day">
+<h3>Mon 28 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 85</div>
+<div class="body">
+<div class="headline">JWT OR SESSION <span class="g">WHICH IS SAFER?</span></div>
+<div class="topic">JWT vs session cookies: which is safer, and how to test both</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 86</div>
+<div class="body">
+<div class="headline">ONE LOGIN FOR <span class="g">EVERYTHING HAS A COST</span></div>
+<div class="topic">Single sign-on (SSO): the security trade-offs</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 29 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 87</div>
+<div class="body">
+<div class="headline">YOUR FINGERPRINT IS <span class="g">NOT A PASSWORD</span></div>
+<div class="topic">Biometrics: what they protect and what they don&#x27;t</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 88</div>
+<div class="body">
+<div class="headline">TEST A LOGIN <span class="g">LIKE A PRO</span></div>
+<div class="topic">How to test a login form like a professional</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 30 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 89</div>
+<div class="body">
+<div class="headline">LOGOUT SHOULD MEAN <span class="g">LOGGED OUT</span></div>
+<div class="topic">Logout and session expiry: the bugs everyone forgets</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 90</div>
+<div class="body">
+<div class="headline">A REPORT THAT <span class="g">GETS BUGS FIXED</span></div>
+<div class="topic">Authentication: writing a professional test report</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 31 Dec 2026 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 91</div>
+<div class="body">
+<div class="headline">THE INTERNET IS JUST <span class="g">MACHINES TALKING TO EACH OTHER</span></div>
+<div class="topic">How the internet actually works: IP, DNS, and packets in plain words</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 92</div>
+<div class="body">
+<div class="headline">DNS TURNS NAMES INTO <span class="g">ADDRESSES ATTACKERS CAN ABUSE</span></div>
+<div class="topic">DNS: the phonebook of the internet, and how it can be abused</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 01 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 93</div>
+<div class="body">
+<div class="headline">EVERY WEBSITE VISIT IS <span class="g">A REQUEST AND A RESPONSE</span></div>
+<div class="topic">HTTP and HTTPS: what happens when you visit a website</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 94</div>
+<div class="body">
+<div class="headline">THE PADLOCK PROTECTS YOU <span class="g">BUT NOT FROM EVERYTHING</span></div>
+<div class="topic">TLS: how encryption protects your data (and when it doesn&#x27;t)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 02 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 95</div>
+<div class="body">
+<div class="headline">LINUX STARTS WITH <span class="g">KNOWING WHERE YOU ARE</span></div>
+<div class="topic">Linux commands every defender must know (part 1: files and navigation)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 96</div>
+<div class="body">
+<div class="headline">PERMISSIONS AND PROCESSES <span class="g">ARE WHERE BUGS HIDE</span></div>
+<div class="topic">Linux commands every defender must know (part 2: permissions and processes)</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 03 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 97</div>
+<div class="body">
+<div class="headline">ONE WRONG PERMISSION <span class="g">CAN HAND OVER THE SYSTEM</span></div>
+<div class="topic">Linux: how file permissions become a security bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 98</div>
+<div class="body">
+<div class="headline">A FIREWALL IS NOT <span class="g">A WALL. IT IS A LIST.</span></div>
+<div class="topic">Networking: how a firewall actually decides what to block</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-8">
+<h2>Week 8 <span>&mdash; 4–10 Jan 2027</span></h2>
+<div class="day">
+<h3>Mon 04 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 99</div>
+<div class="body">
+<div class="headline">EVERY OPEN PORT IS <span class="g">A DOOR SOMEONE CAN TRY</span></div>
+<div class="topic">Ports and services: how to read what a server is exposing</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 100</div>
+<div class="body">
+<div class="headline">NMAP DOES NOT HACK <span class="g">IT DRAWS THE MAP FIRST</span></div>
+<div class="topic">Nmap: how to map a network like a professional</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 05 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 101</div>
+<div class="body">
+<div class="headline">WIRESHARK LETS YOU <span class="g">SEE THE TRAFFIC ITSELF</span></div>
+<div class="topic">Wireshark: how to read network traffic and spot attacks</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 102</div>
+<div class="body">
+<div class="headline">A VPN HIDES YOUR TRAFFIC <span class="g">IT DOES NOT MAKE YOU INVISIBLE</span></div>
+<div class="topic">VPNs: what they protect and what they don&#x27;t</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 06 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 103</div>
+<div class="body">
+<div class="headline">PUBLIC WI-FI IS <span class="g">A SHARED ROOM, NOT PRIVATE</span></div>
+<div class="topic">Wi-Fi security: how public Wi-Fi can be attacked</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 104</div>
+<div class="body">
+<div class="headline">YOUR OWN LAB IS <span class="g">WHERE REAL LEARNING STARTS</span></div>
+<div class="topic">How to set up a home lab for learning security</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 07 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 105</div>
+<div class="body">
+<div class="headline">A DEFENDER DOES NOT <span class="g">BREAK THINGS. THEY PROTECT PEOPLE.</span></div>
+<div class="topic">The defender&#x27;s mindset: how to think like a protector, not an attacker</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 106</div>
+<div class="body">
+<div class="headline">ONE PUBLIC BUCKET <span class="g">CAN LEAK A WHOLE COMPANY</span></div>
+<div class="topic">Cloud security: how a misconfigured S3 bucket leaks data</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 08 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 107</div>
+<div class="body">
+<div class="headline">AWS IS SECURE BY DEFAULT <span class="g">UNTIL SOMEONE CHANGES IT</span></div>
+<div class="topic">AWS: the most common misconfigurations testers find</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 108</div>
+<div class="body">
+<div class="headline">IN THE CLOUD, PERMISSIONS <span class="g">ARE THE WHOLE SECURITY MODEL</span></div>
+<div class="topic">Cloud: how IAM roles and permissions become a bug</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 09 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 109</div>
+<div class="body">
+<div class="headline">A KEY IN YOUR CODE <span class="g">IS A KEY IN PUBLIC</span></div>
+<div class="topic">Secrets in code: how API keys leak on GitHub</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 110</div>
+<div class="body">
+<div class="headline">YOUR BUILD PIPELINE <span class="g">CAN SHIP THE ATTACKER&#x27;S CODE</span></div>
+<div class="topic">CI/CD pipelines: how a build process can be attacked</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 10 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 111</div>
+<div class="body">
+<div class="headline">A CONTAINER IS NOT <span class="g">A VIRTUAL MACHINE</span></div>
+<div class="topic">Docker: how a container can escape and what to check</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 112</div>
+<div class="body">
+<div class="headline">KUBERNETES RUNS THE CLOUD <span class="g">LEARN ITS SECURITY BASICS</span></div>
+<div class="topic">Kubernetes: the security basics every tester should know</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-9">
+<h2>Week 9 <span>&mdash; 11–17 Jan 2027</span></h2>
+<div class="day">
+<h3>Mon 11 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 113</div>
+<div class="body">
+<div class="headline">NO SERVER TO PATCH <span class="g">BUT PLENTY OF NEW BUGS</span></div>
+<div class="topic">Serverless: the bugs unique to serverless apps</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 114</div>
+<div class="body">
+<div class="headline">YOUR CLOUD IS A FILE <span class="g">ONE LINE CAN OPEN IT</span></div>
+<div class="topic">Infrastructure as code: how a config file becomes a vulnerability</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 12 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 115</div>
+<div class="body">
+<div class="headline">SECURITY IN THE PIPELINE <span class="g">NOT A GATE AT THE END</span></div>
+<div class="topic">DevSecOps: how to add security to a pipeline without slowing it down</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 116</div>
+<div class="body">
+<div class="headline">CLOUD TESTING STARTS WITH <span class="g">PERMISSION, NOT A TOOL</span></div>
+<div class="topic">Cloud: how to test a cloud environment safely</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 13 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 117</div>
+<div class="body">
+<div class="headline">ATTACKERS LEAVE FOOTPRINTS <span class="g">LOGS ARE HOW YOU FIND THEM</span></div>
+<div class="topic">Logging and monitoring: how defenders catch attackers</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="LEARN">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 118</div>
+<div class="body">
+<div class="headline">A BREACH IS NOT THE END <span class="g">IT IS THE START OF RESPONSE</span></div>
+<div class="topic">Incident response: what happens after a breach is found</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 14 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 119</div>
+<div class="body">
+<div class="headline">A GOOD REPORT GETS <span class="g">THE FIX DONE</span></div>
+<div class="topic">Cloud: writing a professional cloud security report</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 120</div>
+<div class="body">
+<div class="headline">THE CLOUD KEEPS CHANGING <span class="g">SO MUST YOU</span></div>
+<div class="topic">The future of cloud security: what to learn next</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 15 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 121</div>
+<div class="body">
+<div class="headline">START FROM ZERO <span class="g">IN PAKISTAN, HONESTLY</span></div>
+<div class="topic">The honest cybersecurity roadmap for a complete beginner in Pakistan</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 122</div>
+<div class="body">
+<div class="headline">CEH, SECURITY+ OR BSCP? <span class="g">PICK THE RIGHT FIRST</span></div>
+<div class="topic">CEH, Security+ or BSCP: which certificate first, and why</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 16 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 123</div>
+<div class="body">
+<div class="headline">NO EXPERIENCE? <span class="g">GET HIRED ANYWAY</span></div>
+<div class="topic">How to get your first job in cybersecurity (no experience)</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 124</div>
+<div class="body">
+<div class="headline">CERTIFICATES DON&#x27;T HIRE YOU <span class="g">SKILLS DO</span></div>
+<div class="topic">The skills that actually get you hired (not just certificates)</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 17 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 125</div>
+<div class="body">
+<div class="headline">YOUR PORTFOLIO IS <span class="g">YOUR PROOF OF WORK</span></div>
+<div class="topic">How to build a portfolio that proves you can do the work</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 126</div>
+<div class="body">
+<div class="headline">TWO HOURS A DAY <span class="g">IN THE RIGHT ORDER</span></div>
+<div class="topic">The daily study plan for a beginner: what to learn in what order</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-10">
+<h2>Week 10 <span>&mdash; 18–24 Jan 2027</span></h2>
+<div class="day">
+<h3>Mon 18 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 127</div>
+<div class="body">
+<div class="headline">STOP WATCHING BURP <span class="g">START USING IT</span></div>
+<div class="topic">How to learn Burp Suite properly (not just watching videos)</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 128</div>
+<div class="body">
+<div class="headline">TRYHACKME OR HACKTHEBOX? <span class="g">START WITH THE RIGHT ONE</span></div>
+<div class="topic">TryHackMe vs HackTheBox: which one to start with</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 19 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 129</div>
+<div class="body">
+<div class="headline">FREE PRACTICE EXISTS <span class="g">HERE IS WHERE</span></div>
+<div class="topic">How to get hands-on practice for free (labs, CTFs, vulnerable apps)</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 130</div>
+<div class="body">
+<div class="headline">THE INTERVIEW IS <span class="g">NOT A TRICK TEST</span></div>
+<div class="topic">The interview: what cybersecurity interviews actually ask</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 20 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 131</div>
+<div class="body">
+<div class="headline">YOUR FIRST CLIENT <span class="g">IS CLOSER THAN YOU THINK</span></div>
+<div class="topic">Freelancing in cybersecurity: how to find your first client</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 132</div>
+<div class="body">
+<div class="headline">LEARNING GETS HARD <span class="g">THAT IS NORMAL</span></div>
+<div class="topic">How to stay motivated when learning gets hard</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 21 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 133</div>
+<div class="body">
+<div class="headline">ZERO TO JOB-READY <span class="g">IN SIX MONTHS</span></div>
+<div class="topic">The 6-month plan: from zero to job-ready</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="BUILD">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 134</div>
+<div class="body">
+<div class="headline">A MENTOR CHANGES <span class="g">EVERYTHING</span></div>
+<div class="topic">Mentorship: how to find a mentor and how to be one</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 22 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="BUILD">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 135</div>
+<div class="body">
+<div class="headline">THE TRUTH ABOUT PAY <span class="g">IN PAKISTAN</span></div>
+<div class="topic">The truth about cybersecurity salaries in Pakistan</div>
+<div class="tags">
+<span class="badge pill-build">BUILD</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="MYTH-BUSTING">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 136</div>
+<div class="body">
+<div class="headline">HOODIES AND FAST TYPING <span class="g">IS NOT HACKING</span></div>
+<div class="topic">Myth: hackers wear hoodies and type fast. Reality: defenders stop them.</div>
+<div class="tags">
+<span class="badge pill-myth">MYTH-BUSTING</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sat 23 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="MYTH-BUSTING">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 137</div>
+<div class="body">
+<div class="headline">NO DEGREE? <span class="g">START ANYWAY</span></div>
+<div class="topic">Myth: you need a computer science degree to start in cybersecurity</div>
+<div class="tags">
+<span class="badge pill-myth">MYTH-BUSTING</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+<article class="post" data-pillar="MYTH-BUSTING">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 138</div>
+<div class="body">
+<div class="headline">NOT FOR GENIUSES <span class="g">FOR PERSISTENT LEARNERS</span></div>
+<div class="topic">Myth: cybersecurity is only for geniuses</div>
+<div class="tags">
+<span class="badge pill-myth">MYTH-BUSTING</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Sun 24 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="MYTH-BUSTING">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 139</div>
+<div class="body">
+<div class="headline">EXPENSIVE COURSES? <span class="g">NOT REQUIRED</span></div>
+<div class="topic">Myth: you need expensive courses to learn security</div>
+<div class="tags">
+<span class="badge pill-myth">MYTH-BUSTING</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+<article class="post" data-pillar="MYTH-BUSTING">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 140</div>
+<div class="body">
+<div class="headline">LEARNING SECURITY <span class="g">IS NOT ILLEGAL</span></div>
+<div class="topic">Myth: hacking is illegal, so learning it must be too</div>
+<div class="tags">
+<span class="badge pill-myth">MYTH-BUSTING</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+</div>
+</section>
+<section class="week" id="week-11">
+<h2>Week 11 <span>&mdash; 25–29 Jan 2027</span></h2>
+<div class="day">
+<h3>Mon 25 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 141</div>
+<div class="body">
+<div class="headline">FEELING STUPID? <span class="g">YOU ARE LEARNING</span></div>
+<div class="topic">The beginner&#x27;s mindset: how to learn without feeling stupid</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 142</div>
+<div class="body">
+<div class="headline">GOOD QUESTIONS GET <span class="g">GOOD ANSWERS</span></div>
+<div class="topic">How to ask a good question in the security community</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Tue 26 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 143</div>
+<div class="body">
+<div class="headline">DEFENDERS MATTER MORE <span class="g">THAN ATTACKERS</span></div>
+<div class="topic">The ethics of hacking: why defenders matter more than attackers</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 144</div>
+<div class="body">
+<div class="headline">BEGINNERS CAN CONTRIBUTE <span class="g">START TODAY</span></div>
+<div class="topic">How to contribute to the security community as a beginner</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Wed 27 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 145</div>
+<div class="body">
+<div class="headline">100,000 LEARNERS <span class="g">BY 2030</span></div>
+<div class="topic">The PakSec mission: 100,000 learners by 2030, and how you help</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 146</div>
+<div class="body">
+<div class="headline">FOUND A BUG? <span class="g">REPORT IT RIGHT</span></div>
+<div class="topic">What to do when you find a vulnerability (responsible disclosure)</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Thu 28 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 147</div>
+<div class="body">
+<div class="headline">YOU BELONG HERE <span class="g">EVEN WHEN IT DOUBTS YOU</span></div>
+<div class="topic">How to handle imposter syndrome in cybersecurity</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 148</div>
+<div class="body">
+<div class="headline">1000+ BEGINNERS <span class="g">LEARNING TOGETHER</span></div>
+<div class="topic">The community: how 1000+ beginners are learning together</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+</div>
+<div class="day">
+<h3>Fri 29 Jan 2027 <span>&middot; 2 posts</span></h3>
+<article class="post" data-pillar="LEARN">
+<div class="time">12:00 PM PKT</div>
+<div class="dayno">DAY 149</div>
+<div class="body">
+<div class="headline">YOUR FIRST 30 DAYS <span class="g">DAY BY DAY</span></div>
+<div class="topic">Your first 30 days in cybersecurity: a day-by-day plan</div>
+<div class="tags">
+<span class="badge pill-learn">LEARN</span>
+<span class="badge fmt">Carousel &middot; 8 slides</span>
+</div></div></article>
+<article class="post" data-pillar="COMMUNITY">
+<div class="time">3:00 PM PKT</div>
+<div class="dayno">DAY 150</div>
+<div class="body">
+<div class="headline">LEARN. BUILD. DEFEND. <span class="g">LEAD.</span></div>
+<div class="topic">The final lesson: learn, build, defend, lead — what comes next</div>
+<div class="tags">
+<span class="badge pill-community">COMMUNITY</span>
+<span class="badge fmt">Single image</span>
+</div></div></article>
+</div>
+</section>
+<section class="planner-foot">
+<div class="glass-card"><h3>Learn. Build. Defend. Lead.</h3>
+<p>Every lesson is free, beginner-friendly and ethical only. Practise in labs, never on systems you are not allowed to test. Join 1000+ learners in the free WhatsApp community &mdash; link on the <a href="index.html">home page</a>.</p></div>
+</section>
+</main>
+<footer><div class="container"><p>&copy; 2026 PakSec Nation &mdash; Pakistan&rsquo;s Official Cyber Security Movement. Learn. Build. Defend. Lead.</p></div></footer>
+<script>
+
+(function(){
+  var btns = document.querySelectorAll('.filters button');
+  var count = document.getElementById('count');
+  function apply(f){
+    var shown = 0;
+    document.querySelectorAll('.post').forEach(function(el){
+      var ok = (f === 'ALL' || el.dataset.pillar === f);
+      el.classList.toggle('hidden', !ok);
+      if (ok) shown++;
+    });
+    document.querySelectorAll('.day').forEach(function(day){
+      day.classList.toggle('hidden', day.querySelectorAll('.post:not(.hidden)').length === 0);
+    });
+    document.querySelectorAll('.week').forEach(function(w){
+      w.classList.toggle('hidden', w.querySelectorAll('.post:not(.hidden)').length === 0);
+    });
+    count.textContent = shown + ' of 150 posts';
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      apply(b.dataset.filter);
+    });
+  });
+  apply('ALL');
+})();
+
+</script>
+</body>
+</html>
